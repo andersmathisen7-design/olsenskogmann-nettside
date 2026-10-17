@@ -7,6 +7,8 @@ import shutil
 from datetime import date
 
 import config as C
+import artikler_build as AB
+import re
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
@@ -126,6 +128,7 @@ def head(title, desc, path, ld):
 <link rel="stylesheet" href="{url('assets/style.css')}?v={ASSET_V}">
 {lds}
 {gc}
+<script src="{url('assets/app.js')}?v={ASSET_V}" defer></script>
 </head>
 <body>
 <a class="skip" href="#innhold">Hopp til innholdet</a>
@@ -175,7 +178,7 @@ def steps():
 """
 
 
-def contact(selected=""):
+def contact(selected="", area=""):
     opts = "".join(
         f'<option{" selected" if selected == s["form_value"] else ""}>{e(s["form_value"])}</option>'
         for s in C.SERVICES) + '<option>Rens av mur eller fasade</option><option>Annet</option>'
@@ -188,11 +191,12 @@ def contact(selected=""):
       <a class="contact-big" href="{tel()}" data-goatcounter-click="ring-kontakt">{C.PHONE_DISPLAY}</a>
       <p class="contact-alt"><a href="{sms()}" data-goatcounter-click="sms-kontakt">Send SMS</a> eller e-post til <a href="mailto:{C.EMAIL}">{C.EMAIL}</a></p>
     </div>
-    <form class="quote-form" action="https://formsubmit.co/{C.FORM_EMAIL}" method="POST" enctype="multipart/form-data">
+    <form class="quote-form" action="https://formsubmit.co/{C.FORM_EMAIL}" method="POST" enctype="multipart/form-data"{f' data-leads="{e(C.LEADS_URL)}"' if C.LEADS_URL else ''}>
       <input type="hidden" name="_subject" value="Ny forespørsel fra nettsiden">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_next" value="{abs_url('takk/')}">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      {f'<input type="hidden" name="Område" value="{e(area)}">' if area else ''}
       <div class="field">
         <label for="f-tjeneste">Hva gjelder det?</label>
         <select id="f-tjeneste" name="Tjeneste" required>{placeholder}{opts}</select>
@@ -201,7 +205,7 @@ def contact(selected=""):
         <div class="field"><label for="f-navn">Navn</label><input id="f-navn" name="Navn" autocomplete="name" required></div>
         <div class="field"><label for="f-tlf">Telefon</label><input id="f-tlf" name="Telefon" type="tel" inputmode="tel" autocomplete="tel" required></div>
       </div>
-      <div class="field"><label for="f-adr">Adresse eller bydel</label><input id="f-adr" name="Adresse" autocomplete="street-address" required></div>
+      <div class="field"><label for="f-adr">Adresse eller bydel</label><input id="f-adr" name="Adresse" autocomplete="street-address" required{f' placeholder="F.eks. gate og nummer i {e(area)}"' if area else ''}></div>
       <div class="field"><label for="f-besk">Beskriv jobben</label><textarea id="f-besk" name="Beskrivelse" rows="4" placeholder="Hva skal gjøres, og omtrent hvor stort er området?"></textarea></div>
       <div class="field"><label for="f-bilde">Bilder <span class="opt">(valgfritt)</span></label><input id="f-bilde" name="Bilde" type="file" accept="image/*" multiple></div>
       <button class="btn btn-dark" type="submit">Send forespørsel</button>
@@ -214,6 +218,7 @@ def contact(selected=""):
 
 def footer():
     links = "".join(f'<li><a href="{url(s["slug"] + "/")}">{e(s["nav"])}</a></li>' for s in C.SERVICES)
+    links += f'<li><a href="{url("artikler/")}">Råd og priser</a></li>'
     return f"""</main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
@@ -254,6 +259,7 @@ def stripes():
 def page_index():
     season = next(s for s in C.SERVICES if s["slug"] == C.SEASON["slug"])
     areas = ", ".join(C.NEAR_AREAS[:-1]) + " og " + C.NEAR_AREAS[-1]
+    area_links = "".join(f'<li><a href="{url(a["slug"] + "/")}">{e(a["bydel"])}</a></li>' for a in C.AREAS)
 
     rows = []
     for s in C.SERVICES:
@@ -308,6 +314,7 @@ def page_index():
     <div>
       <h2>Her jobber vi</h2>
       <p>Hele Oslo. Kortest vei har vi til {e(areas)}.</p>
+      <ul class="area-links">{area_links}</ul>
     </div>
   </div>
 </section>
@@ -361,10 +368,19 @@ def page_service(s):
   {f'<div class="wrap">{photos}</div>' if photos else ''}
 </section>
 {faq}
+{related_articles(s['slug'])}
 {steps()}
 {contact(s['form_value'])}"""
     return head(s["meta_title"], s["meta_description"], s["slug"] + "/",
                 [business_ld()] + service_ld(s)) + header(s["slug"]) + body + footer()
+
+
+def related_articles(slug):
+    arts = [a for a in AB.load() if a.get("tjeneste") == slug]
+    if not arts:
+        return ""
+    items = "".join(f'<li><a href="{url("artikler/" + a["slug"] + "/")}"><strong>{e(a["title"])}</strong></a><span>{e(a["description"])}</span></li>' for a in arts)
+    return f'<section class="related"><div class="wrap narrow"><h2>Les også</h2><ul class="article-list">{items}</ul></div></section>'
 
 
 def page_simple(title, h1, text, path):
@@ -376,6 +392,239 @@ def page_simple(title, h1, text, path):
   </div>
 </section>"""
     return head(title, title, path, [business_ld()]) + header() + body + footer()
+
+
+# ---------------------------------------------------------------------------
+# Områdesider
+# ---------------------------------------------------------------------------
+def nbnum(n):
+    return f"{n:,}".replace(",", " ")
+
+
+def area_ld(a):
+    return [{
+        "@context": "https://schema.org", "@type": "Service",
+        "name": f"Løvrydding og hagearbeid i {a['bydel']}",
+        "serviceType": "Hagearbeid", "provider": {"@id": abs_url() + "#firma"},
+        "areaServed": {"@type": "AdministrativeArea", "name": f"Bydel {a['bydel']}, Oslo"},
+        "url": abs_url(a["slug"] + "/"),
+    }, {
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": C.NAME, "item": abs_url()},
+            {"@type": "ListItem", "position": 2, "name": a["bydel"], "item": abs_url(a["slug"] + "/")},
+        ],
+    }]
+
+
+def page_area(a):
+    st = a["stats"]
+    smahus = st["enebolig"] + st["tomannsbolig"] + st["rekkehus"]
+    andel = round(smahus / st["totalt"] * 100)
+    oslo_andel = round(C.OSLO_SMAHUS["smahus"] / C.OSLO_SMAHUS["boliger"] * 100)
+    places = ", ".join(a["places"][:-1]) + " og " + a["places"][-1]
+    services = "".join(
+        f'<li><a href="{url(s["slug"] + "/")}"><strong>{e(s["nav"])}</strong></a><span>{e(s["summary"])}</span></li>'
+        for s in C.SERVICES)
+    others = " · ".join(f'<a href="{url(o["slug"] + "/")}">{e(o["bydel"])}</a>' for o in C.AREAS if o is not a)
+    rows = [("Eneboliger", st["enebolig"]), ("Tomannsboliger o.l.", st["tomannsbolig"]),
+            ("Rekkehus og kjedehus", st["rekkehus"]), ("Blokkleiligheter", st["blokk"])]
+    table = "".join(f"<tr><th scope=\"row\">{e(k)}</th><td>{nbnum(v)}</td></tr>" for k, v in rows)
+    title = f"Løvrydding og hagearbeid i {a['bydel']}"
+    desc = (f"Løvrydding, hagearbeid, snekker og belegningsstein i bydel {a['bydel']} – {', '.join(a['places'][:3])} m.fl. "
+            f"Lokal fra Tveita. Gratis befaring. Ring {C.PHONE_DISPLAY}.")
+    body = f"""<section class="page-hero area-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Brødsmuler"><a href="{url()}">Forsiden</a> / <span>{e(a['bydel'])}</span></nav>
+    <h1>{e(title)}</h1>
+    <p class="hero-lead">{e(a['intro'])}</p>
+    <div class="hero-cta">
+      <a class="btn btn-dark" href="{tel()}" data-goatcounter-click="ring-{a['slug']}">Ring {C.PHONE_DISPLAY}</a>
+      <a class="btn btn-line" href="#kontakt">Be om pris</a>
+    </div>
+  </div>
+</section>
+{trust_band()}
+<section class="service-detail">
+  <div class="wrap detail-grid">
+    <div class="area-facts">
+      <h2>Boligene i {e(a['bydel'])}</h2>
+      <table class="facts">
+        <tbody>{table}</tbody>
+        <tfoot><tr><th scope="row">Småhus i alt</th><td>{nbnum(smahus)} ({andel}&nbsp;%)</td></tr></tfoot>
+      </table>
+      <p class="source">Kilde: <a href="{e(C.BOLIG_KILDE[1])}" rel="noopener">{e(C.BOLIG_KILDE[0])}</a>. Snittet for Oslo er {oslo_andel}&nbsp;% småhus. <a href="{url('artikler/smahus-i-oslo-per-bydel/')}">Se alle bydelene</a>.</p>
+    </div>
+    <div class="detail-text">
+      <div class="prose-block"><h2>{e(a['angle'][0])}</h2><p>{e(a['angle'][1])}</p></div>
+      <div class="prose-block"><h2>Her jobber vi</h2><p>Hele bydel {e(a['bydel'])}, blant annet {e(places)}.</p></div>
+      <div class="prose-block"><h2>Dette kan vi hjelpe med</h2><ul class="area-services">{services}</ul></div>
+    </div>
+  </div>
+</section>
+{steps()}
+{contact('', a['bydel'])}
+<section class="other-areas"><div class="wrap"><p>Andre bydeler: {others}</p></div></section>"""
+    return head(f"{title} | {C.NAME}", desc, a["slug"] + "/", [business_ld()] + area_ld(a)) + header() + body + footer()
+
+
+# ---------------------------------------------------------------------------
+# Artikler (Råd og priser)
+# ---------------------------------------------------------------------------
+def fix_links(h):
+    """Interne lenker i Markdown skrives som /sti/ og får BASE_PATH her."""
+    return re.sub(r'href="/(?!/)', f'href="{B}/', h) if B else h
+
+
+def article_ld(a):
+    data = [{
+        "@context": "https://schema.org", "@type": "Article",
+        "headline": a["title"], "description": a["description"],
+        "datePublished": a["date"], "dateModified": a["updated"], "inLanguage": "nb-NO",
+        "author": {"@id": abs_url() + "#firma"}, "publisher": {"@id": abs_url() + "#firma"},
+        "mainEntityOfPage": abs_url(f"artikler/{a['slug']}/"),
+    }, {
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": C.NAME, "item": abs_url()},
+            {"@type": "ListItem", "position": 2, "name": "Råd og priser", "item": abs_url("artikler/")},
+            {"@type": "ListItem", "position": 3, "name": a["title"], "item": abs_url(f"artikler/{a['slug']}/")},
+        ],
+    }]
+    if a["faq"]:
+        data.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a["faq"]]})
+    return data
+
+
+def nbdate(iso):
+    m = ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"]
+    y, mo, d = iso.split("-")
+    return f"{int(d)}. {m[int(mo) - 1]} {y}"
+
+
+def page_article(a, arts):
+    svc = next((s for s in C.SERVICES if s["slug"] == a.get("tjeneste")), C.SERVICES[0])
+    kontakt = f"""<aside class="cta-box">
+  <h2>Vil du heller slippe?</h2>
+  <p>Vi tar {e(svc['nav'].lower())} i hele Oslo. Send et bilde, så får du prisen før vi starter.</p>
+  <div class="hero-cta"><a class="btn btn-dark" href="{tel()}" data-goatcounter-click="ring-artikkel">Ring {C.PHONE_DISPLAY}</a><a class="btn btn-line" href="{url(svc['slug'] + '/')}#kontakt" data-goatcounter-click="article_cta">Be om pris</a></div>
+</aside>"""
+    body_html = fix_links(AB.markdown(a["body"], {"kontakt": "<!--KONTAKT-->"})).replace("<!--KONTAKT-->", kontakt)
+    faq = ""
+    if a["faq"]:
+        faq = "<h2>Spørsmål og svar</h2>" + "".join(f"<details><summary>{e(q)}</summary><p>{e(ans)}</p></details>" for q, ans in a["faq"])
+    more = "".join(f'<li><a href="{url("artikler/" + o["slug"] + "/")}">{e(o["title"])}</a></li>' for o in arts if o is not a)[:4000]
+    upd = f" · Oppdatert {nbdate(a['updated'])}" if a["updated"] != a["date"] else ""
+    body = f"""<article class="article">
+  <header class="page-hero">
+    <div class="wrap narrow">
+      <nav class="crumbs" aria-label="Brødsmuler"><a href="{url()}">Forsiden</a> / <a href="{url('artikler/')}">Råd og priser</a></nav>
+      <h1>{e(a['title'])}</h1>
+      <p class="article-date">Publisert {nbdate(a['date'])}{upd}</p>
+    </div>
+  </header>
+  <div class="wrap narrow article-body">
+    {f'<div class="short-answer"><h2>Kort svar</h2><p>{e(a["kort"])}</p></div>' if a.get("kort") else ''}
+    {body_html}
+    <div class="faq">{faq}</div>
+    {f'<nav class="more" aria-label="Flere artikler"><h2>Les også</h2><ul>{more}</ul></nav>' if more else ''}
+  </div>
+</article>"""
+    return head(f"{a['title']} | {C.NAME}", a["description"], f"artikler/{a['slug']}/", [business_ld()] + article_ld(a)) + header() + body + footer()
+
+
+def page_articles_index(arts):
+    items = "".join(
+        f'<li><a href="{url("artikler/" + a["slug"] + "/")}"><strong>{e(a["title"])}</strong></a><span>{e(a["description"])}</span></li>'
+        for a in arts)
+    body = f"""<section class="page-hero">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Brødsmuler"><a href="{url()}">Forsiden</a> / <span>Råd og priser</span></nav>
+    <h1>Råd og priser</h1>
+    <p class="hero-lead">Svar på det folk spør oss om: hva ting koster, hva du kan gjøre selv, og regler i Oslo. Med kilde på alle tall.</p>
+  </div>
+</section>
+<section class="service-detail"><div class="wrap narrow"><ul class="article-list">{items}</ul></div></section>"""
+    return head(f"Råd og priser for hage og bygg i Oslo | {C.NAME}",
+                "Priser og råd om løvrydding, hagearbeid, terrasse og belegningsstein i Oslo, med kilder.",
+                "artikler/", [business_ld()]) + header() + body + footer()
+
+
+# ---------------------------------------------------------------------------
+# Eiersiden /admin/ (skjult for Google, streng sikkerhetsregel)
+# ---------------------------------------------------------------------------
+def page_admin():
+    cfg = json.dumps({"leadsUrl": C.LEADS_URL, "services": [s["form_value"] for s in C.SERVICES]}, ensure_ascii=False)
+    csp = ("default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; "
+           "connect-src https://script.google.com https://script.googleusercontent.com; form-action 'none'; "
+           "base-uri 'none'")
+    return f"""<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="{csp}">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Henvendelser – {e(C.NAME)}</title>
+<link rel="icon" href="{url('favicon.ico')}" sizes="48x48">
+<link rel="stylesheet" href="{url('assets/style.css')}?v={ASSET_V}">
+<script type="application/json" id="admin-cfg">{cfg}</script>
+<script src="{url('assets/admin.js')}?v={ASSET_V}" defer></script>
+</head>
+<body class="admin">
+<header class="site-header"><div class="wrap header-inner">
+  <a class="brand" href="{url()}"><img src="{url('img/logo.png')}" alt="{e(C.NAME)}" width="640" height="114"></a>
+  <div class="admin-actions" id="a-actions" hidden>
+    <span id="a-updated" class="admin-updated"></span>
+    <button type="button" class="btn btn-sm" id="a-refresh">Oppdater</button>
+    <button type="button" class="btn btn-sm btn-ghost" id="a-logout">Logg ut</button>
+  </div>
+</div></header>
+<main class="wrap admin-main">
+  <h1>Henvendelser</h1>
+  <div id="a-nocal" class="admin-empty" hidden>
+    <p>Henvendelsesloggen er ikke satt opp ennå. Følg <strong>henvendelser/README.md</strong> i repoet, og lim inn nettapp-adressen som <code>LEADS_URL</code> i <code>config.py</code>.</p>
+  </div>
+  <form id="a-login" class="admin-login" hidden>
+    <label for="a-key">Passord</label>
+    <input id="a-key" type="password" autocomplete="current-password" required>
+    <label class="check"><input id="a-remember" type="checkbox"> Husk meg på denne enheten (30 dager)</label>
+    <button class="btn btn-dark" type="submit">Logg inn</button>
+    <p id="a-login-msg" class="form-msg err" role="alert"></p>
+  </form>
+  <div id="a-app" hidden>
+    <div id="a-stats" class="admin-stats" aria-live="polite"></div>
+    <div class="admin-tabs" role="group" aria-label="Vis">
+      <button type="button" data-view="aktive" aria-pressed="true">Åpne</button>
+      <button type="button" data-view="avsluttet" aria-pressed="false">Avsluttet</button>
+      <button type="button" data-view="alle" aria-pressed="false">Alle</button>
+    </div>
+    <div id="a-list" class="admin-list"></div>
+    <div id="a-breakdown" class="admin-breakdown"></div>
+    <details class="admin-add">
+      <summary>Legg inn henvendelse fra telefon, SMS eller Mittanbud</summary>
+      <form id="a-add">
+        <div class="field-row">
+          <div class="field"><label for="ad-tjeneste">Tjeneste</label><select id="ad-tjeneste"></select></div>
+          <div class="field"><label for="ad-kilde">Kom fra</label><select id="ad-kilde"><option>Telefon</option><option>SMS</option><option>Mittanbud</option><option>Anbefaling</option><option>Flyer</option><option>Facebook</option><option>Fast kunde</option><option>Annet</option></select></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="ad-navn">Navn</label><input id="ad-navn"></div>
+          <div class="field"><label for="ad-tlf">Telefon</label><input id="ad-tlf" type="tel"></div>
+        </div>
+        <div class="field"><label for="ad-adresse">Adresse</label><input id="ad-adresse"></div>
+        <div class="field"><label for="ad-melding">Hva gjelder det?</label><textarea id="ad-melding" rows="2"></textarea></div>
+        <button class="btn btn-dark" type="submit">Lagre</button>
+        <p id="a-add-msg" class="form-msg" role="status"></p>
+      </form>
+    </details>
+  </div>
+</main>
+</body>
+</html>
+"""
 
 
 # ---------------------------------------------------------------------------
@@ -397,6 +646,14 @@ def main():
     write("takk/index.html", page_simple(
         "Takk for forespørselen", "Takk! Vi har fått forespørselen din",
         "Vi tar kontakt på telefon eller SMS. Haster det, kan du ringe oss direkte.", "takk/"))
+    for a in C.AREAS:
+        write(f"{a['slug']}/index.html", page_area(a))
+    arts = AB.load()
+    for a in arts:
+        write(f"artikler/{a['slug']}/index.html", page_article(a, arts))
+    write("artikler/index.html", page_articles_index(arts))
+    write("admin/index.html", page_admin())
+    shutil.copytree(os.path.join(ROOT, "data"), os.path.join(OUT, "data"))
     write("404.html", page_simple(
         "Fant ikke siden", "Fant ikke siden",
         "Lenken kan være gammel. Gå til forsiden eller ring oss.", "404.html"))
@@ -408,7 +665,8 @@ def main():
         robots = f"User-agent: *\nAllow: /\n\nSitemap: {abs_url('sitemap.xml')}\n"
     write("robots.txt", robots)
     today = date.today().isoformat()
-    locs = [""] + [s["slug"] + "/" for s in C.SERVICES]
+    locs = ([""] + [s["slug"] + "/" for s in C.SERVICES] + [a["slug"] + "/" for a in C.AREAS]
+            + ["artikler/"] + [f"artikler/{a['slug']}/" for a in arts])
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
         f"  <url><loc>{abs_url(p)}</loc><lastmod>{today}</lastmod></url>\n" for p in locs) + "</urlset>\n"
     write("sitemap.xml", sm)
@@ -421,6 +679,13 @@ def main():
             "- Gratis befaring", "", "## Tjenester", ""]
     for s in C.SERVICES:
         llms.append(f"- [{s['nav']}]({abs_url(s['slug'] + '/')}): {s['summary']}")
+    llms += ["", "## Områder (bydeler i Oslo)", ""]
+    for a in C.AREAS:
+        llms.append(f"- [{a['bydel']}]({abs_url(a['slug'] + '/')})")
+    llms += ["", "## Råd og priser", ""]
+    for a in arts:
+        llms.append(f"- [{a['title']}]({abs_url('artikler/' + a['slug'] + '/')}): {a.get('kort', a['description'])}")
+    llms += ["", "## Åpne data", "", f"- [Småhus per bydel i Oslo 2025 (CSV)]({abs_url('data/smahus-per-bydel-oslo-2025.csv')}): summert fra Oslo kommunes statistikkbank, tabell BOL001"]
     write("llms.txt", "\n".join(llms) + "\n")
     print(f"Bygget til {OUT}  (SITE_URL={C.SITE_URL}, BASE_PATH='{B}', NOINDEX={C.NOINDEX})")
 

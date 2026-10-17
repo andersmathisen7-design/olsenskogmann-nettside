@@ -42,8 +42,14 @@ MITTANBUD_URL = ""  # f.eks. "https://mittanbud.no/profil/....."
 # Første innsending gir en aktiverings-e-post til adressen. Se README.md.
 FORM_EMAIL = EMAIL
 
-# Besøksstatistikk (valgfritt). Lag konto på goatcounter.com og skriv inn navnet, f.eks. "olsenskogmann".
+# Besøksstatistikk. Lag konto på goatcounter.com og skriv inn navnet, f.eks. "olsenskogmann".
+# Tom = ingen telling. Hendelsene er beskrevet øverst i src/assets/app.js.
 GOATCOUNTER = ""
+
+# Henvendelsesloggen (Google-ark + Apps Script). Nettapp-adressen som slutter på /exec.
+# Tom = skjemaet sender bare e-post, og eiersiden /admin/ viser hvordan den settes opp.
+# Se henvendelser/README.md.
+LEADS_URL = ""
 
 # Bydeler og områder nær Tveita. Brukes i teksten om hvor vi jobber.
 NEAR_AREAS = ["Tveita", "Hellerud", "Bryn", "Østensjø", "Oppsal", "Manglerud",
@@ -185,3 +191,61 @@ ABOUT = (
     "fra første telefon til siste rake. Vi tar både små og store oppdrag i hage og bygg, "
     "og ingen jobb er for liten."
 )
+
+# ---------------------------------------------------------------------------
+# Områdesider: én side per bydel nær Tveita. Tallene er boliger etter bygningstype per 1.1.2025,
+# summert fra grunnkretser i Oslo kommunes statistikkbank (tabell BOL001) med SSBs
+# grunnkrets→bydel-kobling (Klass 1→103). Rådata: data/smahus-per-bydel-oslo-2025.csv.
+# Hver side skal ha egen tekst (ikke bare byttet navn), ellers ser Google den som tynn.
+# ---------------------------------------------------------------------------
+BOLIG_KILDE = ("Oslo kommune, statistikkbanken, tabell BOL001 (boliger etter bygningstype, 2025)",
+               "https://statistikkbanken.oslo.kommune.no/statbank/pxweb/no/db1/db1__Boliger%20og%20byggevirksomhet__Boligmengden/OK-BOL001.px/")
+OSLO_SMAHUS = {"boliger": 355915, "smahus": 84186}
+
+AREAS = [
+    {
+        "slug": "hagearbeid-alna", "bydel": "Alna",
+        "stats": {"enebolig": 1008, "tomannsbolig": 917, "rekkehus": 2527, "blokk": 16107, "totalt": 21112},
+        "places": ["Tveita", "Hellerud", "Haugerud", "Trosterud", "Teisen", "Bryn", "Furuset", "Ellingsrud", "Lindeberg", "Alfaset"],
+        "intro": "Alna er hjemmebydelen vår. Vi holder til på Tveita, så her er kjøreveien kortest og det er lettest å få til en rask befaring.",
+        "angle": ("Mest blokk, men mange borettslag med fellesarealer",
+                  "Nesten åtte av ti boliger i Alna er i blokk. Det betyr mange borettslag og sameier med plener, gangveier og lekeplasser som skal ryddes for løv hver høst. "
+                  "Samtidig er det over 4 400 småhus i bydelen, de fleste rekkehus og kjedehus med små hager."),
+    },
+    {
+        "slug": "hagearbeid-ostensjo", "bydel": "Østensjø",
+        "stats": {"enebolig": 2112, "tomannsbolig": 2194, "rekkehus": 4362, "blokk": 13859, "totalt": 23062},
+        "places": ["Oppsal", "Manglerud", "Bøler", "Ulsrud", "Godlia", "Bogerud", "Skullerud", "Abildsø", "Rustad", "Trasop"],
+        "intro": "Østensjø ligger rett sør for Tveita. Vi tar oppdrag i hele bydelen, fra Godlia og Oppsal til Bøler, Bogerud og Skullerud.",
+        "angle": ("Rekkehus og små hager",
+                  "Østensjø har 4 362 rekkehus og kjedehus, nesten dobbelt så mange som eneboliger. Mange hager er små, men har hekk, busker og trær som slipper løv på plenen og terrassen. "
+                  "Der går en løvrydding fort, og prisen blir deretter."),
+    },
+    {
+        "slug": "hagearbeid-nordstrand", "bydel": "Nordstrand",
+        "stats": {"enebolig": 5602, "tomannsbolig": 3505, "rekkehus": 4626, "blokk": 8810, "totalt": 23007},
+        "places": ["Nordstrand", "Ljan", "Bekkelaget", "Lambertseter", "Simensbråten", "Ekeberg", "Munkerud", "Ryen", "Karlsrud", "Ormsund"],
+        "intro": "Nordstrand er bydelen med flest småhus i Oslo. Vi tar oppdrag fra Ekeberg og Simensbråten til Lambertseter, Bekkelaget og Ljan.",
+        "angle": ("Flest småhus i Oslo",
+                  "Nordstrand har 13 733 småhus, flere enn noen annen bydel i Oslo, og 5 602 av dem er eneboliger. Det betyr mange store hager. "
+                  "Er det mye løv, kan det lønne seg med to runder i høst: én nå og én rett før snøen."),
+    },
+    {
+        "slug": "hagearbeid-sondre-nordstrand", "bydel": "Søndre Nordstrand",
+        "stats": {"enebolig": 2271, "tomannsbolig": 697, "rekkehus": 4672, "blokk": 6032, "totalt": 13787},
+        "places": ["Holmlia", "Hauketo", "Mortensrud", "Prinsdal", "Bjørndal", "Rosenholm", "Lofsrud", "Bjørnerud", "Gjersrud", "Sloreåsen"],
+        "intro": "Vi tar oppdrag i hele Søndre Nordstrand, fra Hauketo og Holmlia til Prinsdal, Mortensrud og Bjørndal.",
+        "angle": ("Flest rekkehus i Oslo",
+                  "Søndre Nordstrand har 4 672 rekkehus og kjedehus, flere enn noen annen bydel. Over halvparten av boligene i bydelen er småhus. "
+                  "Mange bor i rekkehusborettslag der løvryddingen gjøres på fellesarealene. Vi gir pris både til borettslag og til hver enkelt."),
+    },
+    {
+        "slug": "hagearbeid-stovner", "bydel": "Stovner",
+        "stats": {"enebolig": 1567, "tomannsbolig": 689, "rekkehus": 2385, "blokk": 7494, "totalt": 12193},
+        "places": ["Stovner", "Høybråten", "Vestli", "Rommen", "Fossum", "Tangerud", "Karihaugen", "Stig"],
+        "intro": "Vi tar oppdrag i hele Stovner, fra Høybråten og Fossum til Rommen og Vestli.",
+        "angle": ("Villaer på Høybråten, rekkehus og blokk lenger nord",
+                  "Stovner har 1 567 eneboliger og 2 385 rekkehus og kjedehus. Til sammen er nesten fire av ti boliger i bydelen småhus. "
+                  "Vi rydder løv for villaer, rekkehus og borettslag, og gir pris før vi starter."),
+    },
+]

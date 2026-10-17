@@ -33,3 +33,16 @@ jobs:
           github_token: ${{ github.token }}
           publish_dir: ./public
           publish_branch: gh-pages
+      # Varsler Bing (og dermed ChatGPT-søk/Copilot) om alle sidene via IndexNow.
+      # Kjører bare når siden er live (NOINDEX=0), ikke for testsiden.
+      - name: Varsle Bing via IndexNow
+        if: env.NOINDEX == '0'
+        continue-on-error: true
+        run: |
+          sleep 60
+          host=$(python3 -c "import urllib.parse,os;print(urllib.parse.urlparse(os.environ['SITE_URL']).netloc)")
+          urls=$(grep -o '<loc>[^<]*' public/sitemap.xml | sed 's/<loc>//' | python3 -c "import sys,json;print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))")
+          curl -sS -m 30 -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"$host\",\"key\":\"ecd72ce4b9253b7882cfdeb0a01188bd\",\"keyLocation\":\"$SITE_URL/ecd72ce4b9253b7882cfdeb0a01188bd.txt\",\"urlList\":$urls}" \
+            -w "IndexNow svarte: %{http_code}\n"
