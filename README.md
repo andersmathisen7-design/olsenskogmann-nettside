@@ -18,8 +18,11 @@ Testsiden er skjult for Google med `noindex` og `robots.txt`, så den ikke konku
 | `/` | «hagearbeid Oslo», «løvrydding Oslo», navnet. Sesongtilbudet (løvrydding) står øverst |
 | `/lovrydding/` | «løvrydding Oslo», «løvblåsing», «høstrydding hage». FAQ med strukturerte data |
 | `/snekker/` | «snekker Oslo», «bygge terrasse», «utvendig trapp» |
-| `/stein-og-hage/` | «belegningsstein Oslo», «støttemur», «beskjæring» |
-| `/hagearbeid-alna/`, `/hagearbeid-ostensjo/`, `/hagearbeid-nordstrand/`, `/hagearbeid-sondre-nordstrand/`, `/hagearbeid-stovner/` | «hagearbeid/løvrydding + bydel». Hver side har egne boligtall fra Oslo kommune og egen tekst. Skjemaet vet hvilken bydel kunden kom fra |
+| `/beskjaering-og-trefelling/` | «hekkeklipping Oslo», «beskjæring», «felle tre», «fjerne stubbe», «stubbefresing» |
+| `/borettslag/` | Styrer i borettslag og sameier: fast avtale for uteområdet |
+| `/stein-og-hage/` | «belegningsstein Oslo», «støttemur» |
+| `/rens-av-stein/` | «rens av belegningsstein», «spyle stein», «fjerne mose på stein» |
+| `/hagearbeid-alna/`, `/hagearbeid-ostensjo/`, `/hagearbeid-nordstrand/`, `/hagearbeid-sondre-nordstrand/`, `/hagearbeid-stovner/`, `/hagearbeid-lorenskog/`, `/hagearbeid-oslo-sentrum/` | «hagearbeid/løvrydding + bydel». Hver side har egne boligtall fra Oslo kommune og egen tekst. Skjemaet vet hvilken bydel kunden kom fra |
 | `/artikler/` | Råd og priser. Markdown i `artikler/`, formatet står øverst i `artikler_build.py` |
 | `/artikler/smahus-i-oslo-per-bydel/` + `/data/…csv` | Egne tall (småhus per bydel 2025). Laget for å få lenker (se LENKEBYGGING.md) |
 | `/admin/` | Ikke i søk. Eiersiden med henvendelser, status og tall (krever passord) |

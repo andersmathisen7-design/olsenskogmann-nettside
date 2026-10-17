@@ -2,6 +2,7 @@
 title: Hva koster løvrydding i Oslo?
 description: Hva koster det å få løvet ryddet og kjørt bort i Oslo? Timepriser for hagearbeid i 2026, hva bortkjøring koster, og et regneeksempel.
 date: 2026-10-17
+updated: 2026-10-17
 order: 2
 tjeneste: lovrydding
 kort: Det finnes få faste priser på løvrydding. De fleste tar timepris. Prisguider oppgir 450–700 kr i timen for hagearbeid i 2026, og plattformer som Luado har priser fra 399 kr i timen. Skal løvet kjøres bort, betaler firmaet 285 kr per m³ på kommunens mottak i Oslo. En vanlig rekkehushage tar ofte noen få timer.
@@ -32,6 +33,10 @@ Et rekkehus med plen, et par bed og en innkjørsel. Tre timers arbeid med løvbl
 | **Sum** | **1 920 kr** | **2 670 kr** |
 
 Dette er bare et regneeksempel med timeprisene over. Kjøring og hvor lang tid det faktisk tar, varierer mye.
+
+## Hva koster det hos oss?
+
+Vi tar **750 kr i timen inkl. mva** (600 kr eks. mva), eller fastpris for hele jobben etter befaring. Vi kjører alltid bort alt hageavfallet. Hekkeklipping og beskjæring kan vi ta i samme runde.
 
 ## Slik får du riktig pris
 

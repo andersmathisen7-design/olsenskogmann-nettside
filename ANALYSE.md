@@ -7,7 +7,8 @@ Oppdatert 17.10.2026. Alle tall har kilde. Det som er vår vurdering, er merket 
 - **Firma:** Olsen Skogmann, ENK, org.nr. 835 391 752, registrert 22.04.2025 og MVA-registrert ([Brønnøysund](https://data.brreg.no/enhetsregisteret/api/enheter/835391752)). Næringskode 81.300, beplantning av hager og parkanlegg. Holder til på Tveita (0669 Oslo), i bydel Alna.
 - **Dagens side** (olsenskogmann.no) er én WordPress-side med snekker, stein & hage og fasadevask. Den har ingen undersider, ingen anmeldelser og en Gmail-adresse. Den gir ingen henvendelser.
 - **Det sterkeste han har:** 5,0 av 5 på Mittanbud med 32 vurderinger (skjermbilde på dagens side, mai 2026).
-- **Valgt fokus nå:** løvrydding i sesongen. Snekker og stein & hage er faste tjenester. Fasadevask står bare som «rens av mur» (Olsen ville ikke satse på det).
+- **Pris (fra Olsen 17.10.2026):** 600 kr/t eks. mva = 750 kr/t inkl. mva, eller fastpris. Det er i øvre del av spennet 450–700 kr som Hagetorget oppgir (uklart om med mva), og godt under 795 kr eks. mva som en kollega tar.
+- **Valgt fokus nå:** løvrydding i sesongen, med hekk, beskjæring, små trær og stubber som tillegg i samme runde. Snekker og stein & hage er faste tjenester. Fasadevask står bare som «rens av mur» (Olsen ville ikke satse på det).
 
 ## 2. Hvorfor nettsiden er bygget slik
 
@@ -67,6 +68,8 @@ Tall fra Oslo kommunes statistikkbank (BOL001, 2025), summert fra grunnkrets til
 | Søndre Nordstrand | 7 640 | 55,4 % | Flest rekkehus i Oslo (4 672). Egen side |
 | Stovner | 4 641 | 38,1 % | Egen side |
 | Alna | 4 452 | 21,1 % | Hjemmebydel, mange borettslag. Egen side |
+| Lørenskog (kommune) | 10 090 | 45,8 % | SSB 06265, 2026. 5 240 eneboliger. Egen side |
+| Indre by (6 bydeler) | 6 820 | 4,1 % | Få hager, men over 150 000 blokkleiligheter med bakgårder. Egen side rettet mot sameier |
 
 **Vurdering:** Start med bydelene øst og sør for Tveita. Der er kjøreveien kort og det er mange småhus. Lørenskog og Rælingen kan få egne sider senere. Lag bare en ny bydelsside når den kan få egne tall og egen tekst, ellers blir det tynt innhold.
 

@@ -63,7 +63,8 @@ def business_ld():
         "taxID": C.ORGNR.replace(" ", ""),
         "address": {"@type": "PostalAddress", "postalCode": C.POSTCODE,
                     "addressLocality": C.CITY, "addressCountry": "NO"},
-        "areaServed": {"@type": "City", "name": "Oslo"},
+        "areaServed": [{"@type": "City", "name": "Oslo"}, {"@type": "City", "name": "Lørenskog"}],
+        "priceRange": f"{C.PRICE_HOUR_INC} kr/t inkl. mva",
         "knowsAbout": [s["nav"] for s in C.SERVICES],
     }
 
@@ -139,7 +140,7 @@ def header(active=""):
     cur = ' aria-current="page"'
     links = "".join(
         f'<a href="{url(s["slug"] + "/")}"{cur if active == s["slug"] else ""}>{e(s["nav"])}</a>'
-        for s in C.SERVICES)
+        for s in C.SERVICES if s.get("in_nav", True))
     return f"""<header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="{url()}" aria-label="{e(C.NAME)}, til forsiden">
@@ -160,7 +161,7 @@ def trust_band():
   <ul class="wrap trust-list">
     <li><span class="stars" aria-hidden="true">★★★★★</span><strong>{rating}</strong><span>{C.MITTANBUD_COUNT} vurderinger fra kunder</span></li>
     <li><strong>Gratis befaring</strong><span>Vi ser på jobben før du bestemmer deg</span></li>
-    <li><strong>Pris før oppstart</strong><span>Du vet hva det koster</span></li>
+    <li><strong>{C.PRICE_HOUR_INC} kr/t inkl. mva</strong><span>Eller fastpris. Hageavfallet kjører vi alltid bort</span></li>
     <li><strong>Registrert foretak</strong><span>Org.nr. {C.ORGNR}, MVA-registrert</span></li>
   </ul>
 </section>
@@ -181,7 +182,7 @@ def steps():
 def contact(selected="", area=""):
     opts = "".join(
         f'<option{" selected" if selected == s["form_value"] else ""}>{e(s["form_value"])}</option>'
-        for s in C.SERVICES) + '<option>Rens av mur eller fasade</option><option>Annet</option>'
+        for s in C.SERVICES) + '<option>Annet</option>'
     placeholder = "" if selected else '<option value="" disabled selected>Velg</option>'
     return f"""<section class="contact" id="kontakt">
   <div class="wrap contact-grid">
@@ -256,19 +257,38 @@ def stripes():
 # ---------------------------------------------------------------------------
 # Sider
 # ---------------------------------------------------------------------------
+def borettslag_band():
+    b = next((x for x in C.SERVICES if x["slug"] == "borettslag"), None)
+    if not b:
+        return ""
+    inc = "".join(f"<li>{e(i)}</li>" for i in b["includes"][:4])
+    return f"""<section class="band-brl">
+  <div class="wrap brl-grid">
+    <div>
+      <h2>Borettslag og sameier</h2>
+      <p class="brl-lead">{e(b['lead'])}</p>
+      <a class="btn btn-dark" href="{url(b['slug'] + '/')}">Fast avtale for styret</a>
+    </div>
+    <ul class="checks">{inc}</ul>
+  </div>
+</section>"""
+
+
 def page_index():
     season = next(s for s in C.SERVICES if s["slug"] == C.SEASON["slug"])
     areas = ", ".join(C.NEAR_AREAS[:-1]) + " og " + C.NEAR_AREAS[-1]
     area_links = "".join(f'<li><a href="{url(a["slug"] + "/")}">{e(a["bydel"])}</a></li>' for a in C.AREAS)
 
     rows = []
-    for s in C.SERVICES:
+    for s in [x for x in C.SERVICES if x.get("in_index", True)]:
         inc = "".join(f"<li>{e(i)}</li>" for i in s["includes"])
         if s["image"]:
             name, alt, widths = s["image"]
             media = picture(name, alt, widths, "(min-width: 900px) 46vw, 100vw", "row-media")
-        else:
+        elif s["slug"] == C.SEASON["slug"]:
             media = f'<div class="row-media row-season"><p>{e(C.SEASON["tag"])}</p><a class="btn btn-dark" href="{url(s["slug"] + "/")}">Se hva som er med</a></div>'
+        else:
+            media = f'<div class="row-media row-panel"><p>{e(s.get("panel", s["nav"]))}</p><a class="btn btn-line btn-on-dark" href="{url(s["slug"] + "/")}">Se hva vi gjør</a></div>'
         rows.append(f"""<article class="service-row">
   {media}
   <div class="row-text">
@@ -304,6 +324,7 @@ def page_index():
     {''.join(rows)}
   </div>
 </section>
+{borettslag_band()}
 {steps()}
 <section class="about">
   <div class="wrap about-grid">
@@ -319,8 +340,8 @@ def page_index():
   </div>
 </section>
 {contact()}"""
-    title = f"{C.NAME} – hage, løvrydding og snekker i Oslo"
-    desc = ("Løvrydding, snekkerarbeid, belegningsstein og hagearbeid i Oslo. "
+    title = f"{C.NAME} – løvrydding, hagearbeid og snekker i Oslo"
+    desc = ("Løvrydding, hekk, stubbefjerning, snekker og belegningsstein i Oslo og Lørenskog. "
             f"{C.MITTANBUD_RATING} av 5 på Mittanbud. Gratis befaring. Ring {C.PHONE_DISPLAY}.")
     return head(title, desc, "", [business_ld()]) + header() + body + footer()
 
@@ -404,9 +425,9 @@ def nbnum(n):
 def area_ld(a):
     return [{
         "@context": "https://schema.org", "@type": "Service",
-        "name": f"Løvrydding og hagearbeid i {a['bydel']}",
+        "name": a.get("title", f"Løvrydding og hagearbeid i {a['bydel']}"),
         "serviceType": "Hagearbeid", "provider": {"@id": abs_url() + "#firma"},
-        "areaServed": {"@type": "AdministrativeArea", "name": f"Bydel {a['bydel']}, Oslo"},
+        "areaServed": {"@type": "AdministrativeArea", "name": a.get("area_name", f"Bydel {a['bydel']}, Oslo")},
         "url": abs_url(a["slug"] + "/"),
     }, {
         "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -430,8 +451,10 @@ def page_area(a):
     rows = [("Eneboliger", st["enebolig"]), ("Tomannsboliger o.l.", st["tomannsbolig"]),
             ("Rekkehus og kjedehus", st["rekkehus"]), ("Blokkleiligheter", st["blokk"])]
     table = "".join(f"<tr><th scope=\"row\">{e(k)}</th><td>{nbnum(v)}</td></tr>" for k, v in rows)
-    title = f"Løvrydding og hagearbeid i {a['bydel']}"
-    desc = (f"Løvrydding, hagearbeid, snekker og belegningsstein i bydel {a['bydel']} – {', '.join(a['places'][:3])} m.fl. "
+    title = a.get("title", f"Løvrydding og hagearbeid i {a['bydel']}")
+    src = a.get("source", C.BOLIG_KILDE)
+    note = f" {e(a['stats_note'])}" if a.get("stats_note") else ""
+    desc = (f"Løvrydding, hekk, snekker og belegningsstein i {a['bydel']} – {', '.join(a['places'][:3])} m.fl. "
             f"Lokal fra Tveita. Gratis befaring. Ring {C.PHONE_DISPLAY}.")
     body = f"""<section class="page-hero area-hero">
   <div class="wrap">
@@ -453,11 +476,11 @@ def page_area(a):
         <tbody>{table}</tbody>
         <tfoot><tr><th scope="row">Småhus i alt</th><td>{nbnum(smahus)} ({andel}&nbsp;%)</td></tr></tfoot>
       </table>
-      <p class="source">Kilde: <a href="{e(C.BOLIG_KILDE[1])}" rel="noopener">{e(C.BOLIG_KILDE[0])}</a>. Snittet for Oslo er {oslo_andel}&nbsp;% småhus. <a href="{url('artikler/smahus-i-oslo-per-bydel/')}">Se alle bydelene</a>.</p>
+      <p class="source">{note} Kilde: <a href="{e(src[1])}" rel="noopener">{e(src[0])}</a>. Snittet for Oslo er {oslo_andel}&nbsp;% småhus. <a href="{url('artikler/smahus-i-oslo-per-bydel/')}">Se alle bydelene</a>.</p>
     </div>
     <div class="detail-text">
       <div class="prose-block"><h2>{e(a['angle'][0])}</h2><p>{e(a['angle'][1])}</p></div>
-      <div class="prose-block"><h2>Her jobber vi</h2><p>Hele bydel {e(a['bydel'])}, blant annet {e(places)}.</p></div>
+      <div class="prose-block"><h2>Her jobber vi</h2><p>Hele {e(a['bydel']) if a.get('area_name') else 'bydel ' + e(a['bydel'])}, blant annet {e(places)}.</p></div>
       <div class="prose-block"><h2>Dette kan vi hjelpe med</h2><ul class="area-services">{services}</ul></div>
     </div>
   </div>
@@ -676,10 +699,11 @@ def main():
             f"> Enkeltpersonforetak i {C.CITY} (org.nr. {C.ORGNR}). Hage og bygg for privatpersoner, borettslag og bedrifter i Oslo.", "",
             f"- Telefon: {C.PHONE_DISPLAY}", f"- E-post: {C.EMAIL}", f"- Base: {C.BASE_AREA}, {C.POSTCODE} {C.CITY}",
             f"- Vurdering: {C.MITTANBUD_RATING} av 5 på Mittanbud ({C.MITTANBUD_COUNT} vurderinger)",
-            "- Gratis befaring", "", "## Tjenester", ""]
+            f"- Pris: {C.PRICE_TEXT} ({C.PRICE_HOUR_EX} kr eks. mva), eller fastpris etter befaring",
+            "- Kjører alltid bort hageavfall", "- Gratis befaring", "", "## Tjenester", ""]
     for s in C.SERVICES:
         llms.append(f"- [{s['nav']}]({abs_url(s['slug'] + '/')}): {s['summary']}")
-    llms += ["", "## Områder (bydeler i Oslo)", ""]
+    llms += ["", "## Områder", ""]
     for a in C.AREAS:
         llms.append(f"- [{a['bydel']}]({abs_url(a['slug'] + '/')})")
     llms += ["", "## Råd og priser", ""]

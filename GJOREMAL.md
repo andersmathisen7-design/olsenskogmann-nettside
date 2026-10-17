@@ -7,18 +7,20 @@
 4. **Henvendelsesloggen:** følg [henvendelser/README.md](henvendelser/README.md) (ca. 5 min). Lim nettapp-adressen inn som `LEADS_URL`, og gi passordet til Olsen.
 5. **FormSubmit:** send én testforespørsel fra testsiden, og be Olsen klikke **Activate** i e-posten.
 
-## Må sjekkes med Olsen før siden går live
-Dette står på siden, men er antakelser. Rett i `config.py` hvis noe er feil.
+## Svar fra Olsen (17.10.2026) – lagt inn på siden
+- [x] Kjører alltid bort alt hageavfall.
+- [x] Timepris eller fastpris. Introduksjonspris 600 kr eks. mva, vist som **750 kr/t inkl. mva** (prisopplysningsforskriften krever pris med mva til forbrukere).
+- [x] Hekkeklipping og beskjæring i samme runde, feller mindre trær, fjerner stubber med hele roten eller fres. Ny side: `/beskjaering-og-trefelling/`.
+- [x] Fast avtale med et borettslag (to besøk i måneden). Ny side: `/borettslag/`.
+- [x] Kunden trenger ikke være hjemme.
+- [x] Lørenskog og hele Oslo sentrum. Nye sider: `/hagearbeid-lorenskog/` og `/hagearbeid-oslo-sentrum/`.
+- [x] Høytrykkspyling av stein og nedre del av fasaden. Ny side: `/rens-av-stein/`.
 
-- [ ] **Tar han med seg løvet?** Siden lover «bortkjøring av løv og hageavfall».
-- [ ] **Beskjæring og nedklipping av stauder i samme runde som løvrydding?**
-- [ ] **«Du får prisen før vi starter»** står flere steder. Stemmer det, eller tar han timepris?
-- [ ] **«Må jeg være hjemme? Nei»** i FAQ på løvryddingssiden.
-- [ ] **Faste runder for borettslag** gjennom høsten.
-- [ ] **Bydelene:** tar han gjerne oppdrag i Alna, Østensjø, Nordstrand, Søndre Nordstrand og Stovner? Andre han vil ha med (Lørenskog, Rælingen)?
-- [ ] **Mittanbud:** oppdater antall vurderinger (32 fra mai 2026), og lim inn lenken til profilen i `MITTANBUD_URL`.
-- [ ] **Fasadevask:** står nå bare som «Rens av mur, stein og fasade» under Stein & hage. Er det greit?
-- [ ] **Hans egne priser.** Artikkelen om pris på løvrydding bruker markedspriser. Har han en timepris eller fra-pris han vil vise? En pris på siden gir ofte flere henvendelser.
+## Fortsatt åpent
+- [ ] **Minstepris?** «Minimum 795 eks.» kan bety minstepris per oppdrag eller per time. Avklar, og skriv det på siden hvis det finnes en minstepris (f.eks. «minimum 1 time»).
+- [ ] **Når slutter introduksjonsprisen?** Sett en dato (f.eks. 31.12.2026), så kan siden si «høstpris» uten at det blir misvisende senere.
+- [ ] **Mittanbud:** lenke til profilen (`MITTANBUD_URL`) og nytt antall vurderinger.
+- [ ] **Borettslaget:** kan vi nevne navnet eller bydelen, og få et sitat fra styret? Én ekte referanse er verdt mye på borettslagssiden.
 
 ## Bilder (det som løfter siden mest)
 - [ ] **Før- og etterbilder fra løvjobber i høst**, tatt fra samme vinkel. Løvryddingssiden har ingen bilder i dag.

@@ -51,9 +51,15 @@ GOATCOUNTER = ""
 # Se henvendelser/README.md.
 LEADS_URL = ""
 
+# Pris (bekreftet av Olsen 17.10.2026: timepris eller fastpris, introduksjonspris 600 kr eks. mva).
+# Priser til forbrukere skal vises med mva (prisopplysningsforskriften), derfor står inkl. mva først.
+PRICE_HOUR_EX = 600
+PRICE_HOUR_INC = 750
+PRICE_TEXT = f"{PRICE_HOUR_INC} kr i timen inkl. mva"
+
 # Bydeler og områder nær Tveita. Brukes i teksten om hvor vi jobber.
 NEAR_AREAS = ["Tveita", "Hellerud", "Bryn", "Østensjø", "Oppsal", "Manglerud",
-              "Haugerud", "Furuset", "Alna", "Groruddalen", "Nordstrand", "Lambertseter"]
+              "Haugerud", "Furuset", "Alna", "Lørenskog", "Nordstrand", "Lambertseter"]
 
 # ---------------------------------------------------------------------------
 # Sesongtilbud på forsiden. Bytt ut når sesongen skifter (f.eks. vårrydding).
@@ -62,8 +68,8 @@ SEASON = {
     "slug": "lovrydding",
     "tag": "Høstsesong i Oslo",
     "title": "Løvrydding før snøen kommer",
-    "lead": "Vi blåser løvet fra plen, bed, terrasse og innkjørsel, samler det og tar det med oss. "
-            "Du får prisen før vi starter.",
+    "lead": "Vi blåser løvet fra plen, bed, terrasse og innkjørsel, og kjører bort alt hageavfallet. "
+            "Hekken og buskene kan vi ta i samme runde. 750 kr i timen inkl. mva, eller fastpris.",
 }
 
 # ---------------------------------------------------------------------------
@@ -81,13 +87,14 @@ SERVICES = [
                 "For villa, rekkehus, borettslag og bedrifter i hele Oslo.",
         "summary": "Løvblåsing, raking og bortkjøring av løv. For villa, rekkehus, borettslag og bedrifter.",
         "image": None,
-        # MÅ SJEKKES: at Olsen tar med seg løvet, og at han kan ta beskjæring/nedklipping i samme runde.
+        # Bekreftet av Olsen 17.10.2026: kjører alltid bort hageavfall, tar hekk og beskjæring i samme runde.
         "includes": [
             "Løvblåsing av plen, bed og under busker",
             "Terrasse, trapper, gangveier og innkjørsel",
             "Raking og samling av løv",
-            "Bortkjøring av løv og hageavfall",
-            "Nedklipping av stauder og beskjæring av busker, hvis du vil",
+            "Bortkjøring av alt hageavfall, alltid",
+            "Hekkeklipping og beskjæring i samme runde",
+            "Felling av mindre trær og fjerning av stubber",
         ],
         "for_whom": [
             ("Villa og rekkehus", "Hele hagen, eller bare plenen og innkjørselen."),
@@ -102,20 +109,107 @@ SERVICES = [
              "Når det meste av løvet har falt. I Oslo er det vanligvis fra midten av oktober og fram til snøen kommer. "
              "Har du mange trær, kan det lønne seg med to runder: én nå og én rett før snøen."),
             ("Hva koster det?",
-             "Det kommer an på hvor stort området er og hvor mye løv det er. Send et bilde av hagen på SMS, "
+             "750 kr i timen inkl. mva (600 kr eks. mva), eller fastpris for hele jobben. Send et bilde av hagen på SMS, "
              "så får du en pris. Befaringen er gratis, og du får prisen før vi starter."),
         ],
         "faq": [
             ("Må jeg være hjemme mens dere jobber?",
-             "Nei, ikke hvis vi kommer til hagen. Vi avtaler dag og tid på forhånd og gir beskjed når vi er ferdige."),
+             "Nei. Vi avtaler dag på forhånd og gir beskjed når vi er ferdige."),
             ("Tar dere med løvet?",
-             "Ja. Vi samler løvet og kjører det bort, så du slipper sekker i hagen."),
+             "Ja, alltid. Vi kjører bort alt hageavfallet, så du slipper sekker i hagen og turer til gjenvinningsstasjonen."),
+            ("Kan dere klippe hekken samtidig?",
+             "Ja. Hekkeklipping, beskjæring av busker og felling av mindre trær kan vi ta i samme runde."),
             ("Kan dere komme flere ganger i løpet av høsten?",
              "Ja. Mange med store trær tar to runder. Vi avtaler det når vi er der første gang."),
             ("Tar dere oppdrag for borettslag?",
-             "Ja. Vi gir pris på fellesarealer og kan komme fast gjennom høsten."),
+             "Ja. Vi har fast avtale med et borettslag i dag og kommer dit to ganger i måneden. Det kan ditt borettslag også få."),
         ],
         "photos": [],
+    },
+    {
+        "slug": "beskjaering-og-trefelling",
+        "nav": "Hekk & trær",
+        "form_value": "Hekk, beskjæring og trær",
+        "title": "Hekkeklipping, beskjæring og trefelling i Oslo",
+        "meta_title": "Hekkeklipping, beskjæring og stubbefjerning i Oslo | Olsen Skogmann",
+        "meta_description": "Hekkeklipping, beskjæring av busker og frukttrær, felling av mindre trær og fjerning av stubber i Oslo og Lørenskog. Vi kjører bort alt. 750 kr/t inkl. mva.",
+        "lead": "Vi klipper hekken, beskjærer busker og frukttrær, feller mindre trær og fjerner stubber, enten med hele roten eller med fres. "
+                "Alt kvist og hageavfall kjører vi bort.",
+        "summary": "Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber.",
+        "image": None,
+        "panel": "Hekk, busker, små trær og stubber",
+        "includes": [
+            "Hekkeklipping",
+            "Beskjæring av busker og frukttrær",
+            "Felling av mindre trær",
+            "Stubbefjerning: graving med hele roten, eller fresing",
+            "Bortkjøring av alt kvist og hageavfall",
+        ],
+        "for_whom": [],
+        "sections": [
+            ("Stubben: grave eller frese?",
+             "Skal du plante, legge plen eller stein der stubben sto, er det best å fjerne hele roten. "
+             "Skal området bare se ryddig ut, holder det ofte å frese stubben ned under bakken. Vi gjør begge deler."),
+            ("Store trær?",
+             "Vi feller mindre trær. Store trær nær hus, ledninger eller vei bør felles av en arborist med klatreutstyr eller lift. "
+             "Send et bilde, så sier vi ærlig fra om det er en jobb for oss."),
+            ("Må du søke?",
+             "I Oslo kan større trær være vernet i reguleringsplanen, ofte trær med stammeomkrets over 90 cm målt én meter over bakken. "
+             "Det gjelder blant annet i småhusplanen. Vi hjelper deg å sjekke før vi feller noe."),
+        ],
+        "faq": [
+            ("Må jeg søke om å felle et tre i Oslo?",
+             "Vanligvis ikke. Men trær kan være vernet i reguleringsplanen, ofte de med stammeomkrets over 90 cm målt én meter over bakken. Da må du søke om dispensasjon. Sjekk eiendommen i Planinnsyn hos Oslo kommune."),
+            ("Tar dere med kvisten og stammen?",
+             "Ja. Vi kjører alltid bort alt hageavfall."),
+            ("Når er det best å beskjære frukttrær?",
+             "Epler og pærer beskjæres vanligvis på senvinteren, før knoppene sprekker. Kirsebær og plomme beskjæres helst om sommeren, rett etter høsting."),
+            ("Kan dere ta hekken samtidig med løvryddingen?",
+             "Ja, og da sparer du en tur."),
+        ],
+        "photos": [],
+    },
+    {
+        "slug": "borettslag",
+        "nav": "Borettslag",
+        "form_value": "Fast avtale for borettslag/sameie",
+        "title": "Fast avtale for borettslag og sameier",
+        "meta_title": "Fast uteavtale for borettslag og sameier i Oslo | Olsen Skogmann",
+        "meta_description": "Fast avtale om løvrydding, hekk, rydding og rens av stein for borettslag og sameier i Oslo og Lørenskog. Én kontaktperson og faste besøk. Gratis befaring.",
+        "lead": "Vi har i dag fast avtale med et borettslag i Oslo og kommer dit to ganger i måneden. "
+                "Det samme kan styret i ditt borettslag eller sameie få: én kontaktperson og faste besøk hele året.",
+        "summary": "Faste besøk for uteområdet: løv, hekk, rydding og rens av stein.",
+        "image": ("plantekasse-terrasse-oslo", "Plantekasse på felles terrasse, plantet med hortensia og lavendel", [1600, 800]),
+        "in_index": False,
+        "includes": [
+            "Løvrydding høst og vår",
+            "Hekkeklipping og beskjæring",
+            "Rydding av gangveier, bed og lekeplasser",
+            "Rens av belegningsstein, trapper og murer",
+            "Benker, plantekasser og små reparasjoner",
+            "Bortkjøring av alt hageavfall",
+        ],
+        "for_whom": [
+            ("Borettslag og sameier", "Fellesarealer, gangveier, lekeplasser og bed."),
+            ("Bakgårder i indre by", "Plantekasser, bed og steinbelegg som skal holdes i stand."),
+            ("Næringseiendom", "Inngangsparti, parkering og grøntarealer."),
+        ],
+        "sections": [
+            ("Hvorfor fast avtale?",
+             "Styret slipper å bestille hver jobb for seg og hente nye tilbud. Vi kjenner uteområdet, ser hva som trengs, "
+             "og gir beskjed før noe blir et problem."),
+            ("Slik kommer vi i gang",
+             "Vi tar en gratis befaring med styret, lager en enkel plan for året og gir pris før vi starter."),
+        ],
+        "faq": [
+            ("Hvor ofte kommer dere?",
+             "Det avtaler vi med styret. Hos borettslaget vi har i dag, kommer vi to ganger i måneden."),
+            ("Kjører dere bort hageavfallet?",
+             "Ja, alltid. Styret trenger ikke ordne container eller levering."),
+        ],
+        "photos": [
+            ("plantekasse-terrasse-oslo", "Plantekasse på felles terrasse", [1600, 800]),
+        ],
     },
     {
         "slug": "snekker",
@@ -153,7 +247,7 @@ SERVICES = [
         "form_value": "Stein & hage",
         "title": "Stein og hage i Oslo",
         "meta_title": "Belegningsstein, støttemur og hagearbeid i Oslo | Olsen Skogmann",
-        "meta_description": "Belegningsstein, skifer, støttemurer, plantekasser, beskjæring og hagearbeid i Oslo. Også rens av mur og stein. Gratis befaring.",
+        "meta_description": "Belegningsstein, skifer, støttemurer, plantekasser og hagearbeid i Oslo. Gratis befaring. Ring 455 02 162.",
         "lead": "Uteområder som er praktiske og fine å se på. Fra belegningsstein og støttemurer "
                 "til beplantning og beskjæring.",
         "summary": "Belegningsstein, skifer, støttemurer, beplantning, beskjæring og rens av mur.",
@@ -163,17 +257,51 @@ SERVICES = [
             "Støttemurer",
             "Plantekasser og beplantning",
             "Beskjæring og hagearbeid",
-            "Rens av mur, stein og fasade",
+            "Rens av stein og mur (egen side)",
         ],
         "for_whom": [],
         "sections": [
-            ("Rens av mur og stein",
-             "Alger og skitt gjør mur og stein grå og glatt. Bildet viser en støttemur der venstre del er renset og høyre del ikke er det."),
+            ("Gammel stein som ser ny ut",
+             "Ofte trenger ikke steinen å legges om. Alger, mose og skitt kan spyles bort, og mur og belegningsstein blir som nye. Se siden om rens av stein og mur."),
         ],
         "faq": [],
         "photos": [
             ("rens-av-mur-for-etter", "Støttemur i betong: renset til venstre, urenset til høyre", [1600, 800]),
             ("plantekasse-terrasse-oslo", "Plantekasse med hortensia og lavendel", [1600, 800]),
+        ],
+    },
+    {
+        "slug": "rens-av-stein",
+        "nav": "Rens av stein",
+        "form_value": "Rens av stein og mur",
+        "title": "Rens av belegningsstein og mur i Oslo",
+        "meta_title": "Rens av belegningsstein, mur og trapp i Oslo | Olsen Skogmann",
+        "meta_description": "Høytrykkspyling av belegningsstein, skifer, trapper, støttemurer og nedre del av fasaden i Oslo. Fjerner alger, mose og skitt. Gratis befaring.",
+        "lead": "Vi spyler bort alger, mose og skitt fra belegningsstein, skifer, trapper, murer og nedre del av fasaden. "
+                "Ofte trenger ikke steinen å legges om for å se ny ut.",
+        "summary": "Høytrykkspyling av stein, trapper, murer og nedre del av fasaden.",
+        "image": ("rens-av-mur-for-etter", "Støttemur i betong: renset til venstre, urenset til høyre", [1600, 800]),
+        "in_nav": False,
+        "includes": [
+            "Belegningsstein og skifer",
+            "Trapper og gangveier",
+            "Støttemurer og grunnmur",
+            "Nedre del av fasaden",
+            "Gårdsplass og bakgård",
+        ],
+        "for_whom": [],
+        "sections": [
+            ("Før og etter",
+             "Bildet viser en støttemur i betong. Venstre del er spylt, høyre del er ikke det."),
+            ("Hvorfor rense?",
+             "Alger og mose gjør stein og trapper glatte når det er vått, og holder på fuktighet i fugene. Det ser også slitent ut, selv om steinen er hel."),
+        ],
+        "faq": [
+            ("Kan dere vaske hele fasaden?",
+             "Vi tar nedre del av fasaden og grunnmuren fra bakken. Hele fasader i høyden tar vi ikke."),
+        ],
+        "photos": [
+            ("rens-av-mur-for-etter", "Støttemur i betong: renset til venstre, urenset til høyre", [1600, 800]),
         ],
     },
 ]
@@ -247,5 +375,29 @@ AREAS = [
         "angle": ("Villaer på Høybråten, rekkehus og blokk lenger nord",
                   "Stovner har 1 567 eneboliger og 2 385 rekkehus og kjedehus. Til sammen er nesten fire av ti boliger i bydelen småhus. "
                   "Vi rydder løv for villaer, rekkehus og borettslag, og gir pris før vi starter."),
+    },
+    {
+        "slug": "hagearbeid-lorenskog", "bydel": "Lørenskog",
+        "area_name": "Lørenskog kommune",
+        "source": ("SSB, tabell 06265 (boliger etter bygningstype, 2026)", "https://www.ssb.no/statbank/table/06265"),
+        "stats": {"enebolig": 5240, "tomannsbolig": 1620, "rekkehus": 3230, "blokk": 11569, "totalt": 22044},
+        "places": ["Fjellhamar", "Finstad", "Kurland", "Skårer", "Rasta", "Lørenskog sentrum", "Solheim", "Rolvsrud"],
+        "intro": "Lørenskog ligger rett øst for Furuset og Groruddalen, kort vei fra oss på Tveita. Vi tar oppdrag i hele kommunen.",
+        "angle": ("Nesten halvparten er småhus",
+                  "Lørenskog har 10 090 småhus, 46 prosent av boligene. 5 240 av dem er eneboliger, nesten like mange som i Nordstrand. "
+                  "Det betyr mange hager med plen, hekk og trær som skal ryddes hver høst."),
+    },
+    {
+        "slug": "hagearbeid-oslo-sentrum", "bydel": "Oslo sentrum",
+        "title": "Bakgård, uteområder og hagearbeid i Oslo sentrum",
+        "area_name": "Indre by, Oslo",
+        "stats_note": "Frogner, Gamle Oslo, Grünerløkka, St. Hanshaugen, Sagene og Sentrum til sammen.",
+        "stats": {"enebolig": 1557, "tomannsbolig": 3729, "rekkehus": 1534, "blokk": 152214, "totalt": 168105},
+        "places": ["Frogner", "Majorstuen", "St. Hanshaugen", "Bislett", "Grünerløkka", "Torshov", "Sagene", "Tøyen", "Gamle Oslo", "Sentrum"],
+        "intro": "Vi tar oppdrag i hele indre by, for sameier, borettslag og gårdeiere. Mest bakgårder og fellesarealer, men også småhus med hage, for eksempel på Kampen, Vålerenga og Frogner.",
+        "angle": ("Bakgårder og sameier",
+                  "Bare 4 prosent av boligene i indre by er småhus. Til gjengjeld er det over 150 000 leiligheter i blokk og bygård, "
+                  "og mange sameier har bakgård med bed, plantekasser, trær og steinbelegg som skal holdes i stand. "
+                  "Vi rydder løv, klipper, spyler stein og bygger plantekasser, og kjører bort alt avfallet."),
     },
 ]
