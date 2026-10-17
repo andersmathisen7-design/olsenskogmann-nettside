@@ -1,0 +1,35 @@
+name: Publiser nettsiden
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # TESTVERSJON: ligger på GitHub Pages-adressen og er skjult for Google (NOINDEX=1).
+      # Når siden går live på olsenskogmann.no, se README.md under «Gå live».
+      - name: Sett adressen til siden
+        run: |
+          echo "SITE_URL=https://andersmathisen7-design.github.io/olsenskogmann-nettside" >> "$GITHUB_ENV"
+          echo "BASE_PATH=/olsenskogmann-nettside" >> "$GITHUB_ENV"
+          echo "NOINDEX=1" >> "$GITHUB_ENV"
+      - run: python3 build.py
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ github.token }}
+          publish_dir: ./public
+          publish_branch: gh-pages
