@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'none'; base-uri 'none'">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Henvendelser – Olsen Skogmann</title>
+<link rel="icon" href="/olsenskogmann-nettside/favicon.ico" sizes="48x48">
+<link rel="stylesheet" href="/olsenskogmann-nettside/assets/style.css?v=20261017">
+<script type="application/json" id="admin-cfg">{"leadsUrl": "", "services": ["Løvrydding", "Snekker", "Stein & hage"]}</script>
+<script src="/olsenskogmann-nettside/assets/admin.js?v=20261017" defer></script>
+</head>
+<body class="admin">
+<header class="site-header"><div class="wrap header-inner">
+  <a class="brand" href="/olsenskogmann-nettside/"><img src="/olsenskogmann-nettside/img/logo.png" alt="Olsen Skogmann" width="640" height="114"></a>
+  <div class="admin-actions" id="a-actions" hidden>
+    <span id="a-updated" class="admin-updated"></span>
+    <button type="button" class="btn btn-sm" id="a-refresh">Oppdater</button>
+    <button type="button" class="btn btn-sm btn-ghost" id="a-logout">Logg ut</button>
+  </div>
+</div></header>
+<main class="wrap admin-main">
+  <h1>Henvendelser</h1>
+  <div id="a-nocal" class="admin-empty" hidden>
+    <p>Henvendelsesloggen er ikke satt opp ennå. Følg <strong>henvendelser/README.md</strong> i repoet, og lim inn nettapp-adressen som <code>LEADS_URL</code> i <code>config.py</code>.</p>
+  </div>
+  <form id="a-login" class="admin-login" hidden>
+    <label for="a-key">Passord</label>
+    <input id="a-key" type="password" autocomplete="current-password" required>
+    <label class="check"><input id="a-remember" type="checkbox"> Husk meg på denne enheten (30 dager)</label>
+    <button class="btn btn-dark" type="submit">Logg inn</button>
+    <p id="a-login-msg" class="form-msg err" role="alert"></p>
+  </form>
+  <div id="a-app" hidden>
+    <div id="a-stats" class="admin-stats" aria-live="polite"></div>
+    <div class="admin-tabs" role="group" aria-label="Vis">
+      <button type="button" data-view="aktive" aria-pressed="true">Åpne</button>
+      <button type="button" data-view="avsluttet" aria-pressed="false">Avsluttet</button>
+      <button type="button" data-view="alle" aria-pressed="false">Alle</button>
+    </div>
+    <div id="a-list" class="admin-list"></div>
+    <div id="a-breakdown" class="admin-breakdown"></div>
+    <details class="admin-add">
+      <summary>Legg inn henvendelse fra telefon, SMS eller Mittanbud</summary>
+      <form id="a-add">
+        <div class="field-row">
+          <div class="field"><label for="ad-tjeneste">Tjeneste</label><select id="ad-tjeneste"></select></div>
+          <div class="field"><label for="ad-kilde">Kom fra</label><select id="ad-kilde"><option>Telefon</option><option>SMS</option><option>Mittanbud</option><option>Anbefaling</option><option>Flyer</option><option>Facebook</option><option>Fast kunde</option><option>Annet</option></select></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="ad-navn">Navn</label><input id="ad-navn"></div>
+          <div class="field"><label for="ad-tlf">Telefon</label><input id="ad-tlf" type="tel"></div>
+        </div>
+        <div class="field"><label for="ad-adresse">Adresse</label><input id="ad-adresse"></div>
+        <div class="field"><label for="ad-melding">Hva gjelder det?</label><textarea id="ad-melding" rows="2"></textarea></div>
+        <button class="btn btn-dark" type="submit">Lagre</button>
+        <p id="a-add-msg" class="form-msg" role="status"></p>
+      </form>
+    </details>
+  </div>
+</main>
+</body>
+</html>
