@@ -363,3 +363,20 @@ p { margin: 0; text-wrap: pretty; }
   .admin-updated { display: none; }
 }
 @media print { .site-header, .admin-tabs, .admin-add, .chips, .lead-note, .callbar { display: none !important; } }
+
+/* ---------- Tillegg 17.10: tjenestepanel og borettslag ---------- */
+.row-panel {
+  aspect-ratio: 4 / 3; border-radius: var(--radius-media); background: var(--moss); color: var(--white);
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 16px; padding: 32px;
+}
+.row-panel p { font: 800 clamp(2rem, 4vw, 3rem)/1 var(--display); max-width: 10ch; }
+.btn-on-dark { color: var(--white); border-color: var(--white); }
+.btn-on-dark:hover { background: var(--white); color: var(--spruce); }
+.band-brl { background: var(--hivis); padding: clamp(48px, 7vw, 88px) 0; }
+.brl-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.brl-lead { font-size: 1.2rem; font-weight: 500; margin: 14px 0 24px; max-width: 32em; }
+.band-brl .checks li::before { border-color: var(--spruce); }
+.band-brl .checks { font-size: 1.15rem; margin-top: 0; }
+@media (max-width: 960px) { .brl-grid { grid-template-columns: 1fr; } }
+.main-nav { gap: 22px; }
+@media (max-width: 1120px) { .main-nav a:last-child { display: none; } }
