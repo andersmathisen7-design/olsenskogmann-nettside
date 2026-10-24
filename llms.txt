@@ -6,7 +6,7 @@
 - E-post: olsenskogmann@gmail.com
 - Base: Tveita, 0669 Oslo
 - Vurdering: 5,0 av 5 på Mittanbud (42 vurderinger)
-- Pris: 750 kr i timen inkl. mva (600 kr eks. mva), introduksjonspris til 31.12.2026, eller fastpris etter befaring. Fra 1.1.2027 er timeprisen 993,75 kr inkl. mva (795 kr eks. mva).
+- Timepris: 750 kr i timen inkl. mva (600 kr eks. mva), introduksjonspris til 31.12.2026. Fra 1.1.2027 er timeprisen 993,75 kr inkl. mva (795 kr eks. mva). Eller fastpris etter befaring. Alle priser: https://olsenskogmann.no/priser/
 - Fastpris på løvrydding: liten hage (rekkehus eller liten tomt, opptil ca. 2 timer) 1 490 kr inkl. mva; vanlig hage (enebolig eller tomannsbolig, opptil ca. 4 timer) 2 790 kr inkl. mva; stor hage: fast pris på forhånd etter bilde på SMS. Alt avfall kjøres bort. Ingen startpris eller kjøregebyr.
 - Kjører alltid bort hageavfall
 - Gratis befaring
@@ -36,6 +36,11 @@
 - [Hva koster løvrydding i Oslo?](https://olsenskogmann.no/artikler/hva-koster-lovrydding/): Det finnes få faste priser på løvrydding. De fleste tar timepris. Prisguider oppgir 450–700 kr i timen for hagearbeid i 2026, og plattformer som Luado har priser fra 399 kr i timen. Skal løvet kjøres bort, betaler firmaet 285 kr per m³ på kommunens mottak i Oslo. En vanlig rekkehushage tar ofte noen få timer.
 - [Hvor ligger villaene og rekkehusene i Oslo? Tall per bydel 2025](https://olsenskogmann.no/artikler/smahus-i-oslo-per-bydel/): I Oslo er 84 186 av 355 915 boliger småhus (eneboliger, tomannsboliger og rekkehus/kjedehus), altså 24 prosent. Nordstrand har flest småhus (13 733), Vestre Aker har flest eneboliger (5 644), og Søndre Nordstrand har flest rekkehus og kjedehus (4 672). Tallene er summert fra grunnkretsene i Oslo kommunes statistikkbank for 2025.
 - [Må du søke for å felle et tre i Oslo?](https://olsenskogmann.no/artikler/felle-tre-i-oslo-ma-du-soke/): Som regel trenger du ikke søke for å felle et tre på egen tomt i Oslo. Unntaket er trær som er vernet i reguleringsplanen eller kommuneplanen. Det gjelder ofte trær med stammeomkrets over 90 cm målt én meter over bakken, blant annet i småhusplanen. Sjekk eiendommen i Planinnsyn før du feller. Å felle et vernet tre uten tillatelse kan gi bot og pålegg om å plante nytt.
+
+## Profiler
+
+- [Mittanbud](https://mittanbud.no/bedrift/9242603)
+- [Brønnøysundregistrene](https://virksomhet.brreg.no/nb/oppslag/enheter/835391752)
 
 ## Åpne data
 
