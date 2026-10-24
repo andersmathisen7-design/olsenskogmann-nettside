@@ -50,7 +50,10 @@
 5. **Kataloger og lenker:** se [LENKEBYGGING.md](LENKEBYGGING.md).
 
 ## Senere
-- [ ] Gå live på olsenskogmann.no (README.md, «Gå live»). Deretter Search Console og Bing Webmaster Tools.
+- [x] Live på olsenskogmann.no 24.10.2026. DNS hos Proisp peker til GitHub Pages, HTTPS er på. Search Console (andersmathisen7-kontoen) er bekreftet med HTML-fil, sitemap er sendt inn (19 sider), og forsiden og `/lovrydding/` er sendt til indeksering.
+- [ ] Bing Webmaster Tools: importer fra Search Console.
+- [ ] Legg olsenskogmann.no inn som nettside i Google-bedriftsprofilen.
+- [ ] Si opp webhotellet hos Proisp når alt har virket en stund (domenet må beholdes).
 - [ ] Vårsesong (mars): bytt `SEASON` til vårrydding og lag en side for det. Skriv artikler om terrasse og belegningsstein før byggesesongen.
 - [ ] Flere bydelssider (Lørenskog, Rælingen, Grorud) hvis Olsen vil kjøre dit.
 

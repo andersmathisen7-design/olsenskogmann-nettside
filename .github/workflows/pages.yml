@@ -22,19 +22,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      # TESTVERSJON: ligger på GitHub Pages-adressen og er skjult for Google (NOINDEX=1).
-      # Når siden går live på olsenskogmann.no, se README.md under «Gå live».
+      # LIVE på olsenskogmann.no (DNS hos Proisp peker til GitHub Pages).
       - name: Sett adressen til siden
         run: |
-          echo "SITE_URL=https://andersmathisen7-design.github.io/olsenskogmann-nettside" >> "$GITHUB_ENV"
-          echo "BASE_PATH=/olsenskogmann-nettside" >> "$GITHUB_ENV"
-          echo "NOINDEX=1" >> "$GITHUB_ENV"
+          echo "SITE_URL=https://olsenskogmann.no" >> "$GITHUB_ENV"
+          echo "BASE_PATH=" >> "$GITHUB_ENV"
+          echo "NOINDEX=0" >> "$GITHUB_ENV"
       - run: python3 build.py
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ github.token }}
           publish_dir: ./public
           publish_branch: gh-pages
+          cname: olsenskogmann.no
       # Varsler Bing (og dermed ChatGPT-søk/Copilot) om alle sidene via IndexNow.
       # Kjører bare når siden er live (NOINDEX=0), ikke for testsiden.
       - name: Varsle Bing via IndexNow
