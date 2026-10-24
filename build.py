@@ -481,6 +481,26 @@ def nbnum(n):
     return f"{n:,}".replace(",", " ")
 
 
+def area_faq(a):
+    """Spørsmål og svar på bydelssidene. Bygget fra config, så prisene alltid stemmer med resten av siden.
+    En bydel kan ha egne spørsmål i "faq" i config.py."""
+    where = a["bydel"] if a.get("area_name") else f"bydel {a['bydel']}"
+    places = ", ".join(a["places"][:4]) + " og " + a["places"][4]
+    pk = [p for p in C.PACKAGES["items"] if p["price"]]
+    priser = " og ".join(f"{p['name'].lower()} {nok(p['price'])}" for p in pk)
+    return [
+        (f"Tar dere oppdrag i {a['bydel']}?",
+         f"Ja. Vi holder til på {C.BASE_AREA} og tar oppdrag i hele {where}, blant annet {places}. "
+         "Du trenger ikke være hjemme mens vi jobber."),
+        (f"Hva koster løvrydding i {a['bydel']}?",
+         f"Fastpris: {priser} inkl. mva. Stor hage får fast pris etter bilde på SMS. {C.PACKAGES['note']} "
+         f"Du kan også betale per time: {C.PRICE_HOUR_INC} kr inkl. mva, {C.PRICE_INTRO_TEXT}. {C.PRICE_REGULAR_TEXT}"),
+        (f"Tar dere borettslag og sameier i {a['bydel']}?",
+         "Ja. Borettslag og sameier kan få fast avtale for uteområdet, med faste besøk og én kontaktperson. "
+         "Vi gir pris etter gratis befaring."),
+    ] + a.get("faq", [])
+
+
 def area_ld(a):
     return [{
         "@context": "https://schema.org", "@type": "Service",
@@ -494,6 +514,10 @@ def area_ld(a):
             {"@type": "ListItem", "position": 1, "name": C.NAME, "item": abs_url()},
             {"@type": "ListItem", "position": 2, "name": a["bydel"], "item": abs_url(a["slug"] + "/")},
         ],
+    }, {
+        "@context": "https://schema.org", "@type": "FAQPage",
+        "mainEntity": [{"@type": "Question", "name": q,
+                        "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in area_faq(a)],
     }]
 
 
@@ -544,6 +568,7 @@ def page_area(a):
     </div>
   </div>
 </section>
+<section class="faq"><div class="wrap narrow"><h2>Spørsmål og svar</h2>{"".join(f"<details><summary>{e(q)}</summary><p>{e(ans)}</p></details>" for q, ans in area_faq(a))}</div></section>
 {steps()}
 {contact('', a['bydel'])}
 <section class="other-areas"><div class="wrap"><p>Andre bydeler: {others}</p></div></section>"""

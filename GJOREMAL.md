@@ -29,6 +29,7 @@
 ## Fortsatt åpent
 - [ ] **Før- og etterbilder fra løvjobber** (se under).
 - [ ] **Admin-tilgang til Google-profilen:** be Olsen legge til Anders som administrator, så vi kan sette nettadresse, kategorier, tjenester og bilder.
+  E-post med sjekkliste for profilen sendt til Olsen 24.10.2026 (tilgang, kategori, tjenesteområde, beskrivelse, tjenester, bilder, innlegg, anmeldelser og ny timepris 1.1.2027).
 
 ## Bilder (det som løfter siden mest)
 - [ ] **Før- og etterbilder fra løvjobber i høst**, tatt fra samme vinkel. Løvryddingssiden har ingen bilder i dag.
