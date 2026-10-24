@@ -43,7 +43,7 @@ FORM_EMAIL = EMAIL
 
 # Besøksstatistikk. Lag konto på goatcounter.com og skriv inn navnet, f.eks. "olsenskogmann".
 # Tom = ingen telling. Hendelsene er beskrevet øverst i src/assets/app.js.
-GOATCOUNTER = ""
+GOATCOUNTER = "olsenskogmann"
 
 # Henvendelsesloggen (Google-ark + Apps Script). Nettapp-adressen som slutter på /exec.
 # Tom = skjemaet sender bare e-post, og eiersiden /admin/ viser hvordan den settes opp.
