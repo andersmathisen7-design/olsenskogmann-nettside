@@ -5,19 +5,22 @@ Google og KI-søk stoler mer på en bedrift når navn, adresse og telefon står 
 **Bruk nøyaktig det samme overalt:**
 > Olsen Skogmann – Hage & Bygg · 0669 Oslo · 455 02 162 · https://olsenskogmann.no · org.nr. 835 391 752
 
-Vent med lenker som peker til nettsiden til den nye siden er live på olsenskogmann.no. Testadressen skal ikke spres.
+Siden er live på olsenskogmann.no. Bruk den adressen overalt, ikke testadressen.
+
+Når en profil er klar, legg lenken inn i `PROFILES` i `config.py`. Da kommer den med i de strukturerte dataene (`sameAs`) og i `llms.txt`, så Google og KI-søk ser at profilene og nettsiden er samme firma.
 
 ## 1. Kataloger
 
 | Hvor | Hva du gjør | Pris |
 |---|---|---|
 | **Google-bedriftsprofil** | Se GJOREMAL.md, punkt 1. Viktigst av alt | Gratis |
-| [Mittanbud](https://mittanbud.no) | Profilen finnes (5,0, 32 vurderinger). Legg inn nettsiden i profilen, og lim lenken til profilen inn i `MITTANBUD_URL` i config.py | Har abonnement |
+| [Mittanbud](https://mittanbud.no) | Profilen finnes (5,0, 42 vurderinger). Legg inn olsenskogmann.no som nettside i profilen | Har abonnement |
 | [Gule Sider](https://www.gulesider.no) | Gjør krav på eller oppdater oppføringen med BankID på [oppdater.gulesider.no](https://oppdater.gulesider.no). Legg til nettside, «hagearbeid», «løvrydding», «snekker» og «belegningsstein» | Grunnoppføring, pris ikke bekreftet |
 | [1881](https://www.1881.no) | Sjekk om firmaet er oppført, og legg til nettside og emner | Ikke bekreftet |
 | [Proff](https://www.proff.no) | Oppføringen kommer fra Brønnøysund. Legg til nettsiden hvis det går | Gratis |
 | [Fixa (tidligere Anbudstorget)](https://anbudstorget.no/bedrift/registrer) | Kategoriene «Snekker» og «Anleggsgartner/Steinlegger» | Pris ikke oppgitt |
-| Bing Places | Importer fra Google-bedriftsprofilen | Gratis |
+| Bing Places | Importer fra Google-bedriftsprofilen. ChatGPT-søk og Copilot henter lokale bedrifter fra Bing | Gratis |
+| [Apple Business Connect](https://businessconnect.apple.com) | Gjør krav på stedet i Apple Maps. Vises i Kart, Siri og Spotlight på iPhone | Gratis |
 
 ## 2. Lokale lenker (best effekt)
 

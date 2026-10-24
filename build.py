@@ -80,9 +80,14 @@ def business_ld():
                     "addressLocality": C.CITY, "addressCountry": "NO"},
         "areaServed": [{"@type": "City", "name": "Oslo"}, {"@type": "City", "name": "Lørenskog"}]
                       + [{"@type": "AdministrativeArea", "name": a["bydel"]} for a in C.AREAS if a["bydel"] != "Lørenskog"],
-        **({"sameAs": [C.MITTANBUD_URL]} if C.MITTANBUD_URL else {}),
+        **({"sameAs": [u for _, u in C.PROFILES]} if C.PROFILES else {}),
         "priceRange": f"{C.PRICE_HOUR_INC} kr/t inkl. mva",
         "knowsAbout": [s["nav"] for s in C.SERVICES],
+        # Kobler hver tjenesteside til firmaet, så KI-søk ser hva firmaet tilbyr og hvor det står.
+        "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Tjenester", "itemListElement": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": s["nav"], "description": s["summary"],
+                                               "url": abs_url(s["slug"] + "/")}}
+            for s in C.SERVICES]},
     }
 
 
@@ -814,6 +819,8 @@ def main():
     llms += ["", "## Råd og priser", ""]
     for a in arts:
         llms.append(f"- [{a['title']}]({abs_url('artikler/' + a['slug'] + '/')}): {a.get('kort', a['description'])}")
+    if C.PROFILES:
+        llms += ["", "## Profiler", ""] + [f"- [{n}]({u})" for n, u in C.PROFILES]
     llms += ["", "## Åpne data", "", f"- [Småhus per bydel i Oslo 2025 (CSV)]({abs_url('data/smahus-per-bydel-oslo-2025.csv')}): summert fra Oslo kommunes statistikkbank, tabell BOL001"]
     write("llms.txt", "\n".join(llms) + "\n")
     print(f"Bygget til {OUT}  (SITE_URL={C.SITE_URL}, BASE_PATH='{B}', NOINDEX={C.NOINDEX})")

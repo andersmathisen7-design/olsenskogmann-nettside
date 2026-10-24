@@ -27,6 +27,9 @@
 - [ ] **Terrassebilde** (IMG_20260616_150237_825.jpg) kom på e-post, men kunne ikke lastes ned med verktøyene her. Lagre det i `/tmp/olsen-img/`, så fjerner Claude GPS-data og legger det på `/snekker/`.
 
 ## Fortsatt åpent
+- [ ] **31.12.2026: bytt til vanlig timepris.** Introduksjonsprisen står mange steder (config.py, FAQ, `priceRange`, `llms.txt`). Siden bygges bare ved push, så prisen må endres i `config.py` og pushes før 1.1.2027. Ellers viser Google og KI-søk feil pris.
+- [ ] **Lenken til Google-profilen:** be Olsen om den (Google Maps → Del → Kopier lenke), og legg den inn i `PROFILES` i `config.py`.
+- [ ] **«Om Olsen»-side:** KI-søk og Google stoler mer på en bedrift når det står hvem som gjør jobben. Spør Olsen om fornavn, hvor lenge han har drevet med hage og bygg, hva han gjorde før, og om vi kan bruke et bilde av ham. Bare det han bekrefter kommer på siden.
 - [ ] **Før- og etterbilder fra løvjobber** (se under).
 - [ ] **Google-profilen:** Olsen gjør alt selv (vi ber ikke om admin-tilgang). Sjekkliste sendt på e-post 24.10.2026: kategori, tjenesteområde, beskrivelse, tjenester, bilder, innlegg, anmeldelser og ny timepris 1.1.2027.
 
@@ -51,7 +54,8 @@
 
 ## Senere
 - [x] Live på olsenskogmann.no 24.10.2026. DNS hos Proisp peker til GitHub Pages, HTTPS er på. Search Console (andersmathisen7-kontoen) er bekreftet med HTML-fil, sitemap er sendt inn (19 sider), og forsiden og `/lovrydding/` er sendt til indeksering.
-- [ ] Bing Webmaster Tools: importer fra Search Console.
+- [ ] **Bing Webmaster Tools:** importer fra Search Console (5 min). ChatGPT-søk og Copilot bygger på Bing, så dette er det viktigste for KI-søk.
+- [ ] **Apple Business Connect:** gjør krav på firmaet i Apple Maps (gratis, se LENKEBYGGING.md).
 - [ ] Legg olsenskogmann.no inn som nettside i Google-bedriftsprofilen.
 - [ ] Si opp webhotellet hos Proisp når alt har virket en stund (domenet må beholdes).
 - [ ] Vårsesong (mars): bytt `SEASON` til vårrydding og lag en side for det. Skriv artikler om terrasse og belegningsstein før byggesesongen.

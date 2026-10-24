@@ -37,6 +37,16 @@ MITTANBUD_RATING = "5,0"
 MITTANBUD_COUNT = 42
 MITTANBUD_URL = "https://mittanbud.no/bedrift/9242603"
 
+# Profiler på andre nettsteder. Brukes i sameAs og i llms.txt, så Google og KI-søk ser at det er samme firma.
+# Legg til lenken til Google-bedriftsprofilen (Del → Kopier lenke i Google Maps), Gule Sider, 1881 osv.
+# når de er på plass. Bare profiler med samme navn, telefon og org.nr. som her.
+PROFILES = [
+    ("Mittanbud", MITTANBUD_URL),
+    ("Brønnøysundregistrene", "https://virksomhet.brreg.no/nb/oppslag/enheter/835391752"),
+    # ("Google Maps", "https://maps.app.goo.gl/..."),
+    # ("Gule Sider", "https://www.gulesider.no/..."),
+]
+
 # Skjemaet sendes til e-post via FormSubmit (gratis, ingen server).
 # Første innsending gir en aktiverings-e-post til adressen. Se README.md.
 FORM_EMAIL = EMAIL
