@@ -2,8 +2,7 @@
 
 ## 1. SMS til Olsen (spørsmål)
 > Hei! Takk for svarene. Fastprisene, introduksjonsprisen til 31.12.2026 og timeprisen på 795 eks. fra nyttår ligger nå på siden. Én ting til:
-> Kan du gi meg admin-tilgang til Google-profilen din?
-> Send også gjerne før/etter-bilder fra løvjobber, tatt fra samme vinkel.
+> Send gjerne før/etter-bilder fra løvjobber, tatt fra samme vinkel.
 > Om borettslaget: vi skriver bare at du har fast avtale med et borettslag i Oslo. Et oppdiktet navn eller sitat er ulovlig etter markedsføringsloven. Vil styret gi et ekte sitat, legger vi det inn.
 
 ## 2. SMS til fornøyde kunder (Google-anmeldelse)

@@ -28,8 +28,7 @@
 
 ## Fortsatt åpent
 - [ ] **Før- og etterbilder fra løvjobber** (se under).
-- [ ] **Admin-tilgang til Google-profilen:** be Olsen legge til Anders som administrator, så vi kan sette nettadresse, kategorier, tjenester og bilder.
-  E-post med sjekkliste for profilen sendt til Olsen 24.10.2026 (tilgang, kategori, tjenesteområde, beskrivelse, tjenester, bilder, innlegg, anmeldelser og ny timepris 1.1.2027).
+- [ ] **Google-profilen:** Olsen gjør alt selv (vi ber ikke om admin-tilgang). Sjekkliste sendt på e-post 24.10.2026: kategori, tjenesteområde, beskrivelse, tjenester, bilder, innlegg, anmeldelser og ny timepris 1.1.2027.
 
 ## Bilder (det som løfter siden mest)
 - [ ] **Før- og etterbilder fra løvjobber i høst**, tatt fra samme vinkel. Løvryddingssiden har ingen bilder i dag.
@@ -38,7 +37,7 @@
 - Bildene må få fjernet GPS-data før de legges ut (se hvordan i `src/img/`). Claude gjør det hvis bildene sendes hit.
 
 ## Utenfor nettsiden (gir mest kunder)
-1. **Google-bedriftsprofil.** Olsen har allerede en (svar 23.10.2026). Når vi har admin-tilgang, sjekk at den er satt opp slik:
+1. **Google-bedriftsprofil.** Olsen har allerede en (svar 23.10.2026) og gjør endringene selv. Den bør være satt opp slik:
    - **Navn:** «Olsen Skogmann», som i Brønnøysund. Ikke legg til søkeord i navnet.
    - **Primærkategori:** «Hagearbeider» (Gardener). **Tilleggskategorier:** «Snekker» og «Anleggsgartner». Primærkategorien er den viktigste faktoren for kartresultatene (Whitespark 2026).
    - **Adresse:** skjult. Han kjører ut og har ikke butikk.
