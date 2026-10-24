@@ -207,6 +207,18 @@ p { margin: 0; text-wrap: pretty; }
 .gallery img { border-radius: var(--radius-media); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
 .gallery figcaption { font-size: .95rem; color: var(--muted); margin-top: 10px; }
 
+/* Fastpris-pakker (løvrydding). Samme gule topplinje som «Dette er med». */
+.packages { background: var(--lichen); padding: clamp(56px, 8vw, 104px) 0; margin-bottom: clamp(56px, 8vw, 104px); }
+.pkg-list { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pkg-list li { background: var(--white); border-top: 6px solid var(--hivis); padding: 22px 24px 26px; display: grid; gap: 6px; align-content: start; }
+.pkg-list h3 { font-size: 1.6rem; }
+.pkg-for { color: var(--muted); }
+.pkg-price { font: 800 clamp(2rem, 4vw, 2.6rem)/1.05 var(--display); margin-top: 8px; font-variant-numeric: tabular-nums; }
+.pkg-price span { font: 600 1rem/1 var(--body); color: var(--muted); }
+.pkg-time { font-size: 1rem; }
+.pkg-note { margin: 24px 0 20px; max-width: 40em; }
+@media (max-width: 960px) { .pkg-list { grid-template-columns: 1fr; } }
+
 .faq { padding: 0 0 clamp(56px, 8vw, 104px); }
 .faq h2 { margin-bottom: 20px; }
 .faq details { border-top: 1px solid var(--line); }
