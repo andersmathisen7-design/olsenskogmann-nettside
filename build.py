@@ -69,6 +69,45 @@ def business_ld():
     }
 
 
+def package_offers():
+    """Fastprispakkene og timeprisen som Offer. Pakker uten pris (etter bilde) tas ikke med."""
+    offers = [{"@type": "Offer", "name": f"{p['name']}: {p['for']}", "description": p["time"],
+               "price": p["price"], "priceCurrency": "NOK",
+               "priceSpecification": {"@type": "PriceSpecification", "price": p["price"], "priceCurrency": "NOK",
+                                      "valueAddedTaxIncluded": True}}
+              for p in C.PACKAGES["items"] if p["price"]]
+    offers.append({"@type": "Offer", "name": "Timepris (introduksjonspris)", "price": C.PRICE_HOUR_INC,
+                   "priceCurrency": "NOK", "validThrough": C.PRICE_INTRO_UNTIL,
+                   "priceSpecification": {"@type": "UnitPriceSpecification", "price": C.PRICE_HOUR_INC,
+                                          "priceCurrency": "NOK", "unitCode": "HUR", "unitText": "time",
+                                          "valueAddedTaxIncluded": True, "validThrough": C.PRICE_INTRO_UNTIL}})
+    return offers
+
+
+def nok(n):
+    return f"{n:,}".replace(",", " ") + " kr"
+
+
+def packages_section(slug):
+    P = C.PACKAGES
+    if slug != P["service"]:
+        return ""
+    cards = "".join(
+        f'<li><h3>{e(p["name"])}</h3><p class="pkg-for">{e(p["for"])}</p>'
+        f'<p class="pkg-price">{nok(p["price"]) + " <span>inkl. mva</span>" if p["price"] else "Etter bilde"}</p>'
+        f'<p class="pkg-time">{e(p["time"])}</p></li>'
+        for p in P["items"])
+    return f"""<section class="packages" id="fastpris">
+  <div class="wrap">
+    <h2>{e(P['title'])}</h2>
+    <p class="section-lead">{e(P['lead'])}</p>
+    <ul class="pkg-list">{cards}</ul>
+    <p class="pkg-note"><strong>{e(P['note'])}</strong></p>
+    <a class="btn btn-dark" href="{sms()}" data-goatcounter-click="sms-fastpris">Send bilde på SMS</a>
+  </div>
+</section>"""
+
+
 def service_ld(s):
     data = [{
         "@context": "https://schema.org",
@@ -79,6 +118,7 @@ def service_ld(s):
         "provider": {"@id": abs_url() + "#firma"},
         "areaServed": {"@type": "City", "name": "Oslo"},
         "url": abs_url(s["slug"] + "/"),
+        **({"offers": package_offers()} if s["slug"] == C.PACKAGES["service"] else {}),
     }, {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -161,7 +201,7 @@ def trust_band():
   <ul class="wrap trust-list">
     <li><span class="stars" aria-hidden="true">★★★★★</span><strong>{rating}</strong><span>{C.MITTANBUD_COUNT} vurderinger fra kunder</span></li>
     <li><strong>Gratis befaring</strong><span>Vi ser på jobben før du bestemmer deg</span></li>
-    <li><strong>{C.PRICE_HOUR_INC} kr/t inkl. mva</strong><span>Eller fastpris. Hageavfallet kjører vi alltid bort</span></li>
+    <li><strong>{C.PRICE_HOUR_INC} kr/t inkl. mva</strong><span>Introduksjonspris til {C.PRICE_INTRO_UNTIL_TEXT}. Eller fastpris, og hageavfallet kjører vi alltid bort</span></li>
     <li><strong>Registrert foretak</strong><span>Org.nr. {C.ORGNR}, MVA-registrert</span></li>
   </ul>
 </section>
@@ -388,6 +428,7 @@ def page_service(s):
   </div>
   {f'<div class="wrap">{photos}</div>' if photos else ''}
 </section>
+{packages_section(s['slug'])}
 {faq}
 {related_articles(s['slug'])}
 {steps()}
@@ -699,7 +740,11 @@ def main():
             f"> Enkeltpersonforetak i {C.CITY} (org.nr. {C.ORGNR}). Hage og bygg for privatpersoner, borettslag og bedrifter i Oslo.", "",
             f"- Telefon: {C.PHONE_DISPLAY}", f"- E-post: {C.EMAIL}", f"- Base: {C.BASE_AREA}, {C.POSTCODE} {C.CITY}",
             f"- Vurdering: {C.MITTANBUD_RATING} av 5 på Mittanbud ({C.MITTANBUD_COUNT} vurderinger)",
-            f"- Pris: {C.PRICE_TEXT} ({C.PRICE_HOUR_EX} kr eks. mva), eller fastpris etter befaring",
+            f"- Pris: {C.PRICE_TEXT} ({C.PRICE_HOUR_EX} kr eks. mva), {C.PRICE_INTRO_TEXT}, eller fastpris etter befaring",
+            f"- {C.PACKAGES['title']}: " + "; ".join(
+                f"{p['name'].lower()} ({p['for'].lower()}, {p['time'].lower()}) {nok(p['price']).replace(chr(160), ' ')} inkl. mva"
+                if p["price"] else f"{p['name'].lower()}: {p['time'][0].lower() + p['time'][1:]}" for p in C.PACKAGES["items"])
+            + f". {C.PACKAGES['note']}",
             "- Kjører alltid bort hageavfall", "- Gratis befaring", "", "## Tjenester", ""]
     for s in C.SERVICES:
         llms.append(f"- [{s['nav']}]({abs_url(s['slug'] + '/')}): {s['summary']}")

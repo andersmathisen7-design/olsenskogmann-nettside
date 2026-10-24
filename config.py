@@ -32,11 +32,10 @@ BASE_AREA = "Tveita"
 POSTCODE = "0669"
 CITY = "Oslo"
 
-# Mittanbud: tallene er hentet fra skjermbildet på dagens nettside (mai 2026).
-# MÅ SJEKKES: oppdater tallene og lim inn lenken til profilen.
+# Mittanbud: sjekket på profilen 24.10.2026 (org.nr. 835 391 752, 0669 Oslo): 42 vurderinger, 5,0.
 MITTANBUD_RATING = "5,0"
-MITTANBUD_COUNT = 32
-MITTANBUD_URL = ""  # f.eks. "https://mittanbud.no/profil/....."
+MITTANBUD_COUNT = 42
+MITTANBUD_URL = "https://mittanbud.no/bedrift/9242603"
 
 # Skjemaet sendes til e-post via FormSubmit (gratis, ingen server).
 # Første innsending gir en aktiverings-e-post til adressen. Se README.md.
@@ -56,6 +55,26 @@ LEADS_URL = ""
 PRICE_HOUR_EX = 600
 PRICE_HOUR_INC = 750
 PRICE_TEXT = f"{PRICE_HOUR_INC} kr i timen inkl. mva"
+# Introduksjonsprisen gjelder til og med 31.12.2026 (Olsen 23.10.2026).
+# «795 eks.» er ikke avklart (se GJOREMAL.md), så den står ikke på siden.
+PRICE_INTRO_UNTIL = "2026-12-31"       # brukes i strukturerte data (validThrough)
+PRICE_INTRO_UNTIL_TEXT = "31.12.2026"
+PRICE_INTRO_TEXT = f"introduksjonspris til {PRICE_INTRO_UNTIL_TEXT}"
+
+# Fastpris på løvrydding (Olsen 23.10.2026). Vises på /lovrydding/ og nevnes på forsiden.
+# MÅ SJEKKES: Olsen må godkjenne prisene før siden går live.
+# price=None betyr pris etter bilde.
+PACKAGES = {
+    "service": "lovrydding",
+    "title": "Fastpris på løvrydding",
+    "lead": "Du vet hva det koster før vi starter.",
+    "items": [
+        {"name": "Liten hage", "for": "Rekkehus eller liten tomt", "time": "Opptil ca. 2 timer", "price": 1490},
+        {"name": "Vanlig hage", "for": "Enebolig eller tomannsbolig", "time": "Opptil ca. 4 timer", "price": 2790},
+        {"name": "Stor hage", "for": "Større tomter", "time": "Fast pris på forhånd etter bilde på SMS", "price": None},
+    ],
+    "note": "Alt avfall kjøres bort. Ingen startpris eller kjøregebyr.",
+}
 
 # Bydeler og områder nær Tveita. Brukes i teksten om hvor vi jobber.
 NEAR_AREAS = ["Tveita", "Hellerud", "Bryn", "Østensjø", "Oppsal", "Manglerud",
@@ -69,7 +88,8 @@ SEASON = {
     "tag": "Høstsesong i Oslo",
     "title": "Løvrydding før snøen kommer",
     "lead": "Vi blåser løvet fra plen, bed, terrasse og innkjørsel, og kjører bort alt hageavfallet. "
-            "Hekken og buskene kan vi ta i samme runde. 750 kr i timen inkl. mva, eller fastpris.",
+            "Hekken og buskene kan vi ta i samme runde. Fastpris fra 1 490 kr inkl. mva, "
+            "eller 750 kr i timen inkl. mva (introduksjonspris til 31.12.2026).",
 }
 
 # ---------------------------------------------------------------------------
@@ -109,10 +129,15 @@ SERVICES = [
              "Når det meste av løvet har falt. I Oslo er det vanligvis fra midten av oktober og fram til snøen kommer. "
              "Har du mange trær, kan det lønne seg med to runder: én nå og én rett før snøen."),
             ("Hva koster det?",
-             "750 kr i timen inkl. mva (600 kr eks. mva), eller fastpris for hele jobben. Send et bilde av hagen på SMS, "
+             "Fastpris fra 1 490 kr inkl. mva for en liten hage, se prisene under. Eller 750 kr i timen inkl. mva "
+             "(600 kr eks. mva), som er introduksjonspris til 31.12.2026. Send et bilde av hagen på SMS, "
              "så får du en pris. Befaringen er gratis, og du får prisen før vi starter."),
         ],
         "faq": [
+            ("Hva koster løvrydding hos dere?",
+             "Liten hage (rekkehus eller liten tomt) koster 1 490 kr og vanlig hage (enebolig eller tomannsbolig) 2 790 kr, "
+             "inkl. mva. Stor hage får fast pris på forhånd etter bilde på SMS. Alt avfall kjøres bort, og det er ingen startpris "
+             "eller kjøregebyr. Du kan også betale per time: 750 kr inkl. mva, introduksjonspris til 31.12.2026."),
             ("Må jeg være hjemme mens dere jobber?",
              "Nei. Vi avtaler dag på forhånd og gir beskjed når vi er ferdige."),
             ("Tar dere med løvet?",
@@ -122,7 +147,7 @@ SERVICES = [
             ("Kan dere komme flere ganger i løpet av høsten?",
              "Ja. Mange med store trær tar to runder. Vi avtaler det når vi er der første gang."),
             ("Tar dere oppdrag for borettslag?",
-             "Ja. Vi har fast avtale med et borettslag i dag og kommer dit to ganger i måneden. Det kan ditt borettslag også få."),
+             "Ja. Vi har fast avtale med et borettslag i Oslo i dag og kommer dit to ganger i måneden. Det kan ditt borettslag også få."),
         ],
         "photos": [],
     },

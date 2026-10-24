@@ -16,11 +16,19 @@
 - [x] Lørenskog og hele Oslo sentrum. Nye sider: `/hagearbeid-lorenskog/` og `/hagearbeid-oslo-sentrum/`.
 - [x] Høytrykkspyling av stein og nedre del av fasaden. Ny side: `/rens-av-stein/`.
 
+## Svar fra Olsen (23.10.2026)
+- [x] **Introduksjonsprisen** (750 kr/t inkl. mva, 600 eks.) gjelder til 31.12.2026. Står nå på forsiden, `/lovrydding/`, i pris-FAQ, artikkelen om pris og `llms.txt`. Strukturerte data har `validThrough: 2026-12-31`.
+- [x] **Fastpris er greit.** Pakker for løvrydding står på `/lovrydding/` (`PACKAGES` i `config.py`) og «fra 1 490 kr» på forsiden: liten hage 1 490 kr, vanlig hage 2 790 kr, stor hage etter bilde. Alt avfall kjøres bort, ingen startpris eller kjøregebyr.
+- [x] **Mittanbud:** profilen er https://mittanbud.no/bedrift/9242603 (sjekket 24.10.2026: org.nr. og 0669 Oslo stemmer). 42 vurderinger, 5,0. Lagt inn.
+- [x] **Google-bedriftsprofil:** han har allerede en.
+- [x] **Borettslaget:** Olsen foreslo å finne på et navn og et sitat. Det gjør vi ikke. Oppdiktede kundeuttalelser er ulovlig etter markedsføringsloven. Siden sier bare det som er sant: fast avtale med et borettslag i Oslo, besøk to ganger i måneden.
+- [ ] **Terrassebilde** (IMG_20260616_150237_825.jpg) kom på e-post, men kunne ikke lastes ned med verktøyene her. Lagre det i `/tmp/olsen-img/`, så fjerner Claude GPS-data og legger det på `/snekker/`.
+
 ## Fortsatt åpent
-- [ ] **Minstepris?** «Minimum 795 eks.» kan bety minstepris per oppdrag eller per time. Avklar, og skriv det på siden hvis det finnes en minstepris (f.eks. «minimum 1 time»).
-- [ ] **Når slutter introduksjonsprisen?** Sett en dato (f.eks. 31.12.2026), så kan siden si «høstpris» uten at det blir misvisende senere.
-- [ ] **Mittanbud:** lenke til profilen (`MITTANBUD_URL`) og nytt antall vurderinger.
-- [ ] **Borettslaget:** kan vi nevne navnet eller bydelen, og få et sitat fra styret? Én ekte referanse er verdt mye på borettslagssiden.
+- [ ] **Hva betyr «795 eks. er minste pris i timen»?** Er det vanlig timepris etter nyttår (795 eks. = ca. 994 inkl. mva), eller minstepris per oppdrag? Står ikke på siden før det er avklart.
+- [ ] **Godkjenn pakkeprisene** (1 490 og 2 790 kr inkl. mva). Gjelder de også etter 31.12.2026?
+- [ ] **Før- og etterbilder fra løvjobber** (se under).
+- [ ] **Admin-tilgang til Google-profilen:** be Olsen legge til Anders som administrator, så vi kan sette nettadresse, kategorier, tjenester og bilder.
 
 ## Bilder (det som løfter siden mest)
 - [ ] **Før- og etterbilder fra løvjobber i høst**, tatt fra samme vinkel. Løvryddingssiden har ingen bilder i dag.
@@ -29,14 +37,13 @@
 - Bildene må få fjernet GPS-data før de legges ut (se hvordan i `src/img/`). Claude gjør det hvis bildene sendes hit.
 
 ## Utenfor nettsiden (gir mest kunder)
-1. **Google-bedriftsprofil** (ca. 20 min + bekreftelse). Den avgjør om han vises i kartet når noen søker «løvrydding» eller «hagearbeid» i nærheten.
-   - Gå til https://business.google.com og logg inn med Olsens Google-konto.
+1. **Google-bedriftsprofil.** Olsen har allerede en (svar 23.10.2026). Når vi har admin-tilgang, sjekk at den er satt opp slik:
    - **Navn:** «Olsen Skogmann», som i Brønnøysund. Ikke legg til søkeord i navnet.
    - **Primærkategori:** «Hagearbeider» (Gardener). **Tilleggskategorier:** «Snekker» og «Anleggsgartner». Primærkategorien er den viktigste faktoren for kartresultatene (Whitespark 2026).
-   - **Adresse:** legg inn adressen, men velg å **skjule** den. Han kjører ut og har ikke butikk.
-   - **Tjenesteområde:** Alna, Østensjø, Nordstrand, Søndre Nordstrand, Stovner og resten av Oslo.
+   - **Adresse:** skjult. Han kjører ut og har ikke butikk.
+   - **Tjenesteområde:** Alna, Østensjø, Nordstrand, Søndre Nordstrand, Stovner, Oslo sentrum og Lørenskog.
    - **Telefon:** 455 02 162. **Nettside:** olsenskogmann.no.
-   - **Etterpå:** 10+ bilder av jobber, tjenestene med kort tekst, ett innlegg i uka i sesongen («Ledig for løvrydding neste uke»), og svar på alle anmeldelser.
+   - **Etterpå:** 10+ bilder av jobber, tjenestene med kort tekst, ett innlegg i uka i sesongen («Ledig for løvrydding neste uke»), og svar på alle anmeldelser. Tekstene står i UTKAST.md.
 2. **Google-anmeldelser:** send en SMS med lenke til alle som har vært fornøyd. Mittanbud-vurderingene vises ikke på Google. Mål: 20 før jul.
 3. **Flyers** i småhusstrøk nær Tveita (Østensjø, Hellerud, Haugerud). Tekst: «Løvrydding før snøen kommer», telefonnummer og «Send et bilde på SMS». Bruk `?utm_source=flyer` på en QR-kode, så ser vi i GoatCounter og på eiersiden hvor mange som kom fra flyeren.
 4. **Borettslag:** e-post til styrene i rekkehusborettslag i Østensjø og Søndre Nordstrand med pris på løvrydding av fellesarealer.
