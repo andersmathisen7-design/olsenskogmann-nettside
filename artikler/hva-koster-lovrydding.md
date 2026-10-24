@@ -44,7 +44,7 @@ Vi har fastpris på løvrydding, inkl. mva:
 | Vanlig hage – enebolig eller tomannsbolig, opptil ca. 4 timer | 2 790 kr |
 | Stor hage | Fast pris på forhånd etter bilde på SMS |
 
-Alt avfall kjøres bort. Ingen startpris eller kjøregebyr. Du kan også betale per time: **750 kr i timen inkl. mva** (600 kr eks. mva). Det er introduksjonspris til 31.12.2026. Hekkeklipping og beskjæring kan vi ta i samme runde. Se [løvrydding](/lovrydding/#fastpris).
+Alt avfall kjøres bort. Ingen startpris eller kjøregebyr. Du kan også betale per time: {{timepris}} Hekkeklipping og beskjæring kan vi ta i samme runde. Se [løvrydding](/lovrydding/#fastpris).
 
 ## Slik får du riktig pris
 

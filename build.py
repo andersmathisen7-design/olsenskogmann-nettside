@@ -81,7 +81,7 @@ def business_ld():
         "areaServed": [{"@type": "City", "name": "Oslo"}, {"@type": "City", "name": "Lørenskog"}]
                       + [{"@type": "AdministrativeArea", "name": a["bydel"]} for a in C.AREAS if a["bydel"] != "Lørenskog"],
         **({"sameAs": [u for _, u in C.PROFILES]} if C.PROFILES else {}),
-        "priceRange": f"{C.PRICE_HOUR_INC} kr/t inkl. mva",
+        "priceRange": f"{C.PRICE_HOUR_INC_TEXT} kr/t inkl. mva",
         "knowsAbout": [s["nav"] for s in C.SERVICES],
         # Kobler hver tjenesteside til firmaet, så KI-søk ser hva firmaet tilbyr og hvor det står.
         "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Tjenester", "itemListElement": [
@@ -98,11 +98,16 @@ def package_offers():
                "priceSpecification": {"@type": "PriceSpecification", "price": p["price"], "priceCurrency": "NOK",
                                       "valueAddedTaxIncluded": True}}
               for p in C.PACKAGES["items"] if p["price"]]
-    offers.append({"@type": "Offer", "name": "Timepris (introduksjonspris)", "price": C.PRICE_HOUR_INC,
-                   "priceCurrency": "NOK", "validThrough": C.PRICE_INTRO_UNTIL,
-                   "priceSpecification": {"@type": "UnitPriceSpecification", "price": C.PRICE_HOUR_INC,
-                                          "priceCurrency": "NOK", "unitCode": "HUR", "unitText": "time",
-                                          "valueAddedTaxIncluded": True, "validThrough": C.PRICE_INTRO_UNTIL}})
+    def hour(name, price, valid):
+        spec = {"@type": "UnitPriceSpecification", "price": price, "priceCurrency": "NOK",
+                "unitCode": "HUR", "unitText": "time", "valueAddedTaxIncluded": True, **valid}
+        return {"@type": "Offer", "name": name, "price": price, "priceCurrency": "NOK", **valid, "priceSpecification": spec}
+    if C.INTRO:
+        # Både introduksjonsprisen og prisen som kommer, så KI-søk ikke oppgir den gamle prisen etter nyttår.
+        offers.append(hour("Timepris (introduksjonspris)", C.PRICE_HOUR_INC, {"validThrough": C.PRICE_INTRO_UNTIL}))
+        offers.append(hour("Timepris", C.PRICE_REGULAR_INC, {"validFrom": C.PRICE_REGULAR_FROM}))
+    else:
+        offers.append(hour("Timepris", C.PRICE_HOUR_INC, {}))
     return offers
 
 
@@ -223,7 +228,7 @@ def trust_band():
   <ul class="wrap trust-list">
     <li><span class="stars" aria-hidden="true">★★★★★</span><strong>{rating}</strong><span>{C.MITTANBUD_COUNT} vurderinger fra kunder</span></li>
     <li><strong>Gratis befaring</strong><span>Vi ser på jobben før du bestemmer deg</span></li>
-    <li><strong>{C.PRICE_HOUR_INC} kr/t inkl. mva</strong><span>Introduksjonspris til {C.PRICE_INTRO_UNTIL_TEXT}. Eller fastpris, og hageavfallet kjører vi alltid bort</span></li>
+    <li><strong><a href="{url('priser/')}">{C.PRICE_HOUR_INC_TEXT} kr/t inkl. mva</a></strong><span>{f'Introduksjonspris til {C.PRICE_INTRO_UNTIL_TEXT}. ' if C.INTRO else ''}Eller fastpris, og hageavfallet kjører vi alltid bort</span></li>
     <li><strong>Registrert foretak</strong><span>Org.nr. {C.ORGNR}, MVA-registrert</span></li>
   </ul>
 </section>
@@ -281,7 +286,7 @@ def contact(selected="", area=""):
 
 def footer():
     links = "".join(f'<li><a href="{url(s["slug"] + "/")}">{e(s["nav"])}</a></li>' for s in C.SERVICES)
-    links += f'<li><a href="{url("artikler/")}">Råd og priser</a></li>'
+    links += f'<li><a href="{url("priser/")}">Priser</a></li><li><a href="{url("artikler/")}">Råd og priser</a></li>'
     return f"""</main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
@@ -467,6 +472,88 @@ def related_articles(slug):
     return f'<section class="related"><div class="wrap narrow"><h2>Les også</h2><ul class="article-list">{items}</ul></div></section>'
 
 
+# ---------------------------------------------------------------------------
+# Prissiden /priser/: alle priser på ett sted. Laget for «hva koster …»-søk og KI-søk.
+# ---------------------------------------------------------------------------
+def prices_faq():
+    pk = [p for p in C.PACKAGES["items"] if p["price"]]
+    priser = " og ".join(f"{p['name'].lower()} ({p['for'].lower()}) {nok(p['price'])}" for p in pk)
+    return [
+        ("Hva er timeprisen?", C.PRICE_HOUR_SENTENCE),
+        ("Hva koster løvrydding?",
+         f"Fastpris: {priser} inkl. mva. Stor hage får fast pris på forhånd etter bilde på SMS. {C.PACKAGES['note']}"),
+        ("Koster befaringen noe?", "Nei. Befaringen er gratis, og du får prisen før vi starter."),
+        ("Tar dere med hageavfallet?", "Ja, alltid. På fastprisene for løvrydding er bortkjøringen med i prisen."),
+        ("Er prisene med mva?",
+         f"Ja. Alle prisene på siden er inkl. 25 % mva. Timeprisen eks. mva er {C.PRICE_HOUR_EX} kr."),
+        ("Hvordan får jeg fast pris?",
+         f"Send et bilde av jobben på SMS til {C.PHONE_DISPLAY}, eller be om gratis befaring. Du får prisen før vi starter."),
+    ]
+
+
+def page_prices():
+    low = min(p["price"] for p in C.PACKAGES["items"] if p["price"])
+
+    def price_for(s):
+        if s["slug"] == C.PACKAGES["service"]:
+            return f"Fastpris fra {nok(low)}, eller timepris"
+        if s["slug"] == "borettslag":
+            return "Fast avtale. Pris etter gratis befaring"
+        return "Timepris, eller fastpris etter gratis befaring"
+    rows = "".join(f'<tr><td><a href="{url(s["slug"] + "/")}">{e(s["nav"])}</a></td><td>{e(price_for(s))}</td></tr>'
+                   for s in C.SERVICES)
+    faq = prices_faq()
+    faq_html = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in faq)
+    intro = (f"<p>Fra {C.PRICE_REGULAR_FROM_TEXT} er timeprisen {C.PRICE_REGULAR_INC_TEXT} kr inkl. mva "
+             f"({C.PRICE_REGULAR_EX} kr eks. mva).</p>") if C.INTRO else ""
+    body = f"""<section class="page-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Brødsmuler"><a href="{url()}">Forsiden</a> / <span>Priser</span></nav>
+    <h1>Priser</h1>
+    <p class="hero-lead">Alle prisene våre på ett sted. Prisene er inkl. mva. Befaringen er gratis, og du får prisen før vi starter.</p>
+    <div class="hero-cta">
+      <a class="btn btn-dark" href="{tel()}" data-goatcounter-click="ring-priser">Ring {C.PHONE_DISPLAY}</a>
+      <a class="btn btn-line" href="{sms()}" data-goatcounter-click="sms-priser">Send bilde på SMS</a>
+    </div>
+  </div>
+</section>
+<section class="service-detail">
+  <div class="wrap narrow">
+    <div class="prose-block">
+      <h2>Timepris</h2>
+      <p class="pkg-price">{C.PRICE_HOUR_INC_TEXT} kr <span>i timen inkl. mva</span></p>
+      <p>{C.PRICE_HOUR_EX} kr eks. mva{f", introduksjonspris til {C.PRICE_INTRO_UNTIL_TEXT}" if C.INTRO else ""}.</p>
+      {intro}
+    </div>
+    <div class="prose-block">
+      <h2>Pris per tjeneste</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Tjeneste</th><th>Pris</th></tr></thead>
+        <tbody>{rows}</tbody>
+      </table></div>
+      <p>Vil du sammenligne? Les <a href="{url('artikler/hva-koster-lovrydding/')}">hva løvrydding koster i Oslo</a>.</p>
+    </div>
+  </div>
+</section>
+{packages_section(C.PACKAGES['service'])}
+<section class="faq"><div class="wrap narrow"><h2>Spørsmål og svar</h2>{faq_html}</div></section>
+{contact()}"""
+    ld = [business_ld(), {
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": C.NAME, "item": abs_url()},
+            {"@type": "ListItem", "position": 2, "name": "Priser", "item": abs_url("priser/")},
+        ],
+    }, {
+        "@context": "https://schema.org", "@type": "FAQPage",
+        "mainEntity": [{"@type": "Question", "name": q,
+                        "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq],
+    }]
+    desc = (f"Timepris {C.PRICE_HOUR_INC_TEXT} kr inkl. mva og fastpris på løvrydding fra {nok(low)}. "
+            "Alt hageavfall kjøres bort. Gratis befaring i Oslo og Lørenskog.")
+    return head("Priser på løvrydding og hagearbeid i Oslo | Olsen Skogmann", desc, "priser/", ld) + header() + body + footer()
+
+
 def page_simple(title, h1, text, path):
     body = f"""<section class="page-hero simple">
   <div class="wrap narrow">
@@ -499,7 +586,7 @@ def area_faq(a):
          "Du trenger ikke være hjemme mens vi jobber."),
         (f"Hva koster løvrydding i {a['bydel']}?",
          f"Fastpris: {priser} inkl. mva. Stor hage får fast pris etter bilde på SMS. {C.PACKAGES['note']} "
-         f"Du kan også betale per time: {C.PRICE_HOUR_INC} kr inkl. mva, {C.PRICE_INTRO_TEXT}. {C.PRICE_REGULAR_TEXT}"),
+         f"Du kan også betale per time: {C.PRICE_HOUR_SENTENCE}"),
         (f"Tar dere borettslag og sameier i {a['bydel']}?",
          "Ja. Borettslag og sameier kan få fast avtale for uteområdet, med faste besøk og én kontaktperson. "
          "Vi gir pris etter gratis befaring."),
@@ -771,6 +858,7 @@ def main():
     write("takk/index.html", page_simple(
         "Takk for forespørselen", "Takk! Vi har fått forespørselen din",
         "Vi tar kontakt på telefon eller SMS. Haster det, kan du ringe oss direkte.", "takk/"))
+    write("priser/index.html", page_prices())
     for a in C.AREAS:
         write(f"{a['slug']}/index.html", page_area(a))
     arts = AB.load()
@@ -793,8 +881,10 @@ def main():
     # Sidene lages fra config.py og build.py, så de får datoen for siste commit som endret dem.
     # Artiklene får «updated» fra Markdown-hodet.
     site_mod = git_date("config.py", "build.py")
+    if not C.INTRO:  # prisene byttet 1.1.2027 uten ny commit
+        site_mod = max(site_mod, C.PRICE_REGULAR_FROM)
     newest = max([site_mod] + [a["updated"] for a in arts])
-    locs = ([("", site_mod)] + [(s["slug"] + "/", site_mod) for s in C.SERVICES] + [(a["slug"] + "/", site_mod) for a in C.AREAS]
+    locs = ([("", site_mod)] + [(s["slug"] + "/", site_mod) for s in C.SERVICES] + [("priser/", site_mod)] + [(a["slug"] + "/", site_mod) for a in C.AREAS]
             + [("artikler/", newest)] + [(f"artikler/{a['slug']}/", a["updated"]) for a in arts])
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
         f"  <url><loc>{abs_url(p)}</loc><lastmod>{d}</lastmod></url>\n" for p, d in locs) + "</urlset>\n"
@@ -805,7 +895,7 @@ def main():
             f"> Enkeltpersonforetak i {C.CITY} (org.nr. {C.ORGNR}). Hage og bygg for privatpersoner, borettslag og bedrifter i Oslo.", "",
             f"- Telefon: {C.PHONE_DISPLAY}", f"- E-post: {C.EMAIL}", f"- Base: {C.BASE_AREA}, {C.POSTCODE} {C.CITY}",
             f"- Vurdering: {C.MITTANBUD_RATING} av 5 på Mittanbud ({C.MITTANBUD_COUNT} vurderinger)",
-            f"- Pris: {C.PRICE_TEXT} ({C.PRICE_HOUR_EX} kr eks. mva), {C.PRICE_INTRO_TEXT}, eller fastpris etter befaring. {C.PRICE_REGULAR_TEXT}",
+            f"- Timepris: {C.PRICE_HOUR_SENTENCE} Eller fastpris etter befaring. Alle priser: {abs_url('priser/')}",
             f"- {C.PACKAGES['title']}: " + "; ".join(
                 f"{p['name'].lower()} ({p['for'].lower()}, {p['time'].lower()}) {nok(p['price']).replace(chr(160), ' ')} inkl. mva"
                 if p["price"] else f"{p['name'].lower()}: {p['time'][0].lower() + p['time'][1:]}" for p in C.PACKAGES["items"])

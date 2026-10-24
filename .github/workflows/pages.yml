@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Bygger siden rett etter midnatt 1. januar (norsk tid), så timeprisen bytter av seg selv
+  # 1.1.2027 (se PRICE_INTRO_UNTIL i config.py). Den andre er reserve hvis den første forsinkes.
+  schedule:
+    - cron: "7 23 31 12 *"
+    - cron: "17 6 1 1 *"
 
 permissions:
   contents: write

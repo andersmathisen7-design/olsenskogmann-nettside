@@ -7,6 +7,8 @@ Ting merket MÅ SJEKKES er antakelser som Olsen må bekrefte før siden går liv
 Se GJOREMAL.md.
 """
 import os
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 # ---------------------------------------------------------------------------
 # Adresse og publisering
@@ -62,17 +64,31 @@ LEADS_URL = ""
 
 # Pris (bekreftet av Olsen 17.10.2026: timepris eller fastpris, introduksjonspris 600 kr eks. mva).
 # Priser til forbrukere skal vises med mva (prisopplysningsforskriften), derfor står inkl. mva først.
-PRICE_HOUR_EX = 600
-PRICE_HOUR_INC = 750
-PRICE_TEXT = f"{PRICE_HOUR_INC} kr i timen inkl. mva"
 # Introduksjonsprisen gjelder til og med 31.12.2026 (Olsen 23.10.2026).
 # Fra 1.1.2027 er vanlig timepris 795 kr eks. mva (Olsen 23.10.2026, bekreftet av Anders 24.10.2026).
-PRICE_REGULAR_EX = 795
-PRICE_REGULAR_INC_TEXT = "993,75"     # 795 * 1,25
-PRICE_REGULAR_TEXT = f"Fra 1.1.2027 er timeprisen {PRICE_REGULAR_INC_TEXT} kr inkl. mva ({PRICE_REGULAR_EX} kr eks. mva)."
+# Siden bytter pris av seg selv: workflowen bygger siden rett etter midnatt 1.1.2027 (se pages.yml).
+# Se siden slik den blir etter nyttår: PRICE_DATE=2027-01-01 python3 build.py
+TODAY = (date.fromisoformat(os.environ["PRICE_DATE"]) if os.environ.get("PRICE_DATE")
+         else datetime.now(ZoneInfo("Europe/Oslo")).date())
 PRICE_INTRO_UNTIL = "2026-12-31"       # brukes i strukturerte data (validThrough)
 PRICE_INTRO_UNTIL_TEXT = "31.12.2026"
-PRICE_INTRO_TEXT = f"introduksjonspris til {PRICE_INTRO_UNTIL_TEXT}"
+PRICE_REGULAR_FROM = "2027-01-01"
+PRICE_REGULAR_FROM_TEXT = "1.1.2027"
+INTRO = TODAY <= date.fromisoformat(PRICE_INTRO_UNTIL)
+PRICE_REGULAR_EX = 795
+PRICE_REGULAR_INC = 993.75             # 795 * 1,25
+PRICE_REGULAR_INC_TEXT = "993,75"
+if INTRO:
+    PRICE_HOUR_EX, PRICE_HOUR_INC, PRICE_HOUR_INC_TEXT = 600, 750, "750"
+else:
+    PRICE_HOUR_EX, PRICE_HOUR_INC, PRICE_HOUR_INC_TEXT = PRICE_REGULAR_EX, PRICE_REGULAR_INC, PRICE_REGULAR_INC_TEXT
+PRICE_TEXT = f"{PRICE_HOUR_INC_TEXT} kr i timen inkl. mva"
+# Kort: brukes i ingresser. Lang: hele setningen om timepris, brukt i FAQ, artikler og llms.txt.
+PRICE_SHORT = f"{PRICE_TEXT} (introduksjonspris til {PRICE_INTRO_UNTIL_TEXT})" if INTRO else PRICE_TEXT
+PRICE_HOUR_SENTENCE = (
+    f"{PRICE_TEXT} ({PRICE_HOUR_EX} kr eks. mva), introduksjonspris til {PRICE_INTRO_UNTIL_TEXT}. "
+    f"Fra {PRICE_REGULAR_FROM_TEXT} er timeprisen {PRICE_REGULAR_INC_TEXT} kr inkl. mva ({PRICE_REGULAR_EX} kr eks. mva)."
+    if INTRO else f"{PRICE_TEXT} ({PRICE_HOUR_EX} kr eks. mva).")
 
 # Fastpris på løvrydding (Olsen 23.10.2026). Vises på /lovrydding/ og nevnes på forsiden.
 # Prisene er godkjent (24.10.2026).
@@ -102,7 +118,7 @@ SEASON = {
     "title": "Løvrydding før snøen kommer",
     "lead": "Vi blåser løvet fra plen, bed, terrasse og innkjørsel, og kjører bort alt hageavfallet. "
             "Hekken og buskene kan vi ta i samme runde. Fastpris fra 1 490 kr inkl. mva, "
-            "eller 750 kr i timen inkl. mva (introduksjonspris til 31.12.2026).",
+            f"eller {PRICE_SHORT}.",
 }
 
 # ---------------------------------------------------------------------------
@@ -142,16 +158,14 @@ SERVICES = [
              "Når det meste av løvet har falt. I Oslo er det vanligvis fra midten av oktober og fram til snøen kommer. "
              "Har du mange trær, kan det lønne seg med to runder: én nå og én rett før snøen."),
             ("Hva koster det?",
-             "Fastpris fra 1 490 kr inkl. mva for en liten hage, se prisene under. Eller 750 kr i timen inkl. mva "
-             "(600 kr eks. mva), som er introduksjonspris til 31.12.2026. Fra 1.1.2027 er timeprisen 993,75 kr inkl. mva "
-             "(795 kr eks. mva). Send et bilde av hagen på SMS, så får du en pris. Befaringen er gratis, og du får prisen før vi starter."),
+             f"Fastpris fra 1 490 kr inkl. mva for en liten hage, se prisene under. Eller {PRICE_HOUR_SENTENCE} "
+             "Send et bilde av hagen på SMS, så får du en pris. Befaringen er gratis, og du får prisen før vi starter."),
         ],
         "faq": [
             ("Hva koster løvrydding hos dere?",
              "Liten hage (rekkehus eller liten tomt) koster 1 490 kr og vanlig hage (enebolig eller tomannsbolig) 2 790 kr, "
              "inkl. mva. Stor hage får fast pris på forhånd etter bilde på SMS. Alt avfall kjøres bort, og det er ingen startpris "
-             "eller kjøregebyr. Du kan også betale per time: 750 kr inkl. mva, introduksjonspris til 31.12.2026. "
-             "Fra 1.1.2027 er timeprisen 993,75 kr inkl. mva (795 kr eks. mva)."),
+             f"eller kjøregebyr. Du kan også betale per time: {PRICE_HOUR_SENTENCE}"),
             ("Må jeg være hjemme mens dere jobber?",
              "Nei. Vi avtaler dag på forhånd og gir beskjed når vi er ferdige."),
             ("Tar dere med løvet?",
@@ -171,7 +185,7 @@ SERVICES = [
         "form_value": "Hekk, beskjæring og trær",
         "title": "Hekkeklipping, beskjæring og trefelling i Oslo",
         "meta_title": "Hekkeklipping, beskjæring og stubbefjerning i Oslo | Olsen Skogmann",
-        "meta_description": "Hekkeklipping, beskjæring av busker og frukttrær, felling av mindre trær og fjerning av stubber i Oslo og Lørenskog. Vi kjører bort alt. 750 kr/t inkl. mva.",
+        "meta_description": f"Hekkeklipping, beskjæring av busker og frukttrær, felling av mindre trær og fjerning av stubber i Oslo og Lørenskog. Vi kjører bort alt. {PRICE_HOUR_INC_TEXT} kr/t inkl. mva.",
         "lead": "Vi klipper hekken, beskjærer busker og frukttrær, feller mindre trær og fjerner stubber, enten med hele roten eller med fres. "
                 "Alt kvist og hageavfall kjører vi bort.",
         "summary": "Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber.",

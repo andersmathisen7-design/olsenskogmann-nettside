@@ -16,10 +16,13 @@ Støttet Markdown: ## / ### overskrifter, avsnitt, - og 1. lister, tabeller med 
     [[kontakt]]      – boks med «Ring / be om pris» som leder til skjemaet
     tjeneste: lovrydding  (i hodet) – hvilken tjeneste boksen og lenkene skal peke til
     [[kilder]]       – (ikke nødvendig) kilder skrives som vanlig liste under «## Kilder»
+    {{timepris}}     – timeprisen fra config.py, så den bytter av seg selv 1.1.2027
 """
 import html
 import re
 from pathlib import Path
+
+import config as C
 
 ROOT = Path(__file__).parent
 DIR = ROOT / "artikler"
@@ -126,6 +129,11 @@ def load():
                 raise ValueError(f"{f.name}: mangler «{req}»")
         meta.setdefault("updated", meta["date"])
         meta["order"] = int(meta.get("order", 50))
-        arts.append(dict(meta, slug=f.stem, body=m.group(2), faq=faq))
+        body = m.group(2)
+        if "{{timepris}}" in body:
+            body = body.replace("{{timepris}}", C.PRICE_HOUR_SENTENCE)
+            if not C.INTRO:
+                meta["updated"] = max(meta["updated"], C.PRICE_REGULAR_FROM)
+        arts.append(dict(meta, slug=f.stem, body=body, faq=faq))
     arts.sort(key=lambda a: (a["order"], a["title"]))
     return arts

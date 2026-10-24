@@ -19,6 +19,7 @@ Testsiden er skjult for Google med `noindex` og `robots.txt`, så den ikke konku
 | `/lovrydding/` | «løvrydding Oslo», «løvblåsing», «høstrydding hage». FAQ med strukturerte data |
 | `/snekker/` | «snekker Oslo», «bygge terrasse», «utvendig trapp» |
 | `/beskjaering-og-trefelling/` | «hekkeklipping Oslo», «beskjæring», «felle tre», «fjerne stubbe», «stubbefresing» |
+| `/priser/` | «løvrydding pris», «hagearbeid pris Oslo» og KI-spørsmål om hva det koster. Alle priser på ett sted, med FAQ. Timeprisen bytter av seg selv 1.1.2027 |
 | `/borettslag/` | Styrer i borettslag og sameier: fast avtale for uteområdet |
 | `/stein-og-hage/` | «belegningsstein Oslo», «støttemur» |
 | `/rens-av-stein/` | «rens av belegningsstein», «spyle stein», «fjerne mose på stein» |
