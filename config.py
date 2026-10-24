@@ -250,7 +250,7 @@ SERVICES = [
         "lead": "Små og store snekkeroppdrag for privatpersoner, borettslag og bedrifter. "
                 "Ingen jobb er for liten.",
         "summary": "Terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold.",
-        "image": ("utvendig-trapp-tre", "Ny utvendig trapp i trykkimpregnert tre ved inngangsparti", [1203, 800]),
+        "image": ("terrasse-i-tre", "Terrasse i tre langs husveggen, med trappetrinn ned mot hagen", [1600, 800]),
         "includes": [
             "Ny terrasse eller utbedring av gammel",
             "Utvendige trapper",
@@ -266,8 +266,8 @@ SERVICES = [
         ],
         "faq": [],
         "photos": [
+            ("terrasse-i-tre", "Terrasse i tre langs husveggen, med trappetrinn ned mot hagen", [1600, 800]),
             ("utvendig-trapp-tre", "Ny utvendig trapp i tre", [1203, 800]),
-            ("plantekasse-terrasse-oslo", "Plantekasse i tre på terrasse i borettslag, plantet med hortensia og lavendel", [1600, 800]),
         ],
     },
     {

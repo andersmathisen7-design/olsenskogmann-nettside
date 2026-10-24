@@ -24,7 +24,7 @@
 - [x] **Pakkeprisene** (1 490 og 2 790 kr inkl. mva) er godkjent.
 - [x] **Google-bedriftsprofil:** han har allerede en.
 - [x] **Borettslaget:** Olsen foreslo å finne på et navn og et sitat. Det gjør vi ikke. Oppdiktede kundeuttalelser er ulovlig etter markedsføringsloven. Siden sier bare det som er sant: fast avtale med et borettslag i Oslo, besøk to ganger i måneden.
-- [ ] **Terrassebilde** (IMG_20260616_150237_825.jpg) kom på e-post, men kunne ikke lastes ned med verktøyene her. Lagre det i `/tmp/olsen-img/`, så fjerner Claude GPS-data og legger det på `/snekker/`.
+- [x] **Terrassebilde** ligger på `/snekker/` og på forsiden under Snekker (`terrasse-i-tre`, uten GPS-data).
 
 ## Fortsatt åpent
 - [ ] **Før- og etterbilder fra løvjobber** (se under).
