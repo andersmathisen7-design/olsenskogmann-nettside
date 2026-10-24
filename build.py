@@ -4,6 +4,7 @@ import html
 import json
 import os
 import shutil
+import subprocess
 from datetime import date
 
 import config as C
@@ -36,13 +37,27 @@ def sms():
     return f"sms:+47{C.PHONE}"
 
 
+def img_size(file):
+    """Bredde og høyde fra JPEG-hodet (uten Pillow, så bygget trenger ingen pakker)."""
+    with open(os.path.join(SRC, "img", file), "rb") as f:
+        f.read(2)
+        while True:
+            marker, size = f.read(2), int.from_bytes(f.read(2), "big")
+            if marker[1] in (0xC0, 0xC1, 0xC2):
+                f.read(1)
+                h, w = int.from_bytes(f.read(2), "big"), int.from_bytes(f.read(2), "big")
+                return w, h
+            f.read(size - 2)
+
+
 def picture(name, alt, widths, sizes, cls="", eager=False):
     widths = sorted(widths)
+    w, h = img_size(f"{name}-{widths[0]}.jpg")
     webp = ", ".join(f"{url(f'img/{name}-{w}.webp')} {w}w" for w in widths)
     jpg = ", ".join(f"{url(f'img/{name}-{w}.jpg')} {w}w" for w in widths)
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
     return (f'<picture class="{cls}"><source type="image/webp" srcset="{webp}" sizes="{sizes}">'
-            f'<img src="{url(f"img/{name}-{widths[0]}.jpg")}" srcset="{jpg}" sizes="{sizes}" alt="{e(alt)}" {load} decoding="async"></picture>')
+            f'<img src="{url(f"img/{name}-{widths[0]}.jpg")}" srcset="{jpg}" sizes="{sizes}" alt="{e(alt)}" width="{w}" height="{h}" {load} decoding="async"></picture>')
 
 
 # ---------------------------------------------------------------------------
@@ -63,7 +78,9 @@ def business_ld():
         "taxID": C.ORGNR.replace(" ", ""),
         "address": {"@type": "PostalAddress", "postalCode": C.POSTCODE,
                     "addressLocality": C.CITY, "addressCountry": "NO"},
-        "areaServed": [{"@type": "City", "name": "Oslo"}, {"@type": "City", "name": "Lørenskog"}],
+        "areaServed": [{"@type": "City", "name": "Oslo"}, {"@type": "City", "name": "Lørenskog"}]
+                      + [{"@type": "AdministrativeArea", "name": a["bydel"]} for a in C.AREAS if a["bydel"] != "Lørenskog"],
+        **({"sameAs": [C.MITTANBUD_URL]} if C.MITTANBUD_URL else {}),
         "priceRange": f"{C.PRICE_HOUR_INC} kr/t inkl. mva",
         "knowsAbout": [s["nav"] for s in C.SERVICES],
     }
@@ -140,8 +157,8 @@ def service_ld(s):
 # ---------------------------------------------------------------------------
 # Felles deler
 # ---------------------------------------------------------------------------
-def head(title, desc, path, ld):
-    robots = "noindex, nofollow" if C.NOINDEX else "index, follow, max-image-preview:large"
+def head(title, desc, path, ld, noindex=False):
+    robots = "noindex, nofollow" if C.NOINDEX else ("noindex, follow" if noindex else "index, follow, max-image-preview:large")
     lds = "\n".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
     gc = (f'<script data-goatcounter="https://{C.GOATCOUNTER}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
           if C.GOATCOUNTER else "")
@@ -453,7 +470,8 @@ def page_simple(title, h1, text, path):
     <div class="hero-cta"><a class="btn btn-dark" href="{url()}">Til forsiden</a><a class="btn btn-line" href="{tel()}">Ring {C.PHONE_DISPLAY}</a></div>
   </div>
 </section>"""
-    return head(title, title, path, [business_ld()]) + header() + body + footer()
+    # Takkesiden og 404 skal ikke i søk (takkesiden måler konverteringer).
+    return head(title, title, path, [business_ld()], noindex=True) + header() + body + footer()
 
 
 # ---------------------------------------------------------------------------
@@ -699,6 +717,19 @@ def write(path, content):
         f.write(content)
 
 
+def git_date(*files):
+    """Datoen for siste commit som endret filene. Faller tilbake på i dag (f.eks. med ulagrede endringer)."""
+    try:
+        if subprocess.run(["git", "diff", "--quiet", "HEAD", "--", *files], cwd=ROOT).returncode == 0:
+            d = subprocess.run(["git", "log", "-1", "--format=%cs", "--", *files], cwd=ROOT,
+                               capture_output=True, text=True).stdout.strip()
+            if d:
+                return d
+    except OSError:
+        pass
+    return date.today().isoformat()
+
+
 def main():
     if os.path.exists(OUT):
         shutil.rmtree(OUT)
@@ -728,11 +759,15 @@ def main():
     else:
         robots = f"User-agent: *\nAllow: /\n\nSitemap: {abs_url('sitemap.xml')}\n"
     write("robots.txt", robots)
-    today = date.today().isoformat()
-    locs = ([""] + [s["slug"] + "/" for s in C.SERVICES] + [a["slug"] + "/" for a in C.AREAS]
-            + ["artikler/"] + [f"artikler/{a['slug']}/" for a in arts])
+    # lastmod skal være når innholdet sist ble endret, ikke byggedatoen. Ellers slutter Google å stole på den.
+    # Sidene lages fra config.py og build.py, så de får datoen for siste commit som endret dem.
+    # Artiklene får «updated» fra Markdown-hodet.
+    site_mod = git_date("config.py", "build.py")
+    newest = max([site_mod] + [a["updated"] for a in arts])
+    locs = ([("", site_mod)] + [(s["slug"] + "/", site_mod) for s in C.SERVICES] + [(a["slug"] + "/", site_mod) for a in C.AREAS]
+            + [("artikler/", newest)] + [(f"artikler/{a['slug']}/", a["updated"]) for a in arts])
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
-        f"  <url><loc>{abs_url(p)}</loc><lastmod>{today}</lastmod></url>\n" for p in locs) + "</urlset>\n"
+        f"  <url><loc>{abs_url(p)}</loc><lastmod>{d}</lastmod></url>\n" for p, d in locs) + "</urlset>\n"
     write("sitemap.xml", sm)
 
     # Faktaark for AI-søk (ChatGPT, Perplexity osv.)
