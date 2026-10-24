@@ -3,7 +3,7 @@
 ## Anders – nå
 1. **Opprett repoet** `olsenskogmann-nettside` (tomt, offentlig) på andersmathisen7-design. Claude pusher koden.
 2. **Settings → Pages:** branch `gh-pages`, mappe `/ (root)`, når første publisering er ferdig.
-3. **GoatCounter:** lag siden `olsenskogmann` på [goatcounter.com](https://www.goatcounter.com), og sett `GOATCOUNTER = "olsenskogmann"` i `config.py`. Lag en API-nøkkel med lesetilgang til den ukentlige jobben.
+3. [x] **GoatCounter** er på (24.10.2026): https://olsenskogmann.goatcounter.com. Gjenstår: bekreft e-posten fra GoatCounter, og lag en API-nøkkel med lesetilgang (Settings → API). Legg den inn som `OLSEN_GOATCOUNTER_TOKEN` i miljøet til den ukentlige rutinen, ikke i repoet.
 4. **Henvendelsesloggen:** følg [henvendelser/README.md](henvendelser/README.md) (ca. 5 min). Lim nettapp-adressen inn som `LEADS_URL`, og gi passordet til Olsen.
 5. **FormSubmit:** send én testforespørsel fra testsiden, og be Olsen klikke **Activate** i e-posten.
 
