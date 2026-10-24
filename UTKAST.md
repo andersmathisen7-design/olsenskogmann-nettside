@@ -1,10 +1,8 @@
 # Ferdige tekster
 
 ## 1. SMS til Olsen (spørsmål)
-> Hei! Takk for svarene. Fastprisene og introduksjonsprisen til 31.12.2026 ligger nå på siden. Tre ting til:
-> 1. «795 eks. er minste pris i timen»: er det vanlig timepris fra nyttår, eller minstepris per oppdrag?
-> 2. Er du enig i pakkeprisene for løvrydding: liten hage 1 490 kr og vanlig hage 2 790 kr inkl. mva? Gjelder de også etter nyttår?
-> 3. Kan du gi meg admin-tilgang til Google-profilen din?
+> Hei! Takk for svarene. Fastprisene, introduksjonsprisen til 31.12.2026 og timeprisen på 795 eks. fra nyttår ligger nå på siden. Én ting til:
+> Kan du gi meg admin-tilgang til Google-profilen din?
 > Send også gjerne før/etter-bilder fra løvjobber, tatt fra samme vinkel.
 > Om borettslaget: vi skriver bare at du har fast avtale med et borettslag i Oslo. Et oppdiktet navn eller sitat er ulovlig etter markedsføringsloven. Vil styret gi et ekte sitat, legger vi det inn.
 

@@ -740,7 +740,7 @@ def main():
             f"> Enkeltpersonforetak i {C.CITY} (org.nr. {C.ORGNR}). Hage og bygg for privatpersoner, borettslag og bedrifter i Oslo.", "",
             f"- Telefon: {C.PHONE_DISPLAY}", f"- E-post: {C.EMAIL}", f"- Base: {C.BASE_AREA}, {C.POSTCODE} {C.CITY}",
             f"- Vurdering: {C.MITTANBUD_RATING} av 5 på Mittanbud ({C.MITTANBUD_COUNT} vurderinger)",
-            f"- Pris: {C.PRICE_TEXT} ({C.PRICE_HOUR_EX} kr eks. mva), {C.PRICE_INTRO_TEXT}, eller fastpris etter befaring",
+            f"- Pris: {C.PRICE_TEXT} ({C.PRICE_HOUR_EX} kr eks. mva), {C.PRICE_INTRO_TEXT}, eller fastpris etter befaring. {C.PRICE_REGULAR_TEXT}",
             f"- {C.PACKAGES['title']}: " + "; ".join(
                 f"{p['name'].lower()} ({p['for'].lower()}, {p['time'].lower()}) {nok(p['price']).replace(chr(160), ' ')} inkl. mva"
                 if p["price"] else f"{p['name'].lower()}: {p['time'][0].lower() + p['time'][1:]}" for p in C.PACKAGES["items"])

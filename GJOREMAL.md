@@ -20,13 +20,13 @@
 - [x] **Introduksjonsprisen** (750 kr/t inkl. mva, 600 eks.) gjelder til 31.12.2026. Står nå på forsiden, `/lovrydding/`, i pris-FAQ, artikkelen om pris og `llms.txt`. Strukturerte data har `validThrough: 2026-12-31`.
 - [x] **Fastpris er greit.** Pakker for løvrydding står på `/lovrydding/` (`PACKAGES` i `config.py`) og «fra 1 490 kr» på forsiden: liten hage 1 490 kr, vanlig hage 2 790 kr, stor hage etter bilde. Alt avfall kjøres bort, ingen startpris eller kjøregebyr.
 - [x] **Mittanbud:** profilen er https://mittanbud.no/bedrift/9242603 (sjekket 24.10.2026: org.nr. og 0669 Oslo stemmer). 42 vurderinger, 5,0. Lagt inn.
+- [x] **795 kr eks. mva** er vanlig timepris fra 1.1.2027 (993,75 kr inkl. mva). Står i pris-FAQ, på `/lovrydding/` og i `llms.txt`.
+- [x] **Pakkeprisene** (1 490 og 2 790 kr inkl. mva) er godkjent.
 - [x] **Google-bedriftsprofil:** han har allerede en.
 - [x] **Borettslaget:** Olsen foreslo å finne på et navn og et sitat. Det gjør vi ikke. Oppdiktede kundeuttalelser er ulovlig etter markedsføringsloven. Siden sier bare det som er sant: fast avtale med et borettslag i Oslo, besøk to ganger i måneden.
 - [ ] **Terrassebilde** (IMG_20260616_150237_825.jpg) kom på e-post, men kunne ikke lastes ned med verktøyene her. Lagre det i `/tmp/olsen-img/`, så fjerner Claude GPS-data og legger det på `/snekker/`.
 
 ## Fortsatt åpent
-- [ ] **Hva betyr «795 eks. er minste pris i timen»?** Er det vanlig timepris etter nyttår (795 eks. = ca. 994 inkl. mva), eller minstepris per oppdrag? Står ikke på siden før det er avklart.
-- [ ] **Godkjenn pakkeprisene** (1 490 og 2 790 kr inkl. mva). Gjelder de også etter 31.12.2026?
 - [ ] **Før- og etterbilder fra løvjobber** (se under).
 - [ ] **Admin-tilgang til Google-profilen:** be Olsen legge til Anders som administrator, så vi kan sette nettadresse, kategorier, tjenester og bilder.
 
