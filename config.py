@@ -189,7 +189,7 @@ SERVICES = [
         "lead": "Vi klipper hekken, beskjærer busker og frukttrær, feller mindre trær og fjerner stubber, enten med hele roten eller med fres. "
                 "Alt kvist og hageavfall kjører vi bort.",
         "summary": "Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber.",
-        "image": None,
+        "image": ("stubbefresing-oslo", "Olsen freser bort en stubbe i en hage i Oslo", [1080, 800]),
         "panel": "Hekk, busker, små trær og stubber",
         "includes": [
             "Hekkeklipping",
@@ -220,7 +220,9 @@ SERVICES = [
             ("Kan dere ta hekken samtidig med løvryddingen?",
              "Ja, og da sparer du en tur."),
         ],
-        "photos": [],
+        "photos": [
+            ("stubbefresing-oslo", "Stubbefresing i hage i Oslo: stubben freses ned under bakken", [1080, 800]),
+        ],
     },
     {
         "slug": "borettslag",

@@ -24,7 +24,11 @@
 - [x] **Pakkeprisene** (1 490 og 2 790 kr inkl. mva) er godkjent.
 - [x] **Google-bedriftsprofil:** han har allerede en.
 - [x] **Borettslaget:** Olsen foreslo å finne på et navn og et sitat. Det gjør vi ikke. Oppdiktede kundeuttalelser er ulovlig etter markedsføringsloven. Siden sier bare det som er sant: fast avtale med et borettslag i Oslo, besøk to ganger i måneden.
-- [ ] **Terrassebilde** (IMG_20260616_150237_825.jpg) kom på e-post, men kunne ikke lastes ned med verktøyene her. Lagre det i `/tmp/olsen-img/`, så fjerner Claude GPS-data og legger det på `/snekker/`.
+- [ ] **Terrassebilde** (IMG_20260616_150237_825.jpg) kom på e-post, men kunne ikke lastes ned med verktøyene her. Lagre det i Google Drive, så fjerner Claude GPS-data og legger det på `/snekker/`.
+
+## Bilder fra Olsen (27. og 28.10.2026)
+- [x] **Stubbefresing** (skjermbilde fra video, jobb fra Mittanbud, 27.10): lagt inn som bilde for «Hekk & trær» på forsiden og på `/beskjaering-og-trefelling/` (`stubbefresing-oslo`). Svarte kanter er beskåret, og bildet er lagret på nytt uten metadata.
+- [ ] **E-postene «1», «2» og «3» (28.10)** med ni bilder (1952–1986.png) er 6–9 MB hver og for store for Gmail-verktøyet her. Lagre bildene i Google Drive (for eksempel en mappe «Olsen bilder»), så henter Claude dem derfra og legger dem inn. E-postene har ingen tekst, så Claude ser på bildene og plasserer dem etter hva de viser.
 
 ## Fortsatt åpent
 - [x] **Ny timepris 1.1.2027 skjer av seg selv.** Workflowen bygger siden rett etter midnatt 1. januar, og alle priser, FAQ, strukturerte data og `llms.txt` bytter til 993,75 kr inkl. mva. Sjekk olsenskogmann.no/priser/ 1. januar. Google-profilen og Mittanbud må Olsen endre selv.
