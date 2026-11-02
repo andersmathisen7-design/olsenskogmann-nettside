@@ -1,7 +1,8 @@
 ---
 title: Må du søke for å felle et tre i Oslo?
-description: Som regel ikke, men mange større trær i Oslo er vernet i reguleringsplanen. Slik sjekker du, hva grensen på 90 cm betyr, og hva det kan koste å felle ulovlig.
+description: Som regel ikke, men mange større trær i Oslo er vernet i reguleringsplanen. Slik sjekker du, hva grensen på 90 cm betyr, og hva ulovlig felling koster.
 date: 2026-10-17
+updated: 2026-11-02
 order: 4
 tjeneste: beskjaering-og-trefelling
 kort: Som regel trenger du ikke søke for å felle et tre på egen tomt i Oslo. Unntaket er trær som er vernet i reguleringsplanen eller kommuneplanen. Det gjelder ofte trær med stammeomkrets over 90 cm målt én meter over bakken, blant annet i småhusplanen. Sjekk eiendommen i Planinnsyn før du feller. Å felle et vernet tre uten tillatelse kan gi bot og pålegg om å plante nytt.
@@ -47,6 +48,8 @@ Vernede trær kan beskjæres uten søknad når det er vanlig vedlikehold, helst 
 
 Pass også på røttene. Graving nær rotsonen som skader eller dreper treet, kan gi bot.
 
+Har du trær eller hekk mot vei eller fortau, har du også plikt til å klippe dem. Se [hekk mot vei og fortau: kommunens krav](/artikler/hekk-mot-vei-og-fortau/).
+
 ## Hva koster det å felle ulovlig?
 
 | Sak | Reaksjon |
@@ -56,6 +59,10 @@ Pass også på røttene. Graving nær rotsonen som skader eller dreper treet, ka
 | Samme utbygger, Røa, 2023 | Varslet enda høyere gebyr |
 
 Plan- og bygningsetaten får 15–20 saker i året om vernede trær som er felt. I tillegg til bot kan du få pålegg om å plante et nytt tre og ha avtale med en trepleier om vedlikehold.
+
+## Bor du i Lørenskog?
+
+Lørenskog kommune skriver at alle store trær i kommunen er vernet i kommuneplanens arealdel. Da må du søke om dispensasjon før du feller. Kommunen anbefaler også å beskjære og felle mellom 15. september og 15. april, utenom hekketiden. Mindre beskjæring, som å fjerne døde greiner, trenger du ikke søke om.
 
 ## Vi sjekker før vi feller
 
@@ -67,3 +74,4 @@ Vi feller mindre trær og fjerner stubber, med hele roten eller med fres, og vi 
 
 - [Oslo kommune: Byggesøknad for å beskjære eller felle tre på privat eiendom](https://www.oslo.kommune.no/plan-bygg-og-eiendom/skal-du-bygge-rive-eller-endre/ma-du-sende-byggesoknad/beskjare-eller-felle-tre-pa-privat-eiendom/) (lest 17.10.2026)
 - [Oslo kommune, Byplan: Saftige bøter for felling av dyrebare Oslo-trær](https://magasin.oslo.kommune.no/byplan/saftige-b%C3%B8ter-for-felling-av-dyrebare-oslo-tr%C3%A6r) (24.10.2023)
+- [Lørenskog kommune: Felle eller beskjære trær på egen eiendom](https://www.lorenskog.kommune.no/tjenester/regulering-bygg-og-eiendom/skal-du-bygge-rive-eller-endre/ma-du-sende-en-byggesoknad/felle-eller-beskjare-trar-pa-egen-eiendom.133726.aspx) (sjekket 2.11.2026)
