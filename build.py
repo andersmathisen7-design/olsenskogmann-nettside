@@ -293,6 +293,7 @@ def footer():
     <div>
       <img class="footer-logo" src="{url('img/logo.png')}" alt="{e(C.NAME)}" width="640" height="114">
       <p>Enkeltpersonforetak fra {C.BASE_AREA}, {C.CITY}.<br>Org.nr. {C.ORGNR} MVA</p>
+      <p>Laget av <a href="https://nettsideferdig.no/">Nettsideferdig</a></p>
     </div>
     <div>
       <h2>Tjenester</h2>
