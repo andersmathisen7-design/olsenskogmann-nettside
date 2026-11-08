@@ -46,6 +46,8 @@ Vi har fastpris på løvrydding, inkl. mva:
 
 Alt avfall kjøres bort. Ingen startpris eller kjøregebyr. Du kan også betale per time: {{timepris}} Hekkeklipping og beskjæring kan vi ta i samme runde. Se [løvrydding](/lovrydding/#fastpris).
 
+Prisene er de samme i hele området vi dekker: [Alna](/hagearbeid-alna/), [Østensjø](/hagearbeid-ostensjo/), [Nordstrand](/hagearbeid-nordstrand/), [Søndre Nordstrand](/hagearbeid-sondre-nordstrand/), [Stovner](/hagearbeid-stovner/), [Lørenskog](/hagearbeid-lorenskog/) og [Oslo sentrum](/hagearbeid-oslo-sentrum/).
+
 ## Slik får du riktig pris
 
 1. **Send et bilde.** Et bilde av hagen sier mye om hvor lang tid det tar.

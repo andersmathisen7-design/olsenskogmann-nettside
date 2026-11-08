@@ -36,7 +36,7 @@ Når en vaktmester eller et firma leverer hageavfall for et borettslag eller sam
 
 - **Kompost i egen hage.** Løv brytes ned til god jord, men det går sakte. Bland gjerne inn gress eller kjøkkenavfall.
 - **La litt ligge i bedene.** Et tynt lag løv i bedene beskytter jorda gjennom vinteren. Men plenen bør ryddes, for løv som blir liggende på plenen under snøen gir døde flekker og mose til våren.
-- **Få det hentet.** Vil du slippe raking, hengerleie og kjøring, kan du få løvet ryddet og kjørt bort.
+- **Få det hentet.** Vil du slippe raking, hengerleie og kjøring, kan du få løvet ryddet og kjørt bort. Vi rydder løv i [Alna](/hagearbeid-alna/), [Østensjø](/hagearbeid-ostensjo/), [Nordstrand](/hagearbeid-nordstrand/), [Søndre Nordstrand](/hagearbeid-sondre-nordstrand/), [Stovner](/hagearbeid-stovner/), [Lørenskog](/hagearbeid-lorenskog/) og [Oslo sentrum](/hagearbeid-oslo-sentrum/).
 
 [[kontakt]]
 

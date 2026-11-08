@@ -288,6 +288,7 @@ p { margin: 0; text-wrap: pretty; }
 .area-services li { display: grid; gap: 2px; }
 .area-services a { font: 700 1.35rem/1.1 var(--display); }
 .area-services span { color: var(--muted); }
+.service-areas { padding: clamp(40px, 6vw, 64px) 0; }
 .other-areas { padding: 28px 0; background: var(--lichen); font-size: 1rem; }
 
 /* ---------- Artikler ---------- */

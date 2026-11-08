@@ -459,10 +459,21 @@ def page_service(s):
 {packages_section(s['slug'])}
 {faq}
 {related_articles(s['slug'])}
+{service_areas(s)}
 {steps()}
 {contact(s['form_value'])}"""
     return head(s["meta_title"], s["meta_description"], s["slug"] + "/",
                 [business_ld()] + service_ld(s)) + header(s["slug"]) + body + footer()
+
+
+def service_areas(s):
+    """Lenker fra tjenestesiden til bydelssidene, så Google finner dem og ser hvor vi jobber."""
+    links = "".join(f'<li><a href="{url(a["slug"] + "/")}">{e(a["bydel"])}</a></li>' for a in C.AREAS)
+    return f"""<section class="service-areas"><div class="wrap narrow">
+  <h2>{e(s['nav'])} der du bor</h2>
+  <p>Vi holder til på {e(C.BASE_AREA)} og tar oppdrag i disse områdene:</p>
+  <ul class="area-links">{links}</ul>
+</div></section>"""
 
 
 def related_articles(slug):
