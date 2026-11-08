@@ -52,7 +52,7 @@ Du kan laste ned tallene som [CSV-fil](/data/smahus-per-bydel-oslo-2025.csv). Br
 
 ## Bor du i en av bydelene?
 
-Vi holder til på Tveita og tar oppdrag i hele Oslo. Se egne sider for [Alna](/hagearbeid-alna/), [Østensjø](/hagearbeid-ostensjo/), [Nordstrand](/hagearbeid-nordstrand/), [Søndre Nordstrand](/hagearbeid-sondre-nordstrand/) og [Stovner](/hagearbeid-stovner/).
+Vi holder til på Tveita og tar oppdrag i hele Oslo. Se egne sider for [Alna](/hagearbeid-alna/), [Østensjø](/hagearbeid-ostensjo/), [Nordstrand](/hagearbeid-nordstrand/), [Søndre Nordstrand](/hagearbeid-sondre-nordstrand/), [Stovner](/hagearbeid-stovner/) og [Oslo sentrum](/hagearbeid-oslo-sentrum/), og for [Lørenskog](/hagearbeid-lorenskog/) like utenfor Oslo.
 
 [[kontakt]]
 

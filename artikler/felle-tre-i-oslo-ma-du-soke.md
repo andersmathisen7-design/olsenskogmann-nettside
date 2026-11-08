@@ -61,6 +61,8 @@ Plan- og bygningsetaten får 15–20 saker i året om vernede trær som er felt.
 
 Vi feller mindre trær og fjerner stubber, med hele roten eller med fres, og vi kjører alltid bort alt. Før vi feller, ser vi på hvor stort treet er og hva planen sier. Er treet stort eller står nær hus og ledninger, sier vi fra om at det er en jobb for en arborist.
 
+Vi tar trejobber i [Nordstrand](/hagearbeid-nordstrand/), der mange trær står i Nordstrandsskråningen, og i [Østensjø](/hagearbeid-ostensjo/), [Alna](/hagearbeid-alna/), [Søndre Nordstrand](/hagearbeid-sondre-nordstrand/), [Stovner](/hagearbeid-stovner/), [Lørenskog](/hagearbeid-lorenskog/) og [Oslo sentrum](/hagearbeid-oslo-sentrum/).
+
 [[kontakt]]
 
 ## Kilder
