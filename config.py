@@ -185,7 +185,7 @@ SERVICES = [
         "form_value": "Hekk, beskjæring og trær",
         "title": "Hekkeklipping, beskjæring og trefelling i Oslo",
         "meta_title": "Hekkeklipping, beskjæring og stubbefjerning i Oslo | Olsen Skogmann",
-        "meta_description": f"Hekkeklipping, beskjæring av busker og frukttrær, felling av mindre trær og fjerning av stubber i Oslo og Lørenskog. Vi kjører bort alt. {PRICE_HOUR_INC_TEXT} kr/t inkl. mva.",
+        "meta_description": f"Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber i Oslo og Lørenskog. Vi kjører bort alt. {PRICE_HOUR_INC_TEXT} kr/t inkl. mva.",
         "lead": "Vi klipper hekken, beskjærer busker og frukttrær, feller mindre trær og fjerner stubber, enten med hele roten eller med fres. "
                 "Alt kvist og hageavfall kjører vi bort.",
         "summary": "Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber.",
