@@ -1,5 +1,5 @@
 ---
-title: Hvor ligger villaene og rekkehusene i Oslo? Tall per bydel 2025
+title: Villaer og rekkehus i Oslo per bydel (2025)
 description: 84 186 av Oslos boliger er eneboliger, tomannsboliger eller rekkehus. Se hvor mange småhus det er i hver bydel i 2025, med tall fra Oslo kommune.
 date: 2026-10-17
 order: 3
