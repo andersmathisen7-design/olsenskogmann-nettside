@@ -2,6 +2,7 @@
 title: Hva gjør du med løvet i Oslo?
 description: Slik blir du kvitt løvet i Oslo: gratis levering av inntil 3 m³ hageavfall med GjenbruksID, regler for sekker, og hva det koster over 3 m³.
 date: 2026-10-17
+updated: 2026-11-09
 order: 1
 tjeneste: lovrydding
 kort: Bor du i Oslo, kan du levere inntil 3 m³ rent hageavfall, blant annet løv, gratis på kommunens hageavfallsmottak. Du viser GjenbruksID, og leveringen teller ikke mot de 20 gratis leveringene. Svarte og fargede sekker blir avvist, så løvet må være løst eller i klare sekker. Over 3 m³ koster det 295 kr per m³.
@@ -31,6 +32,10 @@ Haraldrud hageavfallsmottak ligger i Brobekkveien 87, 0582 Oslo, og er nærmeste
 ## Bor du i borettslag?
 
 Når en vaktmester eller et firma leverer hageavfall for et borettslag eller sameie, regnes det som næringsavfall. Det koster 285 kr per m³ for vanlig hageavfall, opp til 5 m³. Det samme gjelder for oss når vi kjører bort løv for kunder.
+
+## Bor du i Lørenskog?
+
+Lørenskog hører til ROAF, ikke Oslo kommune, og der er levering av hageavfall gratis med ROAFiD. Se [løv og hageavfall i Lørenskog](/artikler/lov-og-hageavfall-i-lorenskog/).
 
 ## Andre muligheter
 

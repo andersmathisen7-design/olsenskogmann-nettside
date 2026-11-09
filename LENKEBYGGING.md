@@ -33,7 +33,7 @@ Når en profil er klar, legg lenken inn i `PROFILES` i `config.py`. Da kommer de
 
 ## 3. Data som andre kan lenke til
 
-Artikkelen [Hvor ligger villaene og rekkehusene i Oslo?](/artikler/smahus-i-oslo-per-bydel/) har tall som ikke finnes samlet andre steder (småhus per bydel, 2025), og en CSV-fil. Når siden er live:
+Artikkelen [Villaer og rekkehus i Oslo per bydel](/artikler/smahus-i-oslo-per-bydel/) har tall som ikke finnes samlet andre steder (småhus per bydel, 2025), og en CSV-fil. Når siden er live:
 - Tips lokalaviser i Oslo sør og øst (f.eks. Nordstrands Blad og Akers Avis Groruddalen) om at Nordstrand har flest småhus og Søndre Nordstrand flest rekkehus.
 - Tips eiendomsmeglere og boligbloggere som skriver om bydelene.
 - Be om at de oppgir Oslo kommune som kilde og lenker til artikkelen.
