@@ -184,7 +184,7 @@ SERVICES = [
         "nav": "Hekk & trær",
         "form_value": "Hekk, beskjæring og trær",
         "title": "Hekkeklipping, beskjæring og trefelling i Oslo",
-        "meta_title": "Hekkeklipping, beskjæring og stubbefjerning i Oslo | Olsen Skogmann",
+        "meta_title": "Hekk, beskjæring og stubbefjerning i Oslo | Olsen Skogmann",
         "meta_description": f"Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber i Oslo og Lørenskog. Vi kjører bort alt. {PRICE_HOUR_INC_TEXT} kr/t inkl. mva.",
         "lead": "Vi klipper hekken, beskjærer busker og frukttrær, feller mindre trær og fjerner stubber, enten med hele roten eller med fres. "
                 "Alt kvist og hageavfall kjører vi bort.",
@@ -271,7 +271,7 @@ SERVICES = [
         "nav": "Snekker",
         "form_value": "Snekker",
         "title": "Snekker i Oslo",
-        "meta_title": "Snekker i Oslo – terrasse, trapp og plantekasser | Olsen Skogmann",
+        "meta_title": "Snekker i Oslo – terrasse og trapp | Olsen Skogmann",
         "meta_description": "Snekkeroppdrag i Oslo: terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold. Ingen jobb er for liten. Gratis befaring.",
         "lead": "Små og store snekkeroppdrag for privatpersoner, borettslag og bedrifter. "
                 "Ingen jobb er for liten.",
