@@ -2,7 +2,7 @@
 title: Må du søke for å felle et tre i Oslo?
 description: Som regel ikke, men mange større trær i Oslo er vernet i reguleringsplanen. Slik sjekker du, hva grensen på 90 cm betyr, og hva ulovlig felling koster.
 date: 2026-10-17
-updated: 2026-11-02
+updated: 2026-11-16
 order: 4
 tjeneste: beskjaering-og-trefelling
 kort: Som regel trenger du ikke søke for å felle et tre på egen tomt i Oslo. Unntaket er trær som er vernet i reguleringsplanen eller kommuneplanen. Det gjelder ofte trær med stammeomkrets over 90 cm målt én meter over bakken, blant annet i småhusplanen. Sjekk eiendommen i Planinnsyn før du feller. Å felle et vernet tre uten tillatelse kan gi bot og pålegg om å plante nytt.
@@ -66,7 +66,7 @@ Lørenskog kommune skriver at alle store trær i kommunen er vernet i kommunepla
 
 ## Vi sjekker før vi feller
 
-Vi feller mindre trær og fjerner stubber, med hele roten eller med fres, og vi kjører alltid bort alt. Før vi feller, ser vi på hvor stort treet er og hva planen sier. Er treet stort eller står nær hus og ledninger, sier vi fra om at det er en jobb for en arborist.
+Vi feller mindre trær og fjerner stubber, med hele roten eller med fres, og vi kjører alltid bort alt. Usikker på hva som passer for stubben? Les [fjerne stubbe: grave eller frese?](/artikler/fjerne-stubbe-grave-eller-frese/) Før vi feller, ser vi på hvor stort treet er og hva planen sier. Er treet stort eller står nær hus og ledninger, sier vi fra om at det er en jobb for en arborist.
 
 Vi tar trejobber i [Nordstrand](/hagearbeid-nordstrand/), der mange trær står i Nordstrandsskråningen, og i [Østensjø](/hagearbeid-ostensjo/), [Alna](/hagearbeid-alna/), [Søndre Nordstrand](/hagearbeid-sondre-nordstrand/), [Stovner](/hagearbeid-stovner/), [Lørenskog](/hagearbeid-lorenskog/) og [Oslo sentrum](/hagearbeid-oslo-sentrum/).
 
