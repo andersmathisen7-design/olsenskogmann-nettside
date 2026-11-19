@@ -57,6 +57,15 @@ FORM_EMAIL = EMAIL
 # Tom = ingen telling. Hendelsene er beskrevet øverst i src/assets/app.js.
 GOATCOUNTER = "olsenskogmann"
 
+# Besøkstall agentene kan lese (Nettsideferdig-workeren, nettsidebyra: worker/src/statistikk.ts).
+# Siden laster {STATS_URL}/t.js med data-site="{STATS_SITE}". Ingen cookies og ingenting lagres på enheten,
+# bare summer per døgn: visninger per side og kilde (Google, Bing, Facebook, AI-chatene, annonser),
+# og klikk på telefon, SMS, e-post og skjema. Leses med
+#   curl -H "Authorization: Bearer $AGENT_TOKEN" "{STATS_URL}/agent/besok?site=olsenskogmann&dager=28"
+# Siden må stå med "statistikk": true i nettsidebyra/drift/apper.json. Tom STATS_URL = av.
+STATS_URL = "https://sidefabrikken.nettsideferdig.workers.dev"
+STATS_SITE = "olsenskogmann"
+
 # Henvendelsesloggen (Google-ark + Apps Script). Nettapp-adressen som slutter på /exec.
 # Tom = skjemaet sender bare e-post, og eiersiden /admin/ viser hvordan den settes opp.
 # Se henvendelser/README.md.

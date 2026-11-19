@@ -82,9 +82,22 @@ Hendelser som telles:
 
 For hendelser viser kilden (referrer) siden hendelsen skjedde på.
 
+### Tall agentene kan lese (fra 19.11.2026)
+
+Siden laster også `t.js` fra Nettsideferdig-workeren (`STATS_URL` og `STATS_SITE` i `config.py`). Den teller
+visninger per side og kilde (Google, Bing, Facebook, AI-chatene som `ai:chatgpt`, annonser) og klikk på
+telefon (`tel`), SMS (`sms`), e-post (`mailto`), sendt skjema (`skjema`) og skjema nettleseren stoppet
+(`skjema_stopp`). Bare summer per døgn, ingen cookies. Den ukentlige jobben og alle andre agenter henter tallene slik:
+
+```
+curl -s -H "Authorization: Bearer $AGENT_TOKEN" "https://sidefabrikken.nettsideferdig.workers.dev/agent/besok?site=olsenskogmann&dager=28"
+```
+
+GoatCounter står på som før og har de detaljerte hendelsene (hvor på siden det ble trykket).
+
 ## Ukentlig overvåking
 
-En planlagt jobb kjører hver mandag morgen. Den sjekker at alle sider svarer, at lenker og JSON-LD er gyldige og at skjemaet virker (med falsk FormSubmit). Den henter besøkstall fra GoatCounter når det er satt opp, og ser hvor siden står i søk.
+En planlagt jobb kjører hver mandag morgen. Den sjekker at alle sider svarer, at lenker og JSON-LD er gyldige og at skjemaet virker (med falsk FormSubmit). Den henter besøkstall fra workeren (`/agent/besok`, se over) og fra GoatCounter når nøkkelen er satt opp, og ser hvor siden står i søk.
 I sesongen skriver den også én ny artikkel i uka med kilder. Funn og forbedringer kommer som en pull request med `ukesrapporter/<dato>.md`. Godkjenn de du er enig i.
 
 ## Gå live på olsenskogmann.no

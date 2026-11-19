@@ -172,6 +172,8 @@ def head(title, desc, path, ld, noindex=False):
     lds = "\n".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
     gc = (f'<script data-goatcounter="https://{C.GOATCOUNTER}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>'
           if C.GOATCOUNTER else "")
+    if C.STATS_URL:
+        gc += f'\n<script src="{e(C.STATS_URL)}/t.js" data-site="{e(C.STATS_SITE)}" defer></script>'
     return f"""<!doctype html>
 <html lang="nb">
 <head>
