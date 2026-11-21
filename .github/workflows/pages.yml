@@ -33,6 +33,7 @@ jobs:
           echo "SITE_URL=https://olsenskogmann.no" >> "$GITHUB_ENV"
           echo "BASE_PATH=" >> "$GITHUB_ENV"
           echo "NOINDEX=0" >> "$GITHUB_ENV"
+      - run: python3 test_innhold.py
       - run: python3 build.py
       - uses: peaceiris/actions-gh-pages@v4
         with:

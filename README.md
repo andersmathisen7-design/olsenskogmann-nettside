@@ -1,7 +1,7 @@
 # Olsen Skogmann – ny nettside (testversjon)
 
 Dette er en rask, statisk nettside for Olsen Skogmann – Hage & Bygg i Oslo. Den er bygget for lokalt søk på Google og for KI-søk som ChatGPT og Perplexity.
-Oppsettet er det samme som på follobjorkeved.no: Python-bygg, innholdet i `config.py`, artikler i Markdown, FormSubmit, GoatCounter og publisering med GitHub Actions.
+Oppsettet er det samme som på follobjorkeved.no: Python-bygg, innholdet i `config.py` og `innhold.json`, artikler i Markdown, FormSubmit, GoatCounter og publisering med GitHub Actions.
 
 **Test:** https://andersmathisen7-design.github.io/olsenskogmann-nettside/
 Testsiden er skjult for Google med `noindex` og `robots.txt`, så den ikke konkurrerer med olsenskogmann.no.
@@ -39,14 +39,16 @@ Andre SEO-grep:
 - IndexNow varsler Bing om alle sider ved hver publisering, men bare når siden er live (`NOINDEX=0`).
 
 Valgene bak siden:
-- **Én tydelig sak øverst.** Sesongtilbudet ligger i `SEASON` i `config.py`. Bytt det når sesongen skifter, for eksempel til vårrydding.
+- **Én tydelig sak øverst.** Sesongtilbudet ligger i `SEASON` i `innhold.json`. Bytt det når sesongen skifter, for eksempel til vårrydding.
 - **Egne sider per tjeneste og bydel.** Google rangerer én side per tema.
 - **Ring og SMS er alltid synlige på mobil.** 51,5 % av trafikken i Norge er mobil (StatCounter, september 2026).
 - **Vurderingene fra Mittanbud står øverst.** 47 % velger bort en bedrift med under 20 vurderinger (BrightLocal 2026).
 
 ## Endre tekst
 
-Alt innhold ligger i **`config.py`**: telefon, tjenester, bydeler, FAQ og sesongtilbud. Design ligger i `src/assets/style.css`.
+Tekstene på siden (sesongtilbud, fastpris på løvrydding, tjenester med FAQ, stegene, «om oss» og bydelssidene) ligger i **`innhold.json`**. Telefon, e-post, org.nr., timepris og alt annet ligger i **`config.py`**.
+
+**Endringer Olsen ber om på e-post** gjør Nettsideferdig i `innhold.json`, og ingen andre filer: koden sjekker at bare tekst endres (aldri tall, adresser eller bilder), Olsen ser hva som endres og publiserer selv med lenken i e-posten, og koden lagrer fila her på `main`. `{PRICE_SHORT}`, `{PRICE_HOUR_SENTENCE}` og `{PRICE_HOUR_INC_TEXT}` i teksten byttes med timeprisen fra `config.py`. `python3 test_innhold.py` sjekker fila. Design ligger i `src/assets/style.css`.
 
 ```bash
 python3 build.py                                               # bygger til public/

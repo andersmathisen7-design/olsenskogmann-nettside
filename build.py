@@ -892,9 +892,9 @@ def main():
         robots = f"User-agent: *\nAllow: /\n\nSitemap: {abs_url('sitemap.xml')}\n"
     write("robots.txt", robots)
     # lastmod skal være når innholdet sist ble endret, ikke byggedatoen. Ellers slutter Google å stole på den.
-    # Sidene lages fra config.py og build.py, så de får datoen for siste commit som endret dem.
+    # Sidene lages fra config.py, innhold.json og build.py, så de får datoen for siste commit som endret dem.
     # Artiklene får «updated» fra Markdown-hodet.
-    site_mod = git_date("config.py", "build.py")
+    site_mod = git_date("config.py", "innhold.json", "build.py")
     if not C.INTRO:  # prisene byttet 1.1.2027 uten ny commit
         site_mod = max(site_mod, C.PRICE_REGULAR_FROM)
     newest = max([site_mod] + [a["updated"] for a in arts])
