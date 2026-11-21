@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://olsenskogmann.no/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://olsenskogmann.no/snomaking/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://olsenskogmann.no/hagearbeid/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://olsenskogmann.no/snekker/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://olsenskogmann.no/betong-og-mur/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://olsenskogmann.no/sveising/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://olsenskogmann.no/drenering/</loc><lastmod>2026-11-21</lastmod></url>
   <url><loc>https://olsenskogmann.no/lovrydding/</loc><lastmod>2026-11-21</lastmod></url>
   <url><loc>https://olsenskogmann.no/beskjaering-og-trefelling/</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://olsenskogmann.no/borettslag/</loc><lastmod>2026-11-21</lastmod></url>
-  <url><loc>https://olsenskogmann.no/snekker/</loc><lastmod>2026-11-21</lastmod></url>
   <url><loc>https://olsenskogmann.no/stein-og-hage/</loc><lastmod>2026-11-21</lastmod></url>
   <url><loc>https://olsenskogmann.no/rens-av-stein/</loc><lastmod>2026-11-21</lastmod></url>
   <url><loc>https://olsenskogmann.no/priser/</loc><lastmod>2026-11-21</lastmod></url>
@@ -22,4 +26,5 @@
   <url><loc>https://olsenskogmann.no/artikler/felle-tre-i-oslo-ma-du-soke/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://olsenskogmann.no/artikler/hekk-mot-vei-og-fortau/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://olsenskogmann.no/artikler/lov-og-hageavfall-i-lorenskog/</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://olsenskogmann.no/artikler/feste-hyller-og-bilder-i-betong-og-mur/</loc><lastmod>2026-11-21</lastmod></url>
 </urlset>
