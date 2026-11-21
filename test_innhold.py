@@ -9,7 +9,7 @@ import sys
 
 ROT = os.path.dirname(os.path.abspath(__file__))
 KJENTE = {"{PRICE_SHORT}", "{PRICE_HOUR_SENTENCE}", "{PRICE_HOUR_INC_TEXT}"}
-NOKLER = {"SEASON", "PACKAGES", "NEAR_AREAS", "SERVICES", "STEPS", "ABOUT", "AREAS"}
+NOKLER = {"SEASON", "PACKAGES", "NEAR_AREAS", "SERVICES", "STEPS", "ABOUT", "AREAS", "REVIEWS"}
 
 
 def tekster(v):

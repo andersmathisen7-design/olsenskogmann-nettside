@@ -35,8 +35,10 @@ BASE_AREA = "Tveita"
 POSTCODE = "0669"
 CITY = "Oslo"
 
-# Mittanbud: sjekket på profilen 24.10.2026 (org.nr. 835 391 752, 0669 Oslo): 42 vurderinger, 5,0.
-MITTANBUD_RATING = "5,0"
+# Mittanbud: sjekket på profilen 24.10.2026 (org.nr. 835 391 752, 0669 Oslo): 42 vurderinger. Snitt 4,9 (Olsen 20.11.2026).
+# Google: 5 av 5 (Olsen 20.11.2026).
+GOOGLE_RATING = "5"
+MITTANBUD_RATING = "4,9"
 MITTANBUD_COUNT = 42
 MITTANBUD_URL = "https://mittanbud.no/bedrift/9242603"
 
@@ -73,7 +75,8 @@ STATS_SITE = "olsenskogmann"
 LEADS_URL = ""
 
 # Pris (bekreftet av Olsen 17.10.2026: timepris eller fastpris, introduksjonspris 600 kr eks. mva).
-# Priser til forbrukere skal vises med mva (prisopplysningsforskriften), derfor står inkl. mva først.
+# Priser til forbrukere skal vises med mva (prisopplysningsforskriften): tallene på siden er med mva.
+# Olsen 20.11.2026: «fjerne all pris inkl. mva og gjør om til bare pris med tall», så ordene «inkl. mva» står ikke lenger.
 # Introduksjonsprisen gjelder til og med 31.12.2026 (Olsen 23.10.2026).
 # Fra 1.1.2027 er vanlig timepris 795 kr eks. mva (Olsen 23.10.2026, bekreftet av Anders 24.10.2026).
 # Siden bytter pris av seg selv: workflowen bygger siden rett etter midnatt 1.1.2027 (se pages.yml).
@@ -92,13 +95,13 @@ if INTRO:
     PRICE_HOUR_EX, PRICE_HOUR_INC, PRICE_HOUR_INC_TEXT = 600, 750, "750"
 else:
     PRICE_HOUR_EX, PRICE_HOUR_INC, PRICE_HOUR_INC_TEXT = PRICE_REGULAR_EX, PRICE_REGULAR_INC, PRICE_REGULAR_INC_TEXT
-PRICE_TEXT = f"{PRICE_HOUR_INC_TEXT} kr i timen inkl. mva"
+PRICE_TEXT = f"{PRICE_HOUR_INC_TEXT} kr i timen"
 # Kort: brukes i ingresser. Lang: hele setningen om timepris, brukt i FAQ, artikler og llms.txt.
 PRICE_SHORT = f"{PRICE_TEXT} (introduksjonspris til {PRICE_INTRO_UNTIL_TEXT})" if INTRO else PRICE_TEXT
 PRICE_HOUR_SENTENCE = (
-    f"{PRICE_TEXT} ({PRICE_HOUR_EX} kr eks. mva), introduksjonspris til {PRICE_INTRO_UNTIL_TEXT}. "
-    f"Fra {PRICE_REGULAR_FROM_TEXT} er timeprisen {PRICE_REGULAR_INC_TEXT} kr inkl. mva ({PRICE_REGULAR_EX} kr eks. mva)."
-    if INTRO else f"{PRICE_TEXT} ({PRICE_HOUR_EX} kr eks. mva).")
+    f"{PRICE_TEXT}, introduksjonspris til {PRICE_INTRO_UNTIL_TEXT}. "
+    f"Fra {PRICE_REGULAR_FROM_TEXT} er timeprisen {PRICE_REGULAR_INC_TEXT} kr."
+    if INTRO else f"{PRICE_TEXT}.")
 
 # ---------------------------------------------------------------------------
 # Tekstene på siden: sesongtilbud, fastpris på løvrydding, områder, tjenester,
@@ -140,6 +143,10 @@ SERVICES = _INNHOLD["SERVICES"]
 STEPS = _INNHOLD["STEPS"]
 ABOUT = _INNHOLD["ABOUT"]
 AREAS = _INNHOLD["AREAS"]
+REVIEWS = _INNHOLD["REVIEWS"]
+
+# Sider som er tatt bort, med videresending til forsiden (build.py: page_redirect).
+REMOVED_PAGES = ["borettslag"]
 
 
 # ---------------------------------------------------------------------------

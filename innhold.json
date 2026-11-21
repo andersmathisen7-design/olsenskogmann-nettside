@@ -1,9 +1,9 @@
 {
   "SEASON": {
-    "slug": "lovrydding",
-    "tag": "Høstsesong i Oslo",
-    "title": "Løvrydding før snøen kommer",
-    "lead": "Vi blåser løvet fra plen, bed, terrasse og innkjørsel, og kjører bort alt hageavfallet. Hekken og buskene kan vi ta i samme runde. Fastpris fra 1 490 kr inkl. mva, eller {PRICE_SHORT}."
+    "slug": "snomaking",
+    "tag": "Vintersesong i Oslo",
+    "title": "Snømåking i Oslo",
+    "lead": "Vi måker snø fra innkjørsel, trapper, gangveier og parkering, for villa, rekkehus og bedrifter. Send et bilde på SMS, så får du en pris."
   },
   "PACKAGES": {
     "service": "lovrydding",
@@ -47,6 +47,373 @@
   ],
   "SERVICES": [
     {
+      "slug": "snomaking",
+      "nav": "Snømåking",
+      "form_value": "Snømåking",
+      "title": "Snømåking i Oslo",
+      "meta_title": "Snømåking i Oslo | Olsen Skogmann",
+      "meta_description": "Snømåking av innkjørsel, trapper, gangveier og parkering i Oslo og Lørenskog. Send et bilde på SMS, så får du en pris. Ring 455 02 162.",
+      "lead": "Vi måker snø fra innkjørsel, trapper, gangveier og parkering, så du kommer trygt ut og inn. For villa, rekkehus og bedrifter i Oslo.",
+      "summary": "Snømåking av innkjørsel, trapper, gangveier og parkering.",
+      "image": null,
+      "includes": [
+        "Innkjørsel og garasjeplass",
+        "Trapper og inngangsparti",
+        "Gangveier rundt huset",
+        "Parkering og uteområder for bedrifter"
+      ],
+      "for_whom": [
+        [
+          "Villa og rekkehus",
+          "Innkjørselen, trappen og veien fram til døra."
+        ],
+        [
+          "Bedrifter",
+          "Parkering, inngangsparti og gangveier."
+        ]
+      ],
+      "sections": [
+        [
+          "Når kommer dere?",
+          "Ring eller send SMS når snøen har kommet, så avtaler vi når vi kommer. Vil du ha hjelp flere ganger i løpet av vinteren, sier du fra om det."
+        ],
+        [
+          "Hva koster det?",
+          "Prisen avhenger av hvor stort området er og hvor mye snø det er. Send et bilde på SMS, så får du prisen før vi starter."
+        ]
+      ],
+      "faq": [
+        [
+          "Må jeg være hjemme mens dere måker?",
+          "Nei. Vi avtaler tid på forhånd og gir beskjed når vi er ferdige."
+        ],
+        [
+          "Måker dere for bedrifter?",
+          "Ja. Vi måker parkering, inngangsparti og gangveier for bedrifter i Oslo."
+        ]
+      ],
+      "photos": [],
+      "in_nav": true,
+      "in_index": true
+    },
+    {
+      "slug": "hagearbeid",
+      "nav": "Hage",
+      "form_value": "Hagearbeid",
+      "title": "Hagearbeid i Oslo",
+      "meta_title": "Hagearbeid i Oslo | Olsen Skogmann",
+      "meta_description": "Hekkeklipping, beskjæring, trefelling, stubbefresing, løvrydding og rens av stein i Oslo og Lørenskog. Vi kjører bort alt hageavfall.",
+      "lead": "Vi klipper hekk, beskjærer busker og trær, feller mindre trær, fjerner stubber, rydder løv og spyler stein og skifer rene. Alt hageavfall kjører vi bort.",
+      "summary": "Hekk, beskjæring, trær, stubber, løvrydding og rens av stein.",
+      "image": [
+        "steinrens-terrasse-oslo",
+        "Skiferterrasse spylt ren med høytrykksspyler",
+        [
+          1600,
+          800
+        ]
+      ],
+      "includes": [
+        "Hekkeklipping og beskjæring",
+        "Felling av mindre trær og fjerning av stubber",
+        "Løvrydding om høsten",
+        "Rens av belegningsstein og skifer",
+        "Bortkjøring av alt hageavfall"
+      ],
+      "for_whom": [
+        [
+          "Villa og rekkehus",
+          "Hele hagen, eller bare det som må gjøres nå."
+        ],
+        [
+          "Bedrifter",
+          "Uteområder, hekker, gangveier og steinbelegg."
+        ]
+      ],
+      "sections": [
+        [
+          "Én runde for hele hagen",
+          "Hekk, busker, løv og stein kan vi ta i samme runde, så slipper du flere avtaler. Du får prisen før vi starter."
+        ],
+        [
+          "Rens av stein og skifer",
+          "Vi spyler terrasser, gangveier og trapper i stein og skifer rene for mose og skitt med høytrykksspyler."
+        ]
+      ],
+      "faq": [
+        [
+          "Tar dere med hageavfallet?",
+          "Ja, alltid. Vi kjører bort alt hageavfallet, så du slipper sekker i hagen."
+        ],
+        [
+          "Må jeg være hjemme mens dere jobber?",
+          "Nei. Vi avtaler dag på forhånd og gir beskjed når vi er ferdige."
+        ]
+      ],
+      "photos": [
+        [
+          "steinrens-terrasse-oslo",
+          "Skiferterrasse spylt ren med høytrykksspyler",
+          [
+            1600,
+            800
+          ]
+        ]
+      ],
+      "in_nav": true,
+      "in_index": true
+    },
+    {
+      "slug": "snekker",
+      "nav": "Snekker",
+      "form_value": "Snekker",
+      "title": "Snekker i Oslo",
+      "meta_title": "Snekker i Oslo – terrasse, trapp og plantekasser | Olsen Skogmann",
+      "meta_description": "Snekkeroppdrag i Oslo: terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold. Ingen jobb er for liten. Gratis befaring.",
+      "lead": "Små og store snekkeroppdrag for privatpersoner, borettslag og bedrifter. Ingen jobb er for liten.",
+      "summary": "Terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold.",
+      "image": [
+        "utvendig-trapp-tre",
+        "Ny utvendig trapp i trykkimpregnert tre ved inngangsparti",
+        [
+          1203,
+          800
+        ]
+      ],
+      "includes": [
+        "Ny terrasse eller utbedring av gammel",
+        "Utvendige trapper",
+        "Plantekasser og benker",
+        "Innvendige løsninger",
+        "Vedlikehold og reparasjoner"
+      ],
+      "for_whom": [],
+      "sections": [
+        [
+          "Slik jobber vi",
+          "Vi ser på jobben sammen med deg, foreslår en løsning og gir deg prisen før vi starter. Du snakker med den som gjør jobben, hele veien."
+        ]
+      ],
+      "faq": [],
+      "photos": [
+        [
+          "ny-terrasse-snekker",
+          "Ny terrasse i trykkimpregnert tre",
+          [
+            1600,
+            800
+          ]
+        ],
+        [
+          "utvendig-trapp-tre",
+          "Ny utvendig trapp i tre",
+          [
+            1203,
+            800
+          ]
+        ],
+        [
+          "plantekasse-terrasse-oslo",
+          "Plantekasse i tre på terrasse i borettslag, plantet med hortensia og lavendel",
+          [
+            1600,
+            800
+          ]
+        ]
+      ],
+      "in_index": true
+    },
+    {
+      "slug": "betong-og-mur",
+      "nav": "Betong & mur",
+      "form_value": "Betong og mur",
+      "title": "Betong og mur i Oslo: renner, sluk og reparasjoner",
+      "meta_title": "Betong og mur i Oslo | Olsen Skogmann",
+      "meta_description": "Dreneringsrenner og sluk i betong mot vann som blir stående, og reparasjon av sprekker og ødelagte kanter i betong og mur i Oslo.",
+      "lead": "Vi støper betongflater med dreneringsrenne eller sluk der vannet blir stående, og reparerer sprekker og ødelagte kanter i betong og mur. Enkle, avgrensede jobber.",
+      "summary": "Dreneringsrenner og sluk i betong, og reparasjon av sprekker og kanter.",
+      "image": [
+        "dreneringsrenne-trapp",
+        "Ny betongflate med dreneringsrenne foran en kjellerdør",
+        [
+          1600,
+          800
+        ]
+      ],
+      "includes": [
+        "Betongflater med dreneringsrenne",
+        "Sluk og renner der vannet blir stående",
+        "Reparasjon av sprekker i betong og mur",
+        "Reparasjon av ødelagte kanter på trapper og grunnmur"
+      ],
+      "for_whom": [
+        [
+          "Villa og rekkehus",
+          "Kjellertrapper, innkjørsler og inngangspartier der vannet samler seg."
+        ],
+        [
+          "Bedrifter",
+          "Små reparasjoner av betong og mur på bygg og uteområder."
+        ]
+      ],
+      "sections": [
+        [
+          "Vann som blir stående",
+          "Blir vannet stående foran en dør eller nederst i en trapp, kan en renne eller et sluk i betongen lede det bort. Vi støper flaten med fall mot renna."
+        ],
+        [
+          "Sprekker og ødelagte kanter",
+          "Sprekker i betong og mur og kanter som har falt av, slipper inn vann. Når vannet fryser, blir skaden større. Vi fyller sprekkene og bygger opp kantene igjen."
+        ]
+      ],
+      "faq": [
+        [
+          "Tar dere store betongjobber?",
+          "Vi tar mindre, avgrensede jobber som renner, sluk og reparasjoner. Send et bilde på SMS, så sier vi om det er en jobb for oss."
+        ]
+      ],
+      "photos": [
+        [
+          "dreneringsrenne-trapp",
+          "Betongflate med dreneringsrenne foran en kjellerdør",
+          [
+            1600,
+            800
+          ]
+        ]
+      ],
+      "in_nav": true,
+      "in_index": true
+    },
+    {
+      "slug": "sveising",
+      "nav": "Sveising",
+      "form_value": "Sveising",
+      "title": "Sveising og små metallreparasjoner i Oslo",
+      "meta_title": "Sveising i Oslo – små reparasjoner | Olsen Skogmann",
+      "meta_description": "Sveising av løse rekkverk, gelender, gjerdestolper, porter og andre enkle metallkonstruksjoner i Oslo. Vi reparerer på stedet.",
+      "lead": "Har du et løst gelender, en gjerdestolpe som har knekt, eller en port som ikke henger som den skal? Vi tar de små sveisejobbene og reparerer på stedet.",
+      "summary": "Små sveisejobber: rekkverk, gelender, gjerdestolper og porter.",
+      "image": [
+        "sveising-rekkverk",
+        "Olsen sveiser en stolpe til et rekkverk ved en utetrapp",
+        [
+          1280,
+          800
+        ]
+      ],
+      "includes": [
+        "Sveising av stål, støpejern og aluminium",
+        "Reparasjon og forsterkning av rekkverk, gelender og trapper",
+        "Gjerdestolper og porter",
+        "Utskifting av ødelagte deler"
+      ],
+      "for_whom": [
+        [
+          "Villa og rekkehus",
+          "Rekkverk, gelender, porter og gjerder."
+        ],
+        [
+          "Bedrifter",
+          "Små reparasjoner på rekkverk, porter og trapper."
+        ]
+      ],
+      "sections": [
+        [
+          "De små jobbene",
+          "Det kan være vanskelig å finne noen som vil ta de mindre sveisejobbene. Det er de vi tar: en trapp, et balkongrekkverk, en hageport eller andre enkle metallkonstruksjoner."
+        ],
+        [
+          "Trygt og holdbart",
+          "Vi sveiser med mobilt utstyr og reparerer der det står. Det viktigste er at det blir trygt og holder."
+        ]
+      ],
+      "faq": [
+        [
+          "Tar dere store sveisejobber?",
+          "Nei. Vi tar små reparasjoner og enkle sveisejobber som kan gjøres på stedet. Send et bilde på SMS, så sier vi om det er en jobb for oss."
+        ]
+      ],
+      "photos": [
+        [
+          "sveising-rekkverk",
+          "Sveising av en rekkverksstolpe ved en utetrapp",
+          [
+            1280,
+            800
+          ]
+        ]
+      ],
+      "in_nav": true,
+      "in_index": true
+    },
+    {
+      "slug": "drenering",
+      "nav": "Drenering",
+      "form_value": "Drenering",
+      "title": "Drenering og vannproblemer rundt huset i Oslo",
+      "meta_title": "Drenering i Oslo | Olsen Skogmann",
+      "meta_description": "Vann mot grunnmuren eller i kjelleren? Vi ser på hvor vannet kommer fra, og tar renner, sluk og mindre dreneringsjobber i Oslo.",
+      "lead": "Står vannet mot grunnmuren, eller blir det vått i kjelleren? Vi ser på hvor vannet kommer fra og sier hva som må gjøres.",
+      "summary": "Vannproblemer rundt huset: renner, sluk og drenering.",
+      "image": [
+        "drenering-grunnmur",
+        "Drenering langs grunnmuren med knasteplate, fiberduk og pukk",
+        [
+          1600,
+          800
+        ]
+      ],
+      "includes": [
+        "Befaring: hvor kommer vannet fra?",
+        "Renner og sluk som leder vannet bort",
+        "Mindre dreneringsjobber rundt huset",
+        "Større drenering rundt grunnmuren gjennom en samarbeidspartner"
+      ],
+      "for_whom": [
+        [
+          "Villa og rekkehus",
+          "Vått i kjelleren, vann mot grunnmuren eller vann som blir stående i hagen."
+        ]
+      ],
+      "sections": [
+        [
+          "Slik gjøres drenering",
+          "Ved drenering rundt grunnmuren graves det ned til fundamentet. Grunnmuren får knasteplate, og det legges drensrør i pukk med fiberduk rundt, så vannet ledes bort fra huset."
+        ],
+        [
+          "Små og store jobber",
+          "Mindre jobber, som renner og sluk, gjør vi selv. Full drenering rundt huset krever gravemaskin. Den jobben setter vi deg i kontakt med en samarbeidspartner for."
+        ]
+      ],
+      "faq": [
+        [
+          "Hva koster drenering?",
+          "Det avhenger av hvor mye som må graves. Send et bilde på SMS, så tar vi en gratis befaring."
+        ]
+      ],
+      "photos": [
+        [
+          "drenering-grunnmur",
+          "Grunnmur med knasteplate, fiberduk og pukk",
+          [
+            1600,
+            800
+          ]
+        ],
+        [
+          "drenering-groft",
+          "Grøft med pukk i bunnen før drensrøret legges",
+          [
+            1280,
+            800
+          ]
+        ]
+      ],
+      "in_nav": false,
+      "in_index": true
+    },
+    {
       "slug": "lovrydding",
       "nav": "Løvrydding",
       "form_value": "Løvrydding",
@@ -89,13 +456,13 @@
         ],
         [
           "Hva koster det?",
-          "Fastpris fra 1 490 kr inkl. mva for en liten hage, se prisene under. Eller {PRICE_HOUR_SENTENCE} Send et bilde av hagen på SMS, så får du en pris. Befaringen er gratis, og du får prisen før vi starter."
+          "Fastpris fra 1 490 kr for en liten hage, se prisene under. Eller {PRICE_HOUR_SENTENCE} Send et bilde av hagen på SMS, så får du en pris. Befaringen er gratis, og du får prisen før vi starter."
         ]
       ],
       "faq": [
         [
           "Hva koster løvrydding hos dere?",
-          "Liten hage (rekkehus eller liten tomt) koster 1 490 kr og vanlig hage (enebolig eller tomannsbolig) 2 790 kr, inkl. mva. Stor hage får fast pris på forhånd etter bilde på SMS. Alt avfall kjøres bort, og det er ingen startpris eller kjøregebyr. Du kan også betale per time: {PRICE_HOUR_SENTENCE}"
+          "Liten hage (rekkehus eller liten tomt) koster 1 490 kr og vanlig hage (enebolig eller tomannsbolig) 2 790 kr. Stor hage får fast pris på forhånd etter bilde på SMS. Alt avfall kjøres bort, og det er ingen startpris eller kjøregebyr. Du kan også betale per time: {PRICE_HOUR_SENTENCE}"
         ],
         [
           "Må jeg være hjemme mens dere jobber?",
@@ -118,7 +485,9 @@
           "Ja. Vi har fast avtale med et borettslag i Oslo i dag og kommer dit to ganger i måneden. Det kan ditt borettslag også få."
         ]
       ],
-      "photos": []
+      "photos": [],
+      "in_nav": false,
+      "in_index": false
     },
     {
       "slug": "beskjaering-og-trefelling",
@@ -126,7 +495,7 @@
       "form_value": "Hekk, beskjæring og trær",
       "title": "Hekkeklipping, beskjæring og trefelling i Oslo",
       "meta_title": "Hekkeklipping, beskjæring og stubbefjerning i Oslo | Olsen Skogmann",
-      "meta_description": "Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber i Oslo og Lørenskog. Vi kjører bort alt. {PRICE_HOUR_INC_TEXT} kr/t inkl. mva.",
+      "meta_description": "Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber i Oslo og Lørenskog. Vi kjører bort alt. {PRICE_HOUR_INC_TEXT} kr/t.",
       "lead": "Vi klipper hekken, beskjærer busker og frukttrær, feller mindre trær og fjerner stubber, enten med hele roten eller med fres. Alt kvist og hageavfall kjører vi bort.",
       "summary": "Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber.",
       "image": [
@@ -187,129 +556,9 @@
             800
           ]
         ]
-      ]
-    },
-    {
-      "slug": "borettslag",
-      "nav": "Borettslag",
-      "form_value": "Fast avtale for borettslag/sameie",
-      "title": "Fast avtale for borettslag og sameier",
-      "meta_title": "Fast uteavtale for borettslag og sameier i Oslo | Olsen Skogmann",
-      "meta_description": "Fast avtale om løvrydding, hekk, rydding og rens av stein for borettslag og sameier i Oslo og Lørenskog. Én kontaktperson og faste besøk. Gratis befaring.",
-      "lead": "Vi har i dag fast avtale med et borettslag i Oslo og kommer dit to ganger i måneden. Det samme kan styret i ditt borettslag eller sameie få: én kontaktperson og faste besøk hele året.",
-      "summary": "Faste besøk for uteområdet: løv, hekk, rydding og rens av stein.",
-      "image": [
-        "plantekasse-terrasse-oslo",
-        "Plantekasse på felles terrasse, plantet med hortensia og lavendel",
-        [
-          1600,
-          800
-        ]
       ],
-      "in_index": false,
-      "includes": [
-        "Løvrydding høst og vår",
-        "Hekkeklipping og beskjæring",
-        "Rydding av gangveier, bed og lekeplasser",
-        "Rens av belegningsstein, trapper og murer",
-        "Benker, plantekasser og små reparasjoner",
-        "Bortkjøring av alt hageavfall"
-      ],
-      "for_whom": [
-        [
-          "Borettslag og sameier",
-          "Fellesarealer, gangveier, lekeplasser og bed."
-        ],
-        [
-          "Bakgårder i indre by",
-          "Plantekasser, bed og steinbelegg som skal holdes i stand."
-        ],
-        [
-          "Næringseiendom",
-          "Inngangsparti, parkering og grøntarealer."
-        ]
-      ],
-      "sections": [
-        [
-          "Hvorfor fast avtale?",
-          "Styret slipper å bestille hver jobb for seg og hente nye tilbud. Vi kjenner uteområdet, ser hva som trengs, og gir beskjed før noe blir et problem."
-        ],
-        [
-          "Slik kommer vi i gang",
-          "Vi tar en gratis befaring med styret, lager en enkel plan for året og gir pris før vi starter."
-        ]
-      ],
-      "faq": [
-        [
-          "Hvor ofte kommer dere?",
-          "Det avtaler vi med styret. Hos borettslaget vi har i dag, kommer vi to ganger i måneden."
-        ],
-        [
-          "Kjører dere bort hageavfallet?",
-          "Ja, alltid. Styret trenger ikke ordne container eller levering."
-        ]
-      ],
-      "photos": [
-        [
-          "plantekasse-terrasse-oslo",
-          "Plantekasse på felles terrasse",
-          [
-            1600,
-            800
-          ]
-        ]
-      ]
-    },
-    {
-      "slug": "snekker",
-      "nav": "Snekker",
-      "form_value": "Snekker",
-      "title": "Snekker i Oslo",
-      "meta_title": "Snekker i Oslo – terrasse, trapp og plantekasser | Olsen Skogmann",
-      "meta_description": "Snekkeroppdrag i Oslo: terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold. Ingen jobb er for liten. Gratis befaring.",
-      "lead": "Små og store snekkeroppdrag for privatpersoner, borettslag og bedrifter. Ingen jobb er for liten.",
-      "summary": "Terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold.",
-      "image": [
-        "utvendig-trapp-tre",
-        "Ny utvendig trapp i trykkimpregnert tre ved inngangsparti",
-        [
-          1203,
-          800
-        ]
-      ],
-      "includes": [
-        "Ny terrasse eller utbedring av gammel",
-        "Utvendige trapper",
-        "Plantekasser og benker",
-        "Innvendige løsninger",
-        "Vedlikehold og reparasjoner"
-      ],
-      "for_whom": [],
-      "sections": [
-        [
-          "Slik jobber vi",
-          "Vi ser på jobben sammen med deg, foreslår en løsning og gir deg prisen før vi starter. Du snakker med den som gjør jobben, hele veien."
-        ]
-      ],
-      "faq": [],
-      "photos": [
-        [
-          "utvendig-trapp-tre",
-          "Ny utvendig trapp i tre",
-          [
-            1203,
-            800
-          ]
-        ],
-        [
-          "plantekasse-terrasse-oslo",
-          "Plantekasse i tre på terrasse i borettslag, plantet med hortensia og lavendel",
-          [
-            1600,
-            800
-          ]
-        ]
-      ]
+      "in_nav": false,
+      "in_index": false
     },
     {
       "slug": "stein-og-hage",
@@ -360,7 +609,9 @@
             800
           ]
         ]
-      ]
+      ],
+      "in_nav": false,
+      "in_index": false
     },
     {
       "slug": "rens-av-stein",
@@ -413,7 +664,8 @@
             800
           ]
         ]
-      ]
+      ],
+      "in_index": false
     }
   ],
   "STEPS": [
@@ -635,6 +887,29 @@
         "Bakgårder og sameier",
         "Bare 4 prosent av boligene i indre by er småhus. Til gjengjeld er det over 150 000 leiligheter i blokk og bygård, og mange sameier har bakgård med bed, plantekasser, trær og steinbelegg som skal holdes i stand. Vi rydder løv, klipper, spyler stein og bygger plantekasser, og kjører bort alt avfallet."
       ]
+    }
+  ],
+  "REVIEWS": [
+    {
+      "title": "Rehabilitering av skifertrapp og murpuss",
+      "text": "Pålitelig, rask og god service.",
+      "rating": "5",
+      "name": "Gerd Aasland",
+      "source": "Google"
+    },
+    {
+      "title": "Oppsett av gjerde i hagen",
+      "text": "Vi fikk hjelp av Fredrik til å sette opp gjerde i hagen, og er kjempefornøyd med arbeidet han har gjort. Han er grundig i arbeidet sitt, og er veldig hyggelig å samarbeide med. Kan absolutt anbefales :)",
+      "rating": "5",
+      "name": "Hege",
+      "source": "Mittanbud"
+    },
+    {
+      "title": "Pigging av baderomsgulv",
+      "text": "Jobben ble utført utmerket og iht avtalen.",
+      "rating": "5",
+      "name": "Javeed",
+      "source": "Mittanbud"
     }
   ]
 }

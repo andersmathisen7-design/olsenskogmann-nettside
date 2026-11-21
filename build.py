@@ -72,7 +72,7 @@ def business_ld():
         "alternateName": f"{C.NAME} – {C.TAGLINE}",
         "url": abs_url(),
         "logo": abs_url("img/logo.png"),
-        "image": abs_url("img/olsen-pa-jobb-880.jpg"),
+        "image": abs_url("img/olsen-stillas-fasade-880.jpg"),
         "telephone": f"+47{C.PHONE}",
         "email": C.EMAIL,
         "taxID": C.ORGNR.replace(" ", ""),
@@ -81,7 +81,7 @@ def business_ld():
         "areaServed": [{"@type": "City", "name": "Oslo"}, {"@type": "City", "name": "Lørenskog"}]
                       + [{"@type": "AdministrativeArea", "name": a["bydel"]} for a in C.AREAS if a["bydel"] != "Lørenskog"],
         **({"sameAs": [u for _, u in C.PROFILES]} if C.PROFILES else {}),
-        "priceRange": f"{C.PRICE_HOUR_INC_TEXT} kr/t inkl. mva",
+        "priceRange": f"{C.PRICE_HOUR_INC_TEXT} kr/t",
         "knowsAbout": [s["nav"] for s in C.SERVICES],
         # Kobler hver tjenesteside til firmaet, så KI-søk ser hva firmaet tilbyr og hvor det står.
         "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Tjenester", "itemListElement": [
@@ -121,7 +121,7 @@ def packages_section(slug):
         return ""
     cards = "".join(
         f'<li><h3>{e(p["name"])}</h3><p class="pkg-for">{e(p["for"])}</p>'
-        f'<p class="pkg-price">{nok(p["price"]) + " <span>inkl. mva</span>" if p["price"] else "Etter bilde"}</p>'
+        f'<p class="pkg-price">{nok(p["price"]) if p["price"] else "Etter bilde"}</p>'
         f'<p class="pkg-time">{e(p["time"])}</p></li>'
         for p in P["items"])
     return f"""<section class="packages" id="fastpris">
@@ -190,7 +190,7 @@ def head(title, desc, path, ld, noindex=False):
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{abs_url(path)}">
-<meta property="og:image" content="{abs_url('img/olsen-pa-jobb-880.jpg')}">
+<meta property="og:image" content="{abs_url('img/olsen-stillas-fasade-880.jpg')}">
 <link rel="icon" href="{url('favicon.ico')}" sizes="48x48">
 <link rel="apple-touch-icon" href="{url('img/apple-touch-icon.png')}">
 <link rel="preload" href="{url('fonts/barlow-condensed-latin-800-normal.woff2')}" as="font" type="font/woff2" crossorigin>
@@ -224,15 +224,33 @@ def header(active=""):
 
 
 def trust_band():
+    # Olsen 20.11.2026: Mittanbud 4,9, Google 5 av 5; boksene med pris og «Registrert foretak» er tatt bort.
     rating = (f'<a href="{e(C.MITTANBUD_URL)}" rel="noopener">{C.MITTANBUD_RATING} av 5 på Mittanbud</a>'
               if C.MITTANBUD_URL else f'{C.MITTANBUD_RATING} av 5 på Mittanbud')
     return f"""<section class="trust" aria-label="Hvorfor velge oss">
   <ul class="wrap trust-list">
     <li><span class="stars" aria-hidden="true">★★★★★</span><strong>{rating}</strong><span>{C.MITTANBUD_COUNT} vurderinger fra kunder</span></li>
+    <li><span class="stars" aria-hidden="true">★★★★★</span><strong>{C.GOOGLE_RATING} av 5 på Google</strong><span>Vurderinger fra kunder på Google</span></li>
     <li><strong>Gratis befaring</strong><span>Vi ser på jobben før du bestemmer deg</span></li>
-    <li><strong><a href="{url('priser/')}">{C.PRICE_HOUR_INC_TEXT} kr/t inkl. mva</a></strong><span>{f'Introduksjonspris til {C.PRICE_INTRO_UNTIL_TEXT}. ' if C.INTRO else ''}Eller fastpris, og hageavfallet kjører vi alltid bort</span></li>
-    <li><strong>Registrert foretak</strong><span>Org.nr. {C.ORGNR}, MVA-registrert</span></li>
   </ul>
+</section>
+"""
+
+
+def reviews():
+    """Vurderinger fra kunder, slik Olsen har sendt dem (REVIEWS i innhold.json). Bare ekte vurderinger med kilde."""
+    if not C.REVIEWS:
+        return ""
+    items = "".join(
+        f'<figure class="review"><figcaption><strong>{e(r["title"])}</strong></figcaption>'
+        f'<blockquote><p>{e(r["text"])}</p></blockquote>'
+        f'<p class="review-meta"><span class="stars" aria-label="{e(r["rating"])} av 5">★★★★★</span> {e(r["name"])} ({e(r["source"])})</p></figure>'
+        for r in C.REVIEWS)
+    return f"""<section class="reviews">
+  <div class="wrap">
+    <h2>Dette sier kundene</h2>
+    <div class="review-grid">{items}</div>
+  </div>
 </section>
 """
 
@@ -377,20 +395,21 @@ def page_index():
       <p class="hero-lead">{e(C.SEASON['lead'])}</p>
       <div class="hero-cta">
         <a class="btn btn-dark" href="{tel()}" data-goatcounter-click="ring-hero">Ring {C.PHONE_DISPLAY}</a>
-        <a class="btn btn-line" href="{url(season['slug'] + '/')}">Om løvrydding</a>
+        <a class="btn btn-line" href="{url(season['slug'] + '/')}">Om {e(season['nav'].lower())}</a>
       </div>
     </div>
     <figure class="hero-photo">
-      {picture('olsen-pa-jobb', 'Olsen på jobb i en hage i Oslo', [880], '(min-width: 900px) 40vw, 90vw', eager=True)}
+      {picture('olsen-stillas-fasade', 'Olsen på stillaset, i arbeid under takrennen på en fasade', [880, 1600], '(min-width: 900px) 40vw, 90vw', eager=True)}
     </figure>
   </div>
   {stripes()}
 </section>
 {trust_band()}
+{reviews()}
 <section class="services">
   <div class="wrap">
     <h2>Dette gjør vi</h2>
-    <p class="section-lead">Hage og bygg i Oslo, for privatpersoner, borettslag og bedrifter.</p>
+    <p class="section-lead">Hage og bygg i Oslo, for privatpersoner og bedrifter.</p>
     {''.join(rows)}
   </div>
 </section>
@@ -410,8 +429,8 @@ def page_index():
   </div>
 </section>
 {contact()}"""
-    title = f"{C.NAME} – løvrydding, hagearbeid og snekker i Oslo"
-    desc = ("Løvrydding, hekk, stubbefjerning, snekker og belegningsstein i Oslo og Lørenskog. "
+    title = f"{C.NAME} – snømåking, hage, snekker og betong i Oslo"
+    desc = ("Snømåking, hagearbeid, snekker, betong og mur, drenering og sveising i Oslo og Lørenskog. "
             f"{C.MITTANBUD_RATING} av 5 på Mittanbud. Gratis befaring. Ring {C.PHONE_DISPLAY}.")
     return head(title, desc, "", [business_ld()]) + header() + body + footer()
 
@@ -495,11 +514,11 @@ def prices_faq():
     return [
         ("Hva er timeprisen?", C.PRICE_HOUR_SENTENCE),
         ("Hva koster løvrydding?",
-         f"Fastpris: {priser} inkl. mva. Stor hage får fast pris på forhånd etter bilde på SMS. {C.PACKAGES['note']}"),
+         f"Fastpris: {priser}. Stor hage får fast pris på forhånd etter bilde på SMS. {C.PACKAGES['note']}"),
         ("Koster befaringen noe?", "Nei. Befaringen er gratis, og du får prisen før vi starter."),
         ("Tar dere med hageavfallet?", "Ja, alltid. På fastprisene for løvrydding er bortkjøringen med i prisen."),
         ("Er prisene med mva?",
-         f"Ja. Alle prisene på siden er inkl. 25 % mva. Timeprisen eks. mva er {C.PRICE_HOUR_EX} kr."),
+         "Ja. Alle prisene på siden er med mva."),
         ("Hvordan får jeg fast pris?",
          f"Send et bilde av jobben på SMS til {C.PHONE_DISPLAY}, eller be om gratis befaring. Du får prisen før vi starter."),
     ]
@@ -518,13 +537,12 @@ def page_prices():
                    for s in C.SERVICES)
     faq = prices_faq()
     faq_html = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in faq)
-    intro = (f"<p>Fra {C.PRICE_REGULAR_FROM_TEXT} er timeprisen {C.PRICE_REGULAR_INC_TEXT} kr inkl. mva "
-             f"({C.PRICE_REGULAR_EX} kr eks. mva).</p>") if C.INTRO else ""
+    intro = (f"<p>Fra {C.PRICE_REGULAR_FROM_TEXT} er timeprisen {C.PRICE_REGULAR_INC_TEXT} kr.</p>") if C.INTRO else ""
     body = f"""<section class="page-hero">
   <div class="wrap">
     <nav class="crumbs" aria-label="Brødsmuler"><a href="{url()}">Forsiden</a> / <span>Priser</span></nav>
     <h1>Priser</h1>
-    <p class="hero-lead">Alle prisene våre på ett sted. Prisene er inkl. mva. Befaringen er gratis, og du får prisen før vi starter.</p>
+    <p class="hero-lead">Alle prisene våre på ett sted. Befaringen er gratis, og du får prisen før vi starter.</p>
     <div class="hero-cta">
       <a class="btn btn-dark" href="{tel()}" data-goatcounter-click="ring-priser">Ring {C.PHONE_DISPLAY}</a>
       <a class="btn btn-line" href="{sms()}" data-goatcounter-click="sms-priser">Send bilde på SMS</a>
@@ -535,8 +553,8 @@ def page_prices():
   <div class="wrap narrow">
     <div class="prose-block">
       <h2>Timepris</h2>
-      <p class="pkg-price">{C.PRICE_HOUR_INC_TEXT} kr <span>i timen inkl. mva</span></p>
-      <p>{C.PRICE_HOUR_EX} kr eks. mva{f", introduksjonspris til {C.PRICE_INTRO_UNTIL_TEXT}" if C.INTRO else ""}.</p>
+      <p class="pkg-price">{C.PRICE_HOUR_INC_TEXT} kr <span>i timen</span></p>
+      {f"<p>Introduksjonspris til {C.PRICE_INTRO_UNTIL_TEXT}.</p>" if C.INTRO else ""}
       {intro}
     </div>
     <div class="prose-block">
@@ -563,9 +581,18 @@ def page_prices():
         "mainEntity": [{"@type": "Question", "name": q,
                         "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq],
     }]
-    desc = (f"Timepris {C.PRICE_HOUR_INC_TEXT} kr inkl. mva og fastpris på løvrydding fra {nok(low)}. "
+    desc = (f"Timepris {C.PRICE_HOUR_INC_TEXT} kr og fastpris på løvrydding fra {nok(low)}. "
             "Alt hageavfall kjøres bort. Gratis befaring i Oslo og Lørenskog.")
     return head("Priser på løvrydding og hagearbeid i Oslo | Olsen Skogmann", desc, "priser/", ld) + header() + body + footer()
+
+
+def page_redirect(path):
+    """Videresending fra en side som er tatt bort (GitHub Pages kan ikke sende 301)."""
+    dest = abs_url(path)
+    return (f'<!doctype html><html lang="nb"><head><meta charset="utf-8"><title>{e(C.NAME)}</title>'
+            f'<meta name="robots" content="noindex"><link rel="canonical" href="{dest}">'
+            f'<meta http-equiv="refresh" content="0; url={url(path)}"></head>'
+            f'<body><p><a href="{url(path)}">Gå til forsiden</a></p></body></html>')
 
 
 def page_simple(title, h1, text, path):
@@ -599,7 +626,7 @@ def area_faq(a):
          f"Ja. Vi holder til på {C.BASE_AREA} og tar oppdrag i hele {where}, blant annet {places}. "
          "Du trenger ikke være hjemme mens vi jobber."),
         (f"Hva koster løvrydding i {a['bydel']}?",
-         f"Fastpris: {priser} inkl. mva. Stor hage får fast pris etter bilde på SMS. {C.PACKAGES['note']} "
+         f"Fastpris: {priser}. Stor hage får fast pris etter bilde på SMS. {C.PACKAGES['note']} "
          f"Du kan også betale per time: {C.PRICE_HOUR_SENTENCE}"),
         (f"Tar dere borettslag og sameier i {a['bydel']}?",
          "Ja. Borettslag og sameier kan få fast avtale for uteområdet, med faste besøk og én kontaktperson. "
@@ -881,6 +908,9 @@ def main():
     write("artikler/index.html", page_articles_index(arts))
     write("admin/index.html", page_admin())
     shutil.copytree(os.path.join(ROOT, "data"), os.path.join(OUT, "data"))
+    # Sider som er tatt bort: videresending, så gamle lenker og Google ender på forsiden (Olsen 20.11.2026: borettslag).
+    for gammel in C.REMOVED_PAGES:
+        write(f"{gammel}/index.html", page_redirect(""))
     write("404.html", page_simple(
         "Fant ikke siden", "Fant ikke siden",
         "Lenken kan være gammel. Gå til forsiden eller ring oss.", "404.html"))
@@ -906,12 +936,12 @@ def main():
 
     # Faktaark for AI-søk (ChatGPT, Perplexity osv.)
     llms = [f"# {C.NAME} – {C.TAGLINE}", "",
-            f"> Enkeltpersonforetak i {C.CITY} (org.nr. {C.ORGNR}). Hage og bygg for privatpersoner, borettslag og bedrifter i Oslo.", "",
+            f"> Enkeltpersonforetak i {C.CITY} (org.nr. {C.ORGNR}). Hage og bygg for privatpersoner og bedrifter i Oslo.", "",
             f"- Telefon: {C.PHONE_DISPLAY}", f"- E-post: {C.EMAIL}", f"- Base: {C.BASE_AREA}, {C.POSTCODE} {C.CITY}",
             f"- Vurdering: {C.MITTANBUD_RATING} av 5 på Mittanbud ({C.MITTANBUD_COUNT} vurderinger)",
             f"- Timepris: {C.PRICE_HOUR_SENTENCE} Eller fastpris etter befaring. Alle priser: {abs_url('priser/')}",
             f"- {C.PACKAGES['title']}: " + "; ".join(
-                f"{p['name'].lower()} ({p['for'].lower()}, {p['time'].lower()}) {nok(p['price']).replace(chr(160), ' ')} inkl. mva"
+                f"{p['name'].lower()} ({p['for'].lower()}, {p['time'].lower()}) {nok(p['price']).replace(chr(160), ' ')}"
                 if p["price"] else f"{p['name'].lower()}: {p['time'][0].lower() + p['time'][1:]}" for p in C.PACKAGES["items"])
             + f". {C.PACKAGES['note']}",
             "- Kjører alltid bort hageavfall", "- Gratis befaring", "", "## Tjenester", ""]
