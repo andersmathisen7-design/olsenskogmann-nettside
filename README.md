@@ -44,6 +44,14 @@ Valgene bak siden:
 - **Ring og SMS er alltid synlige på mobil.** 51,5 % av trafikken i Norge er mobil (StatCounter, september 2026).
 - **Vurderingene fra Mittanbud står øverst.** 47 % velger bort en bedrift med under 20 vurderinger (BrightLocal 2026).
 
+## Ønsker fra Olsen som gjelder videre (20.11.2026)
+
+Disse gjelder foran eldre instrukser, også i den ukentlige SEO-oppgaven:
+- **Priser står som tall, uten ordene «inkl. mva»** (tallene er med mva, slik loven krever). Ikke legg til «inkl. mva» eller «eks. mva» igjen.
+- **Borettslag er ikke fokus.** Siden er tatt bort (videresender til forsiden); lag ikke nytt innhold rettet mot borettslag.
+- **Vurderingene fra kunder** (`REVIEWS` i `innhold.json`) er ekte sitater som Olsen har sendt. Ikke endre dem, og ikke legg til nye uten at Olsen har sendt dem.
+- Menyen er Snømåking, Hage, Snekker, Betong & mur og Sveising. Sesongtilbudet er snømåking (vintersesong).
+
 ## Endre tekst
 
 Tekstene på siden (sesongtilbud, fastpris på løvrydding, tjenester med FAQ, stegene, «om oss» og bydelssidene) ligger i **`innhold.json`**. Telefon, e-post, org.nr., timepris og alt annet ligger i **`config.py`**.
