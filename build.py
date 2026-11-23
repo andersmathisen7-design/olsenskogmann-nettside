@@ -205,18 +205,29 @@ def head(title, desc, path, ld, noindex=False):
 """
 
 
-def header(active=""):
+def header(active="", kontakt=True):
+    """Menyen øverst. Den er «sticky» (Olsen 23.11.2026) og har en Kontakt-knapp på alle skjermer.
+    kontakt=False: siden har ikke skjemaet, så Kontakt går til skjemaet på forsiden."""
     cur = ' aria-current="page"'
     links = "".join(
         f'<a href="{url(s["slug"] + "/")}"{cur if active == s["slug"] else ""}>{e(s["nav"])}</a>'
         for s in C.SERVICES if s.get("in_nav", True))
+    all_links = "".join(
+        f'<a href="{url(s["slug"] + "/")}"{cur if active == s["slug"] else ""}>{e(s["nav"])}</a>'
+        for s in C.SERVICES)
+    k = "#kontakt" if kontakt else url() + "#kontakt"
     return f"""<header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="{url()}" aria-label="{e(C.NAME)}, til forsiden">
       <picture><source type="image/webp" srcset="{url('img/logo.webp')}"><img src="{url('img/logo.png')}" alt="{e(C.NAME)} – {e(C.TAGLINE)}" width="640" height="114"></picture>
     </a>
-    <nav class="main-nav" aria-label="Tjenester">{links}<a href="#kontakt">Kontakt</a></nav>
+    <nav class="main-nav" aria-label="Tjenester">{links}</nav>
     <a class="header-phone" href="{tel()}" data-goatcounter-click="ring-header">{C.PHONE_DISPLAY}</a>
+    <a class="header-contact" href="{k}" data-goatcounter-click="kontakt-meny">Kontakt</a>
+    <details class="mnav">
+      <summary>Meny</summary>
+      <nav class="mnav-panel" aria-label="Meny">{all_links}<a href="{url('priser/')}">Priser</a><a href="{url('artikler/')}">Råd og priser</a><a class="mnav-phone" href="{tel()}" data-goatcounter-click="ring-meny">Ring {C.PHONE_DISPLAY}</a></nav>
+    </details>
   </div>
 </header>
 <main id="innhold">
@@ -329,10 +340,6 @@ def footer():
     </div>
   </div>
 </footer>
-<div class="callbar" aria-label="Kontakt oss">
-  <a href="{tel()}" data-goatcounter-click="ring-mobil">Ring {C.PHONE_DISPLAY}</a>
-  <a href="{sms()}" data-goatcounter-click="sms-mobil">Send SMS</a>
-</div>
 </body>
 </html>
 """
@@ -362,32 +369,36 @@ def borettslag_band():
 </section>"""
 
 
-def page_index():
-    season = next(s for s in C.SERVICES if s["slug"] == C.SEASON["slug"])
-    areas = ", ".join(C.NEAR_AREAS[:-1]) + " og " + C.NEAR_AREAS[-1]
-    area_links = "".join(f'<li><a href="{url(a["slug"] + "/")}">{e(a["bydel"])}</a></li>' for a in C.AREAS)
+# Små ikoner til tjenestekortene uten bilde (løvrydding og riving).
+ICONS = {
+    "lovrydding": '<path d="M12 52C12 26 30 12 54 12c0 26-14 42-40 42"/><path d="M12 52L38 26"/>',
+    "riving": '<path d="M14 50l22-22"/><path d="M30 22l12-12 12 12-12 12z"/><path d="M10 54h44"/>',
+}
 
-    rows = []
+
+def service_cards():
+    """Tjenestene som kort med et lite bilde og kort tekst, to per rad (Olsen 23.11.2026)."""
+    cards = []
     for s in [x for x in C.SERVICES if x.get("in_index", True)]:
-        inc = "".join(f"<li>{e(i)}</li>" for i in s["includes"])
         if s["image"]:
             name, alt, widths = s["image"]
-            media = picture(name, alt, widths, "(min-width: 900px) 46vw, 100vw", "row-media")
-        elif s["slug"] == C.SEASON["slug"]:
-            media = f'<div class="row-media row-season"><p>{e(C.SEASON["tag"])}</p><a class="btn btn-dark" href="{url(s["slug"] + "/")}">Se hva som er med</a></div>'
+            thumb = picture(name, alt, [min(widths)], "(min-width: 1000px) 230px, (min-width: 600px) 22vw, 45vw", "svc-thumb")
         else:
-            media = f'<div class="row-media row-panel"><p>{e(s.get("panel", s["nav"]))}</p><a class="btn btn-line btn-on-dark" href="{url(s["slug"] + "/")}">Se hva vi gjør</a></div>'
-        rows.append(f"""<article class="service-row">
-  {media}
-  <div class="row-text">
-    <h3><a href="{url(s['slug'] + '/')}">{e(s['nav'])}</a></h3>
-    <p>{e(s['summary'])}</p>
-    <ul class="checks">{inc}</ul>
-    <a class="text-link" href="{url(s['slug'] + '/')}">Les mer om {e(s['nav'].lower())}</a>
-  </div>
-</article>""")
+            icon = ICONS.get(s["slug"], '<path d="M12 32h40M32 12v40"/>')
+            thumb = (f'<span class="svc-thumb svc-icon"><svg viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" '
+                     f'stroke-width="5" stroke-linecap="round" stroke-linejoin="round">{icon}</svg></span>')
+        cards.append(f'<li><a class="svc-card" href="{url(s["slug"] + "/")}">{thumb}<span class="svc-body">'
+                     f'<h3>{e(s["nav"])}</h3><span class="svc-sum">{e(s["summary"])}</span>'
+                     f'<span class="svc-more">Les mer</span></span></a></li>')
+    cards.append(f'<li><a class="svc-card svc-cta" href="{sms()}" data-goatcounter-click="sms-tjenester"><span class="svc-body">'
+                 f'<h3>Noe annet?</h3><span class="svc-sum">Send et bilde av jobben på SMS, så sier vi om vi kan ta den og hva det koster.</span>'
+                 f'<span class="svc-more">Send SMS til {C.PHONE_DISPLAY}</span></span></a></li>')
+    return f'<ul class="svc-grid">{"".join(cards)}</ul>'
 
-    body = f"""<section class="hero">
+
+def page_index():
+    # Olsen 23.11.2026: hvit topp med gul tekst, ingen vintersesong, «Lokal i Oslo øst» og «Her jobber vi» er tatt bort.
+    body = f"""<section class="hero hero-home">
   <div class="wrap hero-grid">
     <div class="hero-text">
       <p class="hero-tag">{e(C.SEASON['tag'])}</p>
@@ -395,42 +406,29 @@ def page_index():
       <p class="hero-lead">{e(C.SEASON['lead'])}</p>
       <div class="hero-cta">
         <a class="btn btn-dark" href="{tel()}" data-goatcounter-click="ring-hero">Ring {C.PHONE_DISPLAY}</a>
-        <a class="btn btn-line" href="{url(season['slug'] + '/')}">Om {e(season['nav'].lower())}</a>
+        <a class="btn btn-line" href="#kontakt">Be om pris</a>
       </div>
+      <ul class="hero-points"><li>Gratis befaring</li><li>Pris før vi starter</li><li>Vi rydder etter oss</li></ul>
     </div>
     <figure class="hero-photo">
       {picture('olsen-stillas-fasade', 'Olsen på stillaset, i arbeid under takrennen på en fasade', [880, 1600], '(min-width: 900px) 40vw, 90vw', eager=True)}
     </figure>
   </div>
-  {stripes()}
 </section>
 {trust_band()}
-{reviews()}
-<section class="services">
+<section class="services" id="tjenester">
   <div class="wrap">
-    <h2>Dette gjør vi</h2>
-    <p class="section-lead">Hage og bygg i Oslo, for privatpersoner og bedrifter.</p>
-    {''.join(rows)}
+    <h2>Tjenester</h2>
+    <p class="section-lead">Hage og bygg i Oslo og omegn, for privatpersoner og bedrifter.</p>
+    {service_cards()}
   </div>
 </section>
+{reviews()}
 {borettslag_band()}
 {steps()}
-<section class="about">
-  <div class="wrap about-grid">
-    <div>
-      <h2>Lokal i Oslo øst</h2>
-      <p>{e(C.ABOUT)}</p>
-    </div>
-    <div>
-      <h2>Her jobber vi</h2>
-      <p>Hele Oslo. Kortest vei har vi til {e(areas)}.</p>
-      <ul class="area-links">{area_links}</ul>
-    </div>
-  </div>
-</section>
 {contact()}"""
-    title = f"{C.NAME} – snømåking, hage, snekker og betong i Oslo"
-    desc = ("Snømåking, hagearbeid, snekker, betong og mur, drenering og sveising i Oslo og Lørenskog. "
+    title = f"{C.NAME} – hage, snekker, betong, sveising og riving i Oslo"
+    desc = ("Hagearbeid, hekk og trær, løvrydding, rens av stein, snekker, betong og mur, sveising og riving i Oslo og omegn. "
             f"{C.MITTANBUD_RATING} av 5 på Mittanbud. Gratis befaring. Ring {C.PHONE_DISPLAY}.")
     return head(title, desc, "", [business_ld()]) + header() + body + footer()
 
@@ -464,7 +462,6 @@ def page_service(s):
       <a class="btn btn-line" href="#kontakt">Be om pris</a>
     </div>
   </div>
-  {stripes() if is_season else ''}
 </section>
 {trust_band() if is_season else ''}
 <section class="service-detail">
@@ -586,13 +583,14 @@ def page_prices():
     return head("Priser på løvrydding og hagearbeid i Oslo | Olsen Skogmann", desc, "priser/", ld) + header() + body + footer()
 
 
-def page_redirect(path):
+def page_redirect(path, anchor=""):
     """Videresending fra en side som er tatt bort (GitHub Pages kan ikke sende 301)."""
     dest = abs_url(path)
+    to = url(path) + anchor
     return (f'<!doctype html><html lang="nb"><head><meta charset="utf-8"><title>{e(C.NAME)}</title>'
             f'<meta name="robots" content="noindex"><link rel="canonical" href="{dest}">'
-            f'<meta http-equiv="refresh" content="0; url={url(path)}"></head>'
-            f'<body><p><a href="{url(path)}">Gå til forsiden</a></p></body></html>')
+            f'<meta http-equiv="refresh" content="0; url={to}"></head>'
+            f'<body><p><a href="{to}">Se tjenestene våre</a></p></body></html>')
 
 
 def page_simple(title, h1, text, path):
@@ -604,7 +602,7 @@ def page_simple(title, h1, text, path):
   </div>
 </section>"""
     # Takkesiden og 404 skal ikke i søk (takkesiden måler konverteringer).
-    return head(title, title, path, [business_ld()], noindex=True) + header() + body + footer()
+    return head(title, title, path, [business_ld()], noindex=True) + header(kontakt=False) + body + footer()
 
 
 # ---------------------------------------------------------------------------
@@ -771,7 +769,7 @@ def page_article(a, arts):
     {f'<nav class="more" aria-label="Flere artikler"><h2>Les også</h2><ul>{more}</ul></nav>' if more else ''}
   </div>
 </article>"""
-    return head(f"{a['title']} | {C.NAME}", a["description"], f"artikler/{a['slug']}/", [business_ld()] + article_ld(a)) + header() + body + footer()
+    return head(f"{a['title']} | {C.NAME}", a["description"], f"artikler/{a['slug']}/", [business_ld()] + article_ld(a)) + header(kontakt=False) + body + footer()
 
 
 def page_articles_index(arts):
@@ -788,7 +786,7 @@ def page_articles_index(arts):
 <section class="service-detail"><div class="wrap narrow"><ul class="article-list">{items}</ul></div></section>"""
     return head(f"Råd og priser for hage og bygg i Oslo | {C.NAME}",
                 "Priser og råd om løvrydding, hagearbeid, terrasse og belegningsstein i Oslo, med kilder.",
-                "artikler/", [business_ld()]) + header() + body + footer()
+                "artikler/", [business_ld()]) + header(kontakt=False) + body + footer()
 
 
 # ---------------------------------------------------------------------------
@@ -908,9 +906,10 @@ def main():
     write("artikler/index.html", page_articles_index(arts))
     write("admin/index.html", page_admin())
     shutil.copytree(os.path.join(ROOT, "data"), os.path.join(OUT, "data"))
-    # Sider som er tatt bort: videresending, så gamle lenker og Google ender på forsiden (Olsen 20.11.2026: borettslag).
+    # Sider som er tatt bort: videresending, så gamle lenker og Google ender på tjenestene på forsiden
+    # (Olsen 20.11.2026: borettslag; 23.11.2026: snømåking og drenering).
     for gammel in C.REMOVED_PAGES:
-        write(f"{gammel}/index.html", page_redirect(""))
+        write(f"{gammel}/index.html", page_redirect("", "#tjenester"))
     write("404.html", page_simple(
         "Fant ikke siden", "Fant ikke siden",
         "Lenken kan være gammel. Gå til forsiden eller ring oss.", "404.html"))

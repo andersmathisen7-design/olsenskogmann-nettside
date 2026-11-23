@@ -19,7 +19,7 @@
 ## Svar fra Olsen (23.10.2026)
 - [x] **Introduksjonsprisen** (750 kr/t inkl. mva, 600 eks.) gjelder til 31.12.2026. Står nå på forsiden, `/lovrydding/`, i pris-FAQ, artikkelen om pris og `llms.txt`. Strukturerte data har `validThrough: 2026-12-31`.
 - [x] **Fastpris er greit.** Pakker for løvrydding står på `/lovrydding/` (`PACKAGES` i `config.py`) og «fra 1 490 kr» på forsiden: liten hage 1 490 kr, vanlig hage 2 790 kr, stor hage etter bilde. Alt avfall kjøres bort, ingen startpris eller kjøregebyr.
-- [x] **Mittanbud:** profilen er https://mittanbud.no/bedrift/9242603 (sjekket 24.10.2026: org.nr. og 0669 Oslo stemmer). 42 vurderinger, 5,0. Lagt inn.
+- [x] **Mittanbud:** profilen er https://mittanbud.no/bedrift/9242603 (sjekket 24.10.2026: org.nr. og 0669 Oslo stemmer). 42 vurderinger, 5,0. Lagt inn. Oppdatert 23.11.2026: 45 vurderinger, 4,9 (sjekket på profilen).
 - [x] **795 kr eks. mva** er vanlig timepris fra 1.1.2027 (993,75 kr inkl. mva). Står i pris-FAQ, på `/lovrydding/` og i `llms.txt`.
 - [x] **Pakkeprisene** (1 490 og 2 790 kr inkl. mva) er godkjent.
 - [x] **Google-bedriftsprofil:** han har allerede en.
@@ -29,6 +29,9 @@
 ## Bilder fra Olsen (27. og 28.10.2026)
 - [x] **Stubbefresing** (skjermbilde fra video, jobb fra Mittanbud, 27.10): lagt inn som bilde for «Hekk & trær» på forsiden og på `/beskjaering-og-trefelling/` (`stubbefresing-oslo`). Svarte kanter er beskåret, og bildet er lagret på nytt uten metadata.
 - [ ] **E-postene «1», «2» og «3» (28.10)** med ni bilder (1952–1986.png) er 6–9 MB hver og for store for Gmail-verktøyet her. Lagre bildene i Google Drive (for eksempel en mappe «Olsen bilder»), så henter Claude dem derfra og legger dem inn. E-postene har ingen tekst, så Claude ser på bildene og plasserer dem etter hva de viser.
+
+## Endringer fra Olsen (23.11.2026)
+- [ ] **Riving:** teksten på `/riving/` er skrevet ut fra det vanlige for et hage- og byggfirma (terrasse, bod, gjerde, innvendig før oppussing). Be Olsen se over at det stemmer med hva han river, og sende bilder fra rivejobber.
 
 ## Fortsatt åpent
 - [x] **Ny timepris 1.1.2027 skjer av seg selv.** Workflowen bygger siden rett etter midnatt 1. januar, og alle priser, FAQ, strukturerte data og `llms.txt` bytter til 993,75 kr inkl. mva. Sjekk olsenskogmann.no/priser/ 1. januar. Google-profilen og Mittanbud må Olsen endre selv.

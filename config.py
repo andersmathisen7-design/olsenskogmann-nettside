@@ -35,11 +35,11 @@ BASE_AREA = "Tveita"
 POSTCODE = "0669"
 CITY = "Oslo"
 
-# Mittanbud: sjekket på profilen 24.10.2026 (org.nr. 835 391 752, 0669 Oslo): 42 vurderinger. Snitt 4,9 (Olsen 20.11.2026).
+# Mittanbud: sjekket på profilen 23.11.2026: 45 vurderinger, snitt 4,9 (org.nr. og 0669 Oslo sjekket 24.10.2026).
 # Google: 5 av 5 (Olsen 20.11.2026).
 GOOGLE_RATING = "5"
 MITTANBUD_RATING = "4,9"
-MITTANBUD_COUNT = 42
+MITTANBUD_COUNT = 45
 MITTANBUD_URL = "https://mittanbud.no/bedrift/9242603"
 
 # Profiler på andre nettsteder. Brukes i sameAs og i llms.txt, så Google og KI-søk ser at det er samme firma.
@@ -146,7 +146,8 @@ AREAS = _INNHOLD["AREAS"]
 REVIEWS = _INNHOLD["REVIEWS"]
 
 # Sider som er tatt bort, med videresending til forsiden (build.py: page_redirect).
-REMOVED_PAGES = ["borettslag"]
+# Olsen 23.11.2026: snømåking og drenering er tatt bort, og videresender til tjenestene på forsiden.
+REMOVED_PAGES = ["borettslag", "snomaking", "drenering"]
 
 
 # ---------------------------------------------------------------------------

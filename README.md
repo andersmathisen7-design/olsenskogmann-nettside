@@ -15,12 +15,13 @@ Testsiden er skjult for Google med `noindex` og `robots.txt`, så den ikke konku
 
 | Side | Mål i søk |
 |---|---|
-| `/` | «hagearbeid Oslo», «løvrydding Oslo», navnet. Sesongtilbudet (løvrydding) står øverst |
+| `/` | «hagearbeid Oslo», navnet. Generell tekst øverst (`SEASON`), så alle tjenestene som kort, to per rad |
 | `/lovrydding/` | «løvrydding Oslo», «løvblåsing», «høstrydding hage». FAQ med strukturerte data |
 | `/snekker/` | «snekker Oslo», «bygge terrasse», «utvendig trapp» |
 | `/beskjaering-og-trefelling/` | «hekkeklipping Oslo», «beskjæring», «felle tre», «fjerne stubbe», «stubbefresing» |
 | `/priser/` | «løvrydding pris», «hagearbeid pris Oslo» og KI-spørsmål om hva det koster. Alle priser på ett sted, med FAQ. Timeprisen bytter av seg selv 1.1.2027 |
 | `/borettslag/` | Styrer i borettslag og sameier: fast avtale for uteområdet |
+| `/riving/` | «riving Oslo», «rive terrasse», «innvendig riving» |
 | `/stein-og-hage/` | «belegningsstein Oslo», «støttemur» |
 | `/rens-av-stein/` | «rens av belegningsstein», «spyle stein», «fjerne mose på stein» |
 | `/hagearbeid-alna/`, `/hagearbeid-ostensjo/`, `/hagearbeid-nordstrand/`, `/hagearbeid-sondre-nordstrand/`, `/hagearbeid-stovner/`, `/hagearbeid-lorenskog/`, `/hagearbeid-oslo-sentrum/` | «hagearbeid/løvrydding + bydel». Hver side har egne boligtall fra Oslo kommune og egen tekst, og FAQ med pris og borettslag (`area_faq` i `build.py`, egne spørsmål med `faq` i `AREAS`). Skjemaet vet hvilken bydel kunden kom fra |
@@ -41,7 +42,7 @@ Andre SEO-grep:
 Valgene bak siden:
 - **Én tydelig sak øverst.** Sesongtilbudet ligger i `SEASON` i `innhold.json`. Bytt det når sesongen skifter, for eksempel til vårrydding.
 - **Egne sider per tjeneste og bydel.** Google rangerer én side per tema.
-- **Ring og SMS er alltid synlige på mobil.** 51,5 % av trafikken i Norge er mobil (StatCounter, september 2026).
+- **Menyen følger med når man ruller**, med en Kontakt-knapp og telefon i menyen. 51,5 % av trafikken i Norge er mobil (StatCounter, september 2026).
 - **Vurderingene fra Mittanbud står øverst.** 47 % velger bort en bedrift med under 20 vurderinger (BrightLocal 2026).
 
 ## Ønsker fra Olsen som gjelder videre (20.11.2026)
@@ -50,11 +51,17 @@ Disse gjelder foran eldre instrukser, også i den ukentlige SEO-oppgaven:
 - **Priser står som tall, uten ordene «inkl. mva»** (tallene er med mva, slik loven krever). Ikke legg til «inkl. mva» eller «eks. mva» igjen.
 - **Borettslag er ikke fokus.** Siden er tatt bort (videresender til forsiden); lag ikke nytt innhold rettet mot borettslag.
 - **Vurderingene fra kunder** (`REVIEWS` i `innhold.json`) er ekte sitater som Olsen har sendt. Ikke endre dem, og ikke legg til nye uten at Olsen har sendt dem.
-- Menyen er Snømåking, Hage, Snekker, Betong & mur og Sveising. Sesongtilbudet er snømåking (vintersesong).
+
+## Ønsker fra Olsen 23.11.2026 (gjelder videre)
+- **Snømåking og drenering er tatt helt bort.** Ikke legg dem til igjen, verken som side, i skjemaet, i menyen, i bunnen eller i artikler. `/snomaking/` og `/drenering/` videresender til tjenestene på forsiden (`REMOVED_PAGES` i `config.py`).
+- **Riving** er en egen tjeneste (`/riving/`).
+- Menyen er Hage, Snekker, Betong & mur, Sveising, Riving og Kontakt. Menyen er sticky. Det er ingen fast Ring/SMS-stripe nederst på mobil.
+- Ingen sesongtilbud øverst og ingen «Lokal i Oslo øst»/«Her jobber vi» på forsiden. Toppen er hvit med gule detaljer og en generell tekst: «Vi utfører tjenester innen … i Oslo og omegn».
+- Forsiden viser alle tjenestene i `SERVICES` som kort med lite bilde og kort tekst, to per rad. Samme liste står i skjemaet og nederst på siden.
 
 ## Endre tekst
 
-Tekstene på siden (sesongtilbud, fastpris på løvrydding, tjenester med FAQ, stegene, «om oss» og bydelssidene) ligger i **`innhold.json`**. Telefon, e-post, org.nr., timepris og alt annet ligger i **`config.py`**.
+Tekstene på siden (teksten øverst på forsiden, fastpris på løvrydding, tjenester med FAQ, stegene, «om oss» og bydelssidene) ligger i **`innhold.json`**. Telefon, e-post, org.nr., timepris og alt annet ligger i **`config.py`**.
 
 **Endringer Olsen ber om på e-post** gjør Nettsideferdig i `innhold.json`, og ingen andre filer: koden sjekker at bare tekst endres (aldri tall, adresser eller bilder), Olsen ser hva som endres og publiserer selv med lenken i e-posten, og koden lagrer fila her på `main`. `{PRICE_SHORT}`, `{PRICE_HOUR_SENTENCE}` og `{PRICE_HOUR_INC_TEXT}` i teksten byttes med timeprisen fra `config.py`. `python3 test_innhold.py` sjekker fila. Design ligger i `src/assets/style.css`.
 
