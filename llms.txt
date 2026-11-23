@@ -5,7 +5,7 @@
 - Telefon: 455 02 162
 - E-post: olsenskogmann@gmail.com
 - Base: Tveita, 0669 Oslo
-- Vurdering: 4,9 av 5 på Mittanbud (42 vurderinger)
+- Vurdering: 4,9 av 5 på Mittanbud (45 vurderinger)
 - Timepris: 750 kr i timen, introduksjonspris til 31.12.2026. Fra 1.1.2027 er timeprisen 993,75 kr. Eller fastpris etter befaring. Alle priser: https://olsenskogmann.no/priser/
 - Fastpris på løvrydding: liten hage (rekkehus eller liten tomt, opptil ca. 2 timer) 1 490 kr; vanlig hage (enebolig eller tomannsbolig, opptil ca. 4 timer) 2 790 kr; stor hage: fast pris på forhånd etter bilde på SMS. Alt avfall kjøres bort. Ingen startpris eller kjøregebyr.
 - Kjører alltid bort hageavfall
@@ -13,16 +13,15 @@
 
 ## Tjenester
 
-- [Snømåking](https://olsenskogmann.no/snomaking/): Snømåking av innkjørsel, trapper, gangveier og parkering.
 - [Hage](https://olsenskogmann.no/hagearbeid/): Hekk, beskjæring, trær, stubber, løvrydding og rens av stein.
-- [Snekker](https://olsenskogmann.no/snekker/): Terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold.
-- [Betong & mur](https://olsenskogmann.no/betong-og-mur/): Dreneringsrenner og sluk i betong, og reparasjon av sprekker og kanter.
-- [Sveising](https://olsenskogmann.no/sveising/): Små sveisejobber: rekkverk, gelender, gjerdestolper og porter.
-- [Drenering](https://olsenskogmann.no/drenering/): Vannproblemer rundt huset: renner, sluk og drenering.
-- [Løvrydding](https://olsenskogmann.no/lovrydding/): Løvblåsing, raking og bortkjøring av løv. For villa, rekkehus, borettslag og bedrifter.
 - [Hekk & trær](https://olsenskogmann.no/beskjaering-og-trefelling/): Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber.
-- [Stein & hage](https://olsenskogmann.no/stein-og-hage/): Belegningsstein, skifer, støttemurer, beplantning, beskjæring og rens av mur.
+- [Løvrydding](https://olsenskogmann.no/lovrydding/): Løvblåsing, raking og bortkjøring av løv. For villa, rekkehus, borettslag og bedrifter.
 - [Rens av stein](https://olsenskogmann.no/rens-av-stein/): Høytrykkspyling av stein, trapper, murer og nedre del av fasaden.
+- [Stein & hage](https://olsenskogmann.no/stein-og-hage/): Belegningsstein, skifer, støttemurer, beplantning, beskjæring og rens av mur.
+- [Snekker](https://olsenskogmann.no/snekker/): Terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold.
+- [Betong & mur](https://olsenskogmann.no/betong-og-mur/): Renner og sluk i betong, og reparasjon av sprekker og kanter.
+- [Sveising](https://olsenskogmann.no/sveising/): Små sveisejobber: rekkverk, gelender, gjerdestolper og porter.
+- [Riving](https://olsenskogmann.no/riving/): Riving av terrasser, boder, gjerder, trapper og innvendig før oppussing.
 
 ## Områder
 

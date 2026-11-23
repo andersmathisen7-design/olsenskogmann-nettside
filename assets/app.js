@@ -64,3 +64,12 @@
     } catch (e) {}
   });
 })();
+
+// Mobilmenyen (<details class="mnav">): lukkes når man velger en lenke eller trykker utenfor.
+(function () {
+  "use strict";
+  var m = document.querySelector(".mnav");
+  if (!m) return;
+  m.addEventListener("click", function (ev) { if (ev.target.closest("a")) m.removeAttribute("open"); });
+  document.addEventListener("click", function (ev) { if (m.open && !m.contains(ev.target)) m.removeAttribute("open"); });
+})();
