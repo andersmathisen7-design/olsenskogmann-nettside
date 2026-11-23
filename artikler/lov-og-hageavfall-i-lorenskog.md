@@ -2,13 +2,14 @@
 title: Løv og hageavfall i Lørenskog
 description: Slik blir du kvitt løvet i Lørenskog: gratis levering hos ROAF med ROAFiD, henting av inntil fire sekker vår og høst, og hva som ikke tas imot.
 date: 2026-11-09
+updated: 2026-11-23
 order: 6
 tjeneste: lovrydding
 kort: Bor du i Lørenskog, kan du levere hageavfall som løv, gress og kvist gratis på ROAFs gjenvinningsstasjoner. Du viser ROAFiD i porten. Løvet må være løst på hengeren eller i klare sekker. Om våren og høsten henter ROAF også inntil fire sekker hageavfall på faste stoppesteder, men du må selv være der og løfte sekkene. Jord, stein og treverk regnes ikke som hageavfall.
 faq: Er det gratis å levere løv i Lørenskog? || Ja. Lørenskog kommune og ROAF skriver at levering av hageavfall er gratis for private husholdninger som bruker ROAFiD.
 faq: Henter ROAF hageavfall hjemme? || Ikke hjemme, men på faste stoppesteder om våren og høsten. Du kan ha med inntil fire sekker, og du må være der selv, for sjåføren hjelper ikke med å løfte. Se rutene på roaf.no.
 faq: Hva regnes ikke som hageavfall? || Stein, jord, grus, betong, treprodukter og planter som har stått inne. Det må leveres som egne avfallstyper.
-faq: Hva betaler en bedrift for å levere hageavfall hos ROAF? || Fra 1. februar 2026 betaler næringskunder 575 kr for inntil 1 m³, og 100 kr for hver ekstra m³ opp til 6 m³, inkl. mva. Sjekk roaf.no før du leverer.
+faq: Hva betaler en bedrift for å levere hageavfall hos ROAF? || Fra 1. februar 2026 betaler næringskunder 575 kr for inntil 1 m³, og 100 kr for hver ekstra m³ opp til 6 m³,. Sjekk roaf.no før du leverer.
 ---
 Lørenskog hører til ROAF (Romerike Avfallsforedling), ikke til Oslo. Reglene for løv og hageavfall er derfor litt andre enn i Oslo. Her er det som gjelder, slik ROAF og Lørenskog kommune beskriver det i november 2026.
 
@@ -19,8 +20,8 @@ Lørenskog kommune skriver at du ikke betaler for å levere hageavfall på ROAFs
 | | Pris |
 |---|---|
 | Hageavfall fra private husholdninger | Gratis (vis ROAFiD) |
-| Hageavfall fra bedrifter, inntil 1 m³ | 575 kr inkl. mva |
-| Hageavfall fra bedrifter, hver ekstra m³ opp til 6 m³ | 100 kr inkl. mva |
+| Hageavfall fra bedrifter, inntil 1 m³ | 575 kr |
+| Hageavfall fra bedrifter, hver ekstra m³ opp til 6 m³ | 100 kr |
 
 Bedriftsprisene gjelder fra 1. februar 2026. Åpningstidene endrer seg med sesongen, så sjekk roaf.no eller appen Min Renovasjon før du drar.
 
@@ -51,7 +52,7 @@ I Oslo er det kommunen som tar imot hageavfallet, med egne regler og egen grense
 
 ## Vil du slippe sekkene?
 
-Vi rydder løv i hele [Lørenskog](/hagearbeid-lorenskog/), fra Fjellhamar og Finstad til Skårer og Rasta, og i Oslo-bydelene rett ved, som [Alna](/hagearbeid-alna/) og [Stovner](/hagearbeid-stovner/). Vi kjører alltid bort alt hageavfallet, så du slipper sekker, henger og tur til stasjonen. [Løvrydding](/lovrydding/) har fastpris: 1 490 kr for en liten hage og 2 790 kr for en vanlig hage, inkl. mva. Store hager får fast pris etter bilde. Hekken kan vi ta i samme runde, se [hekk og trær](/beskjaering-og-trefelling/).
+Vi rydder løv i hele [Lørenskog](/hagearbeid-lorenskog/), fra Fjellhamar og Finstad til Skårer og Rasta, og i Oslo-bydelene rett ved, som [Alna](/hagearbeid-alna/) og [Stovner](/hagearbeid-stovner/). Vi kjører alltid bort alt hageavfallet, så du slipper sekker, henger og tur til stasjonen. [Løvrydding](/lovrydding/) har fastpris: 1 490 kr for en liten hage og 2 790 kr for en vanlig hage,. Store hager får fast pris etter bilde. Hekken kan vi ta i samme runde, se [hekk og trær](/beskjaering-og-trefelling/).
 
 [[kontakt]]
 

@@ -2,6 +2,7 @@
 title: Hekk mot vei og fortau: kommunens krav
 description: Hekk, busker og trær mot vei skal ikke hindre sikt eller ferdsel. Slik er reglene i Oslo og Lørenskog, og derfor er høsten et godt tidspunkt å klippe.
 date: 2026-11-02
+updated: 2026-11-23
 order: 5
 tjeneste: beskjaering-og-trefelling
 kort: Har du hekk, busker eller trær mot vei eller fortau, er det du som eier som må klippe dem. I Oslo skal ikke hekk eller gjerde være høyere enn 1 meter i kryss og svinger, og vegetasjonen skal ikke hindre ferdsel på fortau, sykkelfelt eller kjørebane. I Lørenskog er grensen en halv meter ved kryss og avkjørsler, og greiner over veien skal ha 4,7 meter fri høyde. Klipper du ikke, kan kommunen gjøre det selv.
@@ -39,7 +40,7 @@ Reguleringsplanen for eiendommen kan ha strengere krav, for eksempel en egen fri
 
 - **Løvet er borte.** Du ser hvor greinene faktisk går, og hva som skjuler sikten.
 - **Fuglene hekker ikke.** Lørenskog kommune anbefaler å beskjære og felle trær mellom 15. september og 15. april. I hekke- og yngletiden er fugler og andre dyr beskyttet etter naturmangfoldloven.
-- **Snø gjør greinene tyngre.** Greiner som så vidt når ut over fortauet i høst, kan henge lavere med snø på.
+- **Snø gjør greinene tyngre.** Greiner som så vidt når ut over fortauet i høst, kan henge lavere med snø på. Les også [hvem som skal måke fortauet](/artikler/hvem-skal-make-fortauet/).
 
 Mindre beskjæring, som å fjerne døde og tørre greiner, trenger du ikke søke om. Skal et stort tre felles, kan det være vernet. Les mer i [må du søke for å felle et tre i Oslo?](/artikler/felle-tre-i-oslo-ma-du-soke/)
 
@@ -47,7 +48,7 @@ Mindre beskjæring, som å fjerne døde og tørre greiner, trenger du ikke søke
 
 Gjelder det en naboeiendom eller et fellesareal, kan du melde fra til Oslo kommune på bymelding.no. Kommunen kan da sende brev til grunneieren.
 
-Bor du i borettslag eller sameie, er det styret som må sørge for at hekkene på fellesarealet blir klippet. Se hvordan en [fast avtale for borettslag](/borettslag/) kan ta det sammen med løvryddingen.
+Bor du i sameie eller borettslag, er det styret som må sørge for at hekkene på fellesarealet blir klippet.
 
 ## Vi klipper og kjører bort kvisten
 
