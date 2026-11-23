@@ -149,6 +149,27 @@ REVIEWS = _INNHOLD["REVIEWS"]
 # Olsen 23.11.2026: snømåking og drenering er tatt bort, og videresender til tjenestene på forsiden.
 REMOVED_PAGES = ["borettslag", "snomaking", "drenering"]
 
+# Sesong (Anders 23.11.2026: om vinteren er det andre tjenester som skal fram). Månedene folk søker mest etter tjenesten.
+# Forsiden viser tjenestene i sesong først, så de som går hele året, så resten; ellers Olsens rekkefølge i SERVICES.
+# Ingen sesongtilbud øverst (Olsen 23.11.2026), bare rekkefølgen på kortene. Siden bygges på nytt den 1. hver måned.
+# Tjenester som ikke står her, går hele året (snekker, betong og mur, sveising, riving).
+SEASONS = {
+    "beskjaering-og-trefelling": [11, 12, 1, 2, 3],  # felling og beskjæring av epletrær utenom hekketiden (1.4–1.8)
+    "lovrydding": [9, 10, 11],
+    "hagearbeid": [4, 5, 6, 7, 8, 9, 10],
+    "stein-og-hage": [4, 5, 6, 7, 8, 9],
+    "rens-av-stein": [4, 5, 6, 8, 9],
+}
+
+
+def by_season(services, month=None):
+    """Tjenestene i sesong først, så hele året, så utenfor sesong. Stabil: ellers samme rekkefølge som før."""
+    m = month or TODAY.month
+    def rank(s):
+        months = SEASONS.get(s["slug"])
+        return 1 if not months else (0 if m in months else 2)
+    return sorted(services, key=rank)
+
 
 # ---------------------------------------------------------------------------
 # Områdesider: én side per bydel nær Tveita. Tallene er boliger etter bygningstype per 1.1.2025,

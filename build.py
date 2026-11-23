@@ -379,7 +379,7 @@ ICONS = {
 def service_cards():
     """Tjenestene som kort med et lite bilde og kort tekst, to per rad (Olsen 23.11.2026)."""
     cards = []
-    for s in [x for x in C.SERVICES if x.get("in_index", True)]:
+    for s in C.by_season([x for x in C.SERVICES if x.get("in_index", True)]):
         if s["image"]:
             name, alt, widths = s["image"]
             thumb = picture(name, alt, [min(widths)], "(min-width: 1000px) 230px, (min-width: 600px) 22vw, 45vw", "svc-thumb")

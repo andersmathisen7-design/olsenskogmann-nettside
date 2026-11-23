@@ -59,6 +59,11 @@ Disse gjelder foran eldre instrukser, også i den ukentlige SEO-oppgaven:
 - Ingen sesongtilbud øverst og ingen «Lokal i Oslo øst»/«Her jobber vi» på forsiden. Toppen er hvit med gule detaljer og en generell tekst: «Vi utfører tjenester innen … i Oslo og omegn».
 - Forsiden viser alle tjenestene i `SERVICES` som kort med lite bilde og kort tekst, to per rad. Samme liste står i skjemaet og nederst på siden.
 
+## Sesong og bredde (Anders 23.11.2026, gjelder videre)
+- **Forsiden viser alltid alle tjenestene.** En kunde lurte på om Olsen bare levde av løvblåsing, fordi toppen handlet om løvrydding. Én sterk side per tjeneste, aldri ett nettsted per tjeneste.
+- **Rekkefølgen på kortene følger sesongen** (`SEASONS` og `by_season` i `config.py`): i sesong først, så det som går hele året, så resten. Ingen sesongtilbud øverst (Olsens ønske 23.11.2026). Workflowen bygger siden på nytt den 1. hver måned, så rekkefølgen bytter av seg selv.
+- **Innhold kommer før sesongen.** Google bruker uker på å rangere nytt innhold: den ukentlige SEO-økta skriver artikler om tjenesten som har sesong om 1–2 måneder (desember–januar: trefelling og beskjæring; februar–mars: vårrydding, hekk og stein; august: løvrydding), ikke om den som er over.
+
 ## Endre tekst
 
 Tekstene på siden (teksten øverst på forsiden, fastpris på løvrydding, tjenester med FAQ, stegene, «om oss» og bydelssidene) ligger i **`innhold.json`**. Telefon, e-post, org.nr., timepris og alt annet ligger i **`config.py`**.
