@@ -1,7 +1,7 @@
 # Olsen Skogmann – ny nettside (testversjon)
 
 Dette er en rask, statisk nettside for Olsen Skogmann – Hage & Bygg i Oslo. Den er bygget for lokalt søk på Google og for KI-søk som ChatGPT og Perplexity.
-Oppsettet er det samme som på follobjorkeved.no: Python-bygg, innholdet i `config.py`, artikler i Markdown, FormSubmit, GoatCounter og publisering med GitHub Actions.
+Oppsettet er det samme som på follobjorkeved.no: Python-bygg, innholdet i `config.py` og `innhold.json`, artikler i Markdown, FormSubmit, GoatCounter og publisering med GitHub Actions.
 
 **Test:** https://andersmathisen7-design.github.io/olsenskogmann-nettside/
 Testsiden er skjult for Google med `noindex` og `robots.txt`, så den ikke konkurrerer med olsenskogmann.no.
@@ -39,14 +39,24 @@ Andre SEO-grep:
 - IndexNow varsler Bing om alle sider ved hver publisering, men bare når siden er live (`NOINDEX=0`).
 
 Valgene bak siden:
-- **Én tydelig sak øverst.** Sesongtilbudet ligger i `SEASON` i `config.py`. Bytt det når sesongen skifter, for eksempel til vårrydding.
+- **Én tydelig sak øverst.** Sesongtilbudet ligger i `SEASON` i `innhold.json`. Bytt det når sesongen skifter, for eksempel til vårrydding.
 - **Egne sider per tjeneste og bydel.** Google rangerer én side per tema.
 - **Ring og SMS er alltid synlige på mobil.** 51,5 % av trafikken i Norge er mobil (StatCounter, september 2026).
 - **Vurderingene fra Mittanbud står øverst.** 47 % velger bort en bedrift med under 20 vurderinger (BrightLocal 2026).
 
+## Ønsker fra Olsen som gjelder videre (20.11.2026)
+
+Disse gjelder foran eldre instrukser, også i den ukentlige SEO-oppgaven:
+- **Priser står som tall, uten ordene «inkl. mva»** (tallene er med mva, slik loven krever). Ikke legg til «inkl. mva» eller «eks. mva» igjen.
+- **Borettslag er ikke fokus.** Siden er tatt bort (videresender til forsiden); lag ikke nytt innhold rettet mot borettslag.
+- **Vurderingene fra kunder** (`REVIEWS` i `innhold.json`) er ekte sitater som Olsen har sendt. Ikke endre dem, og ikke legg til nye uten at Olsen har sendt dem.
+- Menyen er Snømåking, Hage, Snekker, Betong & mur og Sveising. Sesongtilbudet er snømåking (vintersesong).
+
 ## Endre tekst
 
-Alt innhold ligger i **`config.py`**: telefon, tjenester, bydeler, FAQ og sesongtilbud. Design ligger i `src/assets/style.css`.
+Tekstene på siden (sesongtilbud, fastpris på løvrydding, tjenester med FAQ, stegene, «om oss» og bydelssidene) ligger i **`innhold.json`**. Telefon, e-post, org.nr., timepris og alt annet ligger i **`config.py`**.
+
+**Endringer Olsen ber om på e-post** gjør Nettsideferdig i `innhold.json`, og ingen andre filer: koden sjekker at bare tekst endres (aldri tall, adresser eller bilder), Olsen ser hva som endres og publiserer selv med lenken i e-posten, og koden lagrer fila her på `main`. `{PRICE_SHORT}`, `{PRICE_HOUR_SENTENCE}` og `{PRICE_HOUR_INC_TEXT}` i teksten byttes med timeprisen fra `config.py`. `python3 test_innhold.py` sjekker fila. Design ligger i `src/assets/style.css`.
 
 ```bash
 python3 build.py                                               # bygger til public/
@@ -82,9 +92,22 @@ Hendelser som telles:
 
 For hendelser viser kilden (referrer) siden hendelsen skjedde på.
 
+### Tall agentene kan lese (fra 19.11.2026)
+
+Siden laster også `t.js` fra Nettsideferdig-workeren (`STATS_URL` og `STATS_SITE` i `config.py`). Den teller
+visninger per side og kilde (Google, Bing, Facebook, AI-chatene som `ai:chatgpt`, annonser) og klikk på
+telefon (`tel`), SMS (`sms`), e-post (`mailto`), sendt skjema (`skjema`) og skjema nettleseren stoppet
+(`skjema_stopp`). Bare summer per døgn, ingen cookies. Den ukentlige jobben og alle andre agenter henter tallene slik:
+
+```
+curl -s -H "Authorization: Bearer $AGENT_TOKEN" "https://sidefabrikken.nettsideferdig.workers.dev/agent/besok?site=olsenskogmann&dager=28"
+```
+
+GoatCounter står på som før og har de detaljerte hendelsene (hvor på siden det ble trykket).
+
 ## Ukentlig overvåking
 
-En planlagt jobb kjører hver mandag morgen. Den sjekker at alle sider svarer, at lenker og JSON-LD er gyldige og at skjemaet virker (med falsk FormSubmit). Den henter besøkstall fra GoatCounter når det er satt opp, og ser hvor siden står i søk.
+En planlagt jobb kjører hver mandag morgen. Den sjekker at alle sider svarer, at lenker og JSON-LD er gyldige og at skjemaet virker (med falsk FormSubmit). Den henter besøkstall fra workeren (`/agent/besok`, se over) og fra GoatCounter når nøkkelen er satt opp, og ser hvor siden står i søk.
 I sesongen skriver den også én ny artikkel i uka med kilder. Funn og forbedringer kommer som en pull request med `ukesrapporter/<dato>.md`. Godkjenn de du er enig i.
 
 ## Gå live på olsenskogmann.no

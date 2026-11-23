@@ -105,7 +105,7 @@ p { margin: 0; text-wrap: pretty; }
 
 /* ---------- Tillit ---------- */
 .trust { background: var(--spruce); color: var(--lichen); }
-.trust-list { list-style: none; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+.trust-list { list-style: none; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
 .trust-list li { padding: 26px 20px 26px 0; display: grid; gap: 4px; align-content: start; }
 .trust-list li + li { padding-left: 20px; border-left: 1px solid rgba(238, 241, 234, .16); }
 .trust-list strong { font: 700 1.45rem/1.1 var(--display); color: var(--hivis); }
@@ -125,7 +125,7 @@ p { margin: 0; text-wrap: pretty; }
 .row-media img { border-radius: var(--radius-media); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
 .row-season {
   aspect-ratio: 4 / 3; border-radius: var(--radius-media); background-color: var(--hivis);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%2318271F' stroke-opacity='.14' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M20 50C24 30 40 18 60 16 58 36 46 50 20 50Z M20 50 46 28'/%3E%3Cpath d='M86 120C84 100 94 84 114 78 118 98 108 114 86 120Z M86 120 106 92'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%2318271F' stroke-opacity='.14' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M22 42L54 42M30 28L46 56M46 28L30 56M91 100L117 100M98 89L110 111M110 89L98 111'/%3E%3C/g%3E%3C/svg%3E"); /* snøfnugg: vintersesongen (før: løv) */
   display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 16px; padding: 32px;
 }
 .row-season p { font: 800 clamp(2rem, 4vw, 3rem)/1 var(--display); max-width: 8ch; }
@@ -143,6 +143,17 @@ p { margin: 0; text-wrap: pretty; }
 }
 
 /* ---------- Steg ---------- */
+.reviews { padding: clamp(48px, 7vw, 88px) 0 0; }
+.reviews h2 { margin-bottom: 24px; }
+.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.review { margin: 0; padding: 24px; background: var(--lichen); border-top: 4px solid var(--hivis); border-radius: var(--radius-media); display: grid; gap: 10px; align-content: start; }
+.review figcaption strong { font: 700 1.3rem/1.15 var(--display); }
+.review blockquote { margin: 0; }
+.review blockquote p { margin: 0; }
+.review-meta { margin: 0; color: var(--muted); font-size: .95rem; }
+.review-meta .stars { color: var(--hivis-deep); letter-spacing: 2px; }
+@media (max-width: 960px) { .review-grid { grid-template-columns: 1fr; } }
+
 .steps-section { background: var(--spruce); color: var(--lichen); padding: clamp(56px, 8vw, 104px) 0; }
 .steps-section h2 { color: var(--white); }
 .steps { list-style: none; counter-reset: step; padding: 0; margin: 40px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }

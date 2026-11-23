@@ -36,7 +36,7 @@ Dette er bare et regneeksempel med timeprisene over. Kjøring og hvor lang tid d
 
 ## Hva koster det hos oss?
 
-Vi har fastpris på løvrydding, inkl. mva:
+Vi har fastpris på løvrydding:
 
 | Hage | Pris |
 |---|---|

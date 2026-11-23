@@ -6,7 +6,7 @@ order: 7
 tjeneste: beskjaering-og-trefelling
 kort: Skal du plante, legge plen eller stein der stubben står, bør hele roten graves opp. Skal det bare se ryddig ut, holder det ofte å frese stubben ned under bakken. Prisguider for 2026 oppgir fra rundt 2 500 kr for å frese én stubbe, og mer for store stubber og vanskelig tilkomst. Oslo kommune tar imot inntil 1 m³ røtter og stubber over 15 cm per levering.
 faq: Er det bedre å frese eller grave opp en stubbe? || Det kommer an på hva du skal bruke plassen til. Fresing tar stubben ned under bakken, men røttene blir liggende. Skal du plante, legge plen eller stein der, er det best å grave opp hele roten.
-faq: Hva koster stubbefresing? || Prisguider for 2026 oppgir fra 2 490 kr inkl. mva for én stubbe, og opp mot 6 000–7 500 kr for store stubber. Prisen avhenger av hvor tykk stubben er, og hvor lett det er å komme til.
+faq: Hva koster stubbefresing? || Prisguider for 2026 oppgir fra 2 490 kr for én stubbe, og opp mot 6 000–7 500 kr for store stubber. Prisen avhenger av hvor tykk stubben er, og hvor lett det er å komme til.
 faq: Kan jeg levere stubber på gjenvinningsstasjonen i Oslo? || Ja, inntil 1 m³ røtter, stammer og stubber over 15 cm per levering. Kommunens sider oppgir 1 875 kr per m³ for dette. Sjekk med stasjonen om prisen gjelder deg som privatperson.
 ---
 Etter en trefelling står stubben igjen. Den kan freses ned eller graves opp med hele roten. Hva som er best, avhenger av hva du skal bruke plassen til.
@@ -28,17 +28,17 @@ Det finnes ingen offentlig pris på stubbefresing. Prisguidene vi har funnet, er
 
 | Kilde | Pris |
 |---|---|
-| Fjernstubben, prisguide 2026 | Fra 2 490 kr inkl. mva for én stubbe, fra 3 990 kr for to og fra 5 290 kr for tre |
+| Fjernstubben, prisguide 2026 | Fra 2 490 kr for én stubbe, fra 3 990 kr for to og fra 5 290 kr for tre |
 | Bergen Treservice, oktober 2026 | Normalt 2 500–7 500 kr per stubbe (Bergen) |
 
-Prisen avhenger mest av hvor tykk stubben er, og hvor lett det er å komme til med maskinen. Spør alltid om mva, oppmøte og bortkjøring er med. Mange stubber samme dag blir som regel billigere per stubbe.
+Prisen avhenger mest av hvor tykk stubben er, og hvor lett det er å komme til med maskinen. Spør alltid om mva, oppmøte og bortkjøring er med i prisen. Mange stubber samme dag blir som regel billigere per stubbe.
 
 ## Hvor leverer du stubben?
 
 Graver du opp stubben selv, kan du levere den hos Oslo kommune. Røtter, stammer og stubber over 15 cm regnes ikke som vanlig hageavfall:
 
 - Du kan levere **inntil 1 m³** per gang, blant annet på Haraldrud hageavfallsmottak og Grønmo og Grefsen gjenvinningsstasjon.
-- Kommunens sider oppgir **1 875 kr per m³** inkl. mva for dette (priser fra april 2025). Det står ikke tydelig om prisen gjelder privatpersoner med GjenbruksID. Sjekk med stasjonen før du drar.
+- Kommunens sider oppgir **1 875 kr per m³** for dette (priser fra april 2025). Det står ikke tydelig om prisen gjelder privatpersoner med GjenbruksID. Sjekk med stasjonen før du drar.
 - Jord og stein som følger med roten, er løsmasser og leveres for seg.
 
 Bor du i Lørenskog, gjelder ROAFs regler. Se [løv og hageavfall i Lørenskog](/artikler/lov-og-hageavfall-i-lorenskog/).
