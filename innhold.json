@@ -3,7 +3,7 @@
     "slug": "hagearbeid",
     "tag": "Hage og bygg i Oslo og omegn",
     "title": "Hage, bygg og riving gjort ordentlig",
-    "lead": "Vi utfører tjenester innen hagearbeid, snekring, betong og mur, sveising og riving i Oslo og omegn. Send et bilde på SMS, så får du en pris før vi starter."
+    "lead": "Vi utfører tjenester innen hagearbeid, snekring, betong og mur, sveising, riving og fasadevask i Oslo og omegn. Send et bilde på SMS, så får du en pris før vi starter."
   },
   "PACKAGES": {
     "service": "lovrydding",
@@ -47,6 +47,248 @@
   ],
   "SERVICES": [
     {
+      "slug": "snekker",
+      "nav": "Snekker",
+      "form_value": "Snekker",
+      "title": "Snekker i Oslo",
+      "meta_title": "Snekker i Oslo – terrasse, trapp og plantekasser | Olsen Skogmann",
+      "meta_description": "Snekkeroppdrag i Oslo: terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold. Ingen jobb er for liten. Gratis befaring.",
+      "lead": "Små og store snekkeroppdrag for privatpersoner, borettslag og bedrifter. Ingen jobb er for liten.",
+      "summary": "Terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold.",
+      "image": [
+        "ny-terrasse-oslo",
+        "Nylagt terrasse i trykkimpregnert tre",
+        [
+          800,
+          1600
+        ]
+      ],
+      "includes": [
+        "Ny terrasse eller utbedring av gammel",
+        "Utvendige trapper",
+        "Plantekasser og benker",
+        "Innvendige løsninger",
+        "Vedlikehold og reparasjoner"
+      ],
+      "for_whom": [],
+      "sections": [
+        [
+          "Slik jobber vi",
+          "Vi ser på jobben sammen med deg, foreslår en løsning og gir deg prisen før vi starter. Du snakker med den som gjør jobben, hele veien."
+        ]
+      ],
+      "faq": [],
+      "photos": [
+        [
+          "ny-terrasse-oslo",
+          "Nylagt terrasse i trykkimpregnert tre",
+          [
+            800,
+            1600
+          ]
+        ]
+      ],
+      "in_index": true,
+      "in_nav": true
+    },
+    {
+      "slug": "betong-og-mur",
+      "nav": "Betong & mur",
+      "form_value": "Betong og mur",
+      "title": "Betong og mur i Oslo: renner, sluk og reparasjoner",
+      "meta_title": "Betong og mur i Oslo | Olsen Skogmann",
+      "meta_description": "Renner og sluk i betong der vannet blir stående, og reparasjon av sprekker og ødelagte kanter i betong og mur i Oslo.",
+      "lead": "Vi støper betongflater med vannrenne eller sluk der vannet blir stående, og reparerer sprekker og ødelagte kanter i betong og mur. Enkle, avgrensede jobber.",
+      "summary": "Renner og sluk i betong, og reparasjon av sprekker og kanter.",
+      "image": [
+        "dreneringsrenne-trapp",
+        "Ny betongflate med vannrenne foran en kjellerdør",
+        [
+          1600,
+          800
+        ]
+      ],
+      "includes": [
+        "Betongflater med vannrenne",
+        "Sluk og renner der vannet blir stående",
+        "Reparasjon av sprekker i betong og mur",
+        "Reparasjon av ødelagte kanter på trapper og grunnmur"
+      ],
+      "for_whom": [
+        [
+          "Villa og rekkehus",
+          "Kjellertrapper, innkjørsler og inngangspartier der vannet samler seg."
+        ],
+        [
+          "Bedrifter",
+          "Små reparasjoner av betong og mur på bygg og uteområder."
+        ]
+      ],
+      "sections": [
+        [
+          "Vann som blir stående",
+          "Blir vannet stående foran en dør eller nederst i en trapp, kan en renne eller et sluk i betongen lede det bort. Vi støper flaten med fall mot renna."
+        ],
+        [
+          "Sprekker og ødelagte kanter",
+          "Sprekker i betong og mur og kanter som har falt av, slipper inn vann. Når vannet fryser, blir skaden større. Vi fyller sprekkene og bygger opp kantene igjen."
+        ]
+      ],
+      "faq": [
+        [
+          "Tar dere store betongjobber?",
+          "Vi tar mindre, avgrensede jobber som renner, sluk og reparasjoner. Send et bilde på SMS, så sier vi om det er en jobb for oss."
+        ]
+      ],
+      "photos": [
+        [
+          "dreneringsrenne-trapp",
+          "Ny betongflate med vannrenne foran en kjellerdør",
+          [
+            1600,
+            800
+          ]
+        ]
+      ],
+      "in_nav": true,
+      "in_index": true
+    },
+    {
+      "slug": "sveising",
+      "nav": "Sveising",
+      "form_value": "Sveising",
+      "title": "Sveising og små metallreparasjoner i Oslo",
+      "meta_title": "Sveising i Oslo – små reparasjoner | Olsen Skogmann",
+      "meta_description": "Sveising av løse rekkverk, gelender, gjerdestolper, porter og andre enkle metallkonstruksjoner i Oslo. Vi reparerer på stedet.",
+      "lead": "Har du et løst gelender, en gjerdestolpe som har knekt, eller en port som ikke henger som den skal? Vi tar de små sveisejobbene og reparerer på stedet.",
+      "summary": "Små sveisejobber: rekkverk, gelender, gjerdestolper og porter.",
+      "image": [
+        "sveising-rekkverk",
+        "Olsen sveiser en stolpe til et rekkverk ved en utetrapp",
+        [
+          1280,
+          800
+        ]
+      ],
+      "includes": [
+        "Sveising av stål, støpejern og aluminium",
+        "Reparasjon og forsterkning av rekkverk, gelender og trapper",
+        "Gjerdestolper og porter",
+        "Utskifting av ødelagte deler"
+      ],
+      "for_whom": [
+        [
+          "Villa og rekkehus",
+          "Rekkverk, gelender, porter og gjerder."
+        ],
+        [
+          "Bedrifter",
+          "Små reparasjoner på rekkverk, porter og trapper."
+        ]
+      ],
+      "sections": [
+        [
+          "De små jobbene",
+          "Det kan være vanskelig å finne noen som vil ta de mindre sveisejobbene. Det er de vi tar: en trapp, et balkongrekkverk, en hageport eller andre enkle metallkonstruksjoner."
+        ],
+        [
+          "Trygt og holdbart",
+          "Vi sveiser med mobilt utstyr og reparerer der det står. Det viktigste er at det blir trygt og holder."
+        ]
+      ],
+      "faq": [
+        [
+          "Tar dere store sveisejobber?",
+          "Nei. Vi tar små reparasjoner og enkle sveisejobber som kan gjøres på stedet. Send et bilde på SMS, så sier vi om det er en jobb for oss."
+        ]
+      ],
+      "photos": [
+        [
+          "sveising-rekkverk",
+          "Olsen sveiser en stolpe til et rekkverk ved en utetrapp",
+          [
+            1280,
+            800
+          ]
+        ]
+      ],
+      "in_nav": true,
+      "in_index": true
+    },
+    {
+      "slug": "riving",
+      "nav": "Riving",
+      "form_value": "Riving",
+      "title": "Riving i Oslo",
+      "meta_title": "Riving i Oslo – terrasse, bod, gjerde og innvendig | Olsen Skogmann",
+      "meta_description": "Riving av gamle terrasser, boder, gjerder, levegger, trapper og innvendige vegger og kjøkken i Oslo og omegn. Gratis befaring. Ring 455 02 162.",
+      "lead": "Skal den gamle terrassen, boden eller gjerdet bort, eller skal det rives innvendig før oppussing? Vi river, rydder og gjør plassen klar til det som skal komme.",
+      "summary": "Riving av terrasser, boder, gjerder, trapper og innvendig før oppussing.",
+      "image": [
+        "riving-pigging-betong",
+        "Olsen pigger opp betong med en elektrisk meisel",
+        [
+          880
+        ]
+      ],
+      "panel": "Terrasse, bod, gjerde og innvendig",
+      "includes": [
+        "Gamle terrasser, plattinger og utvendige trapper",
+        "Boder, levegger, gjerder og plantekasser",
+        "Innvendig riving før oppussing: vegger, kjøkken og gulv",
+        "Opprydding etter riving, så plassen er klar"
+      ],
+      "for_whom": [
+        [
+          "Villa og rekkehus",
+          "Gammel terrasse, bod eller gjerde som skal bort før noe nytt kommer."
+        ],
+        [
+          "Oppussing",
+          "Innvendig riving, så snekker, maler eller rørlegger kan starte rett på."
+        ],
+        [
+          "Bedrifter",
+          "Riving av mindre bygg, skillevegger og innredning."
+        ]
+      ],
+      "sections": [
+        [
+          "Riving og nytt fra samme firma",
+          "Mange river for å bygge nytt. Vi kan rive den gamle terrassen og bygge den nye, så du har én å forholde deg til fra start til slutt."
+        ],
+        [
+          "Trygt og ryddig",
+          "Vi river kontrollert, sikrer området mens vi jobber og rydder etter oss. Du får prisen før vi starter."
+        ]
+      ],
+      "faq": [
+        [
+          "Hva koster riving?",
+          "Det kommer an på hva som skal rives og hvor mye avfall det blir. Du betaler timepris, eller får fast pris etter gratis befaring eller bilde på SMS."
+        ],
+        [
+          "Kan dere bygge nytt etter rivingen?",
+          "Ja. Vi tar også snekkerarbeid som ny terrasse, trapp og plantekasser, så samme firma kan gjøre hele jobben."
+        ],
+        [
+          "Hva med asbest og andre miljøfarlige stoffer?",
+          "Bygg fra før 1985 kan inneholde asbest. Er det mistanke om det, må det kartlegges og fjernes av firma med godkjenning før vi river. Vi sier fra hvis vi ser noe som bør sjekkes."
+        ]
+      ],
+      "photos": [
+        [
+          "riving-pigging-betong",
+          "Olsen pigger opp betong med en elektrisk meisel",
+          [
+            880
+          ]
+        ]
+      ],
+      "in_nav": true,
+      "in_index": true
+    },
+    {
       "slug": "hagearbeid",
       "nav": "Hage",
       "form_value": "Hagearbeid",
@@ -56,8 +298,8 @@
       "lead": "Vi klipper hekk, beskjærer busker og trær, feller mindre trær, fjerner stubber, rydder løv og spyler stein og skifer rene. Alt hageavfall kjører vi bort.",
       "summary": "Hekk, beskjæring, trær, stubber, løvrydding og rens av stein.",
       "image": [
-        "steinrens-terrasse-oslo",
-        "Skiferterrasse spylt ren med høytrykksspyler",
+        "plantekasse-terrasse-oslo",
+        "Plantekasse i tre på terrasse, plantet med hortensia og lavendel",
         [
           1600,
           800
@@ -102,8 +344,8 @@
       ],
       "photos": [
         [
-          "steinrens-terrasse-oslo",
-          "Skiferterrasse spylt ren med høytrykksspyler",
+          "plantekasse-terrasse-oslo",
+          "Plantekasse i tre på terrasse, plantet med hortensia og lavendel",
           [
             1600,
             800
@@ -111,6 +353,58 @@
         ]
       ],
       "in_nav": true,
+      "in_index": true
+    },
+    {
+      "slug": "rens-av-stein",
+      "nav": "Fasadevask",
+      "form_value": "Fasadevask og rens av stein",
+      "title": "Fasadevask og rens av stein i Oslo",
+      "meta_title": "Fasadevask og rens av stein i Oslo | Olsen Skogmann",
+      "meta_description": "Høytrykkspyling av belegningsstein, skifer, trapper, støttemurer og nedre del av fasaden i Oslo. Fjerner alger, mose og skitt. Gratis befaring.",
+      "lead": "Vi spyler bort alger, mose og skitt fra belegningsstein, skifer, trapper, murer og nedre del av fasaden. Ofte trenger ikke steinen å legges om for å se ny ut.",
+      "summary": "Fasadevask og høytrykkspyling av stein, trapper og murer.",
+      "image": [
+        "steinrens-terrasse-oslo",
+        "Skiferterrasse spylt ren med høytrykksspyler",
+        [
+          1600
+        ]
+      ],
+      "in_nav": true,
+      "includes": [
+        "Belegningsstein og skifer",
+        "Trapper og gangveier",
+        "Støttemurer og grunnmur",
+        "Nedre del av fasaden",
+        "Gårdsplass og bakgård"
+      ],
+      "for_whom": [],
+      "sections": [
+        [
+          "Før og etter",
+          "Bildet viser en støttemur i betong. Venstre del er spylt, høyre del er ikke det."
+        ],
+        [
+          "Hvorfor rense?",
+          "Alger og mose gjør stein og trapper glatte når det er vått, og holder på fuktighet i fugene. Det ser også slitent ut, selv om steinen er hel."
+        ]
+      ],
+      "faq": [
+        [
+          "Kan dere vaske hele fasaden?",
+          "Vi tar nedre del av fasaden og grunnmuren fra bakken. Hele fasader i høyden tar vi ikke."
+        ]
+      ],
+      "photos": [
+        [
+          "steinrens-terrasse-oslo",
+          "Skiferterrasse spylt ren med høytrykksspyler",
+          [
+            1600
+          ]
+        ]
+      ],
       "in_index": true
     },
     {
@@ -182,7 +476,8 @@
         ]
       ],
       "in_nav": false,
-      "in_index": true
+      "in_index": false,
+      "main": false
     },
     {
       "slug": "lovrydding",
@@ -258,357 +553,8 @@
       ],
       "photos": [],
       "in_nav": false,
-      "in_index": true
-    },
-    {
-      "slug": "rens-av-stein",
-      "nav": "Rens av stein",
-      "form_value": "Rens av stein og mur",
-      "title": "Rens av belegningsstein og mur i Oslo",
-      "meta_title": "Rens av belegningsstein, mur og trapp i Oslo | Olsen Skogmann",
-      "meta_description": "Høytrykkspyling av belegningsstein, skifer, trapper, støttemurer og nedre del av fasaden i Oslo. Fjerner alger, mose og skitt. Gratis befaring.",
-      "lead": "Vi spyler bort alger, mose og skitt fra belegningsstein, skifer, trapper, murer og nedre del av fasaden. Ofte trenger ikke steinen å legges om for å se ny ut.",
-      "summary": "Høytrykkspyling av stein, trapper, murer og nedre del av fasaden.",
-      "image": [
-        "rens-av-mur-for-etter",
-        "Støttemur i betong: renset til venstre, urenset til høyre",
-        [
-          1600,
-          800
-        ]
-      ],
-      "in_nav": false,
-      "includes": [
-        "Belegningsstein og skifer",
-        "Trapper og gangveier",
-        "Støttemurer og grunnmur",
-        "Nedre del av fasaden",
-        "Gårdsplass og bakgård"
-      ],
-      "for_whom": [],
-      "sections": [
-        [
-          "Før og etter",
-          "Bildet viser en støttemur i betong. Venstre del er spylt, høyre del er ikke det."
-        ],
-        [
-          "Hvorfor rense?",
-          "Alger og mose gjør stein og trapper glatte når det er vått, og holder på fuktighet i fugene. Det ser også slitent ut, selv om steinen er hel."
-        ]
-      ],
-      "faq": [
-        [
-          "Kan dere vaske hele fasaden?",
-          "Vi tar nedre del av fasaden og grunnmuren fra bakken. Hele fasader i høyden tar vi ikke."
-        ]
-      ],
-      "photos": [
-        [
-          "rens-av-mur-for-etter",
-          "Støttemur i betong: renset til venstre, urenset til høyre",
-          [
-            1600,
-            800
-          ]
-        ]
-      ],
-      "in_index": true
-    },
-    {
-      "slug": "stein-og-hage",
-      "nav": "Stein & hage",
-      "form_value": "Stein & hage",
-      "title": "Stein og hage i Oslo",
-      "meta_title": "Belegningsstein, støttemur og hagearbeid i Oslo | Olsen Skogmann",
-      "meta_description": "Belegningsstein, skifer, støttemurer, plantekasser og hagearbeid i Oslo. Gratis befaring. Ring 455 02 162.",
-      "lead": "Uteområder som er praktiske og fine å se på. Fra belegningsstein og støttemurer til beplantning og beskjæring.",
-      "summary": "Belegningsstein, skifer, støttemurer, beplantning, beskjæring og rens av mur.",
-      "image": [
-        "plantekasse-terrasse-oslo",
-        "Plantekasse i tre på terrasse, plantet med hortensia og lavendel",
-        [
-          1600,
-          800
-        ]
-      ],
-      "includes": [
-        "Belegningsstein og skifer",
-        "Støttemurer",
-        "Plantekasser og beplantning",
-        "Beskjæring og hagearbeid",
-        "Rens av stein og mur (egen side)"
-      ],
-      "for_whom": [],
-      "sections": [
-        [
-          "Gammel stein som ser ny ut",
-          "Ofte trenger ikke steinen å legges om. Alger, mose og skitt kan spyles bort, og mur og belegningsstein blir som nye. Se siden om rens av stein og mur."
-        ]
-      ],
-      "faq": [],
-      "photos": [
-        [
-          "rens-av-mur-for-etter",
-          "Støttemur i betong: renset til venstre, urenset til høyre",
-          [
-            1600,
-            800
-          ]
-        ],
-        [
-          "plantekasse-terrasse-oslo",
-          "Plantekasse med hortensia og lavendel",
-          [
-            1600,
-            800
-          ]
-        ]
-      ],
-      "in_nav": false,
-      "in_index": true
-    },
-    {
-      "slug": "snekker",
-      "nav": "Snekker",
-      "form_value": "Snekker",
-      "title": "Snekker i Oslo",
-      "meta_title": "Snekker i Oslo – terrasse, trapp og plantekasser | Olsen Skogmann",
-      "meta_description": "Snekkeroppdrag i Oslo: terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold. Ingen jobb er for liten. Gratis befaring.",
-      "lead": "Små og store snekkeroppdrag for privatpersoner, borettslag og bedrifter. Ingen jobb er for liten.",
-      "summary": "Terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold.",
-      "image": [
-        "utvendig-trapp-tre",
-        "Ny utvendig trapp i trykkimpregnert tre ved inngangsparti",
-        [
-          1203,
-          800
-        ]
-      ],
-      "includes": [
-        "Ny terrasse eller utbedring av gammel",
-        "Utvendige trapper",
-        "Plantekasser og benker",
-        "Innvendige løsninger",
-        "Vedlikehold og reparasjoner"
-      ],
-      "for_whom": [],
-      "sections": [
-        [
-          "Slik jobber vi",
-          "Vi ser på jobben sammen med deg, foreslår en løsning og gir deg prisen før vi starter. Du snakker med den som gjør jobben, hele veien."
-        ]
-      ],
-      "faq": [],
-      "photos": [
-        [
-          "ny-terrasse-snekker",
-          "Ny terrasse i trykkimpregnert tre",
-          [
-            1600,
-            800
-          ]
-        ],
-        [
-          "utvendig-trapp-tre",
-          "Ny utvendig trapp i tre",
-          [
-            1203,
-            800
-          ]
-        ],
-        [
-          "plantekasse-terrasse-oslo",
-          "Plantekasse i tre på terrasse i borettslag, plantet med hortensia og lavendel",
-          [
-            1600,
-            800
-          ]
-        ]
-      ],
-      "in_index": true
-    },
-    {
-      "slug": "betong-og-mur",
-      "nav": "Betong & mur",
-      "form_value": "Betong og mur",
-      "title": "Betong og mur i Oslo: renner, sluk og reparasjoner",
-      "meta_title": "Betong og mur i Oslo | Olsen Skogmann",
-      "meta_description": "Renner og sluk i betong der vannet blir stående, og reparasjon av sprekker og ødelagte kanter i betong og mur i Oslo.",
-      "lead": "Vi støper betongflater med vannrenne eller sluk der vannet blir stående, og reparerer sprekker og ødelagte kanter i betong og mur. Enkle, avgrensede jobber.",
-      "summary": "Renner og sluk i betong, og reparasjon av sprekker og kanter.",
-      "image": [
-        "dreneringsrenne-trapp",
-        "Ny betongflate med vannrenne foran en kjellerdør",
-        [
-          1600,
-          800
-        ]
-      ],
-      "includes": [
-        "Betongflater med vannrenne",
-        "Sluk og renner der vannet blir stående",
-        "Reparasjon av sprekker i betong og mur",
-        "Reparasjon av ødelagte kanter på trapper og grunnmur"
-      ],
-      "for_whom": [
-        [
-          "Villa og rekkehus",
-          "Kjellertrapper, innkjørsler og inngangspartier der vannet samler seg."
-        ],
-        [
-          "Bedrifter",
-          "Små reparasjoner av betong og mur på bygg og uteområder."
-        ]
-      ],
-      "sections": [
-        [
-          "Vann som blir stående",
-          "Blir vannet stående foran en dør eller nederst i en trapp, kan en renne eller et sluk i betongen lede det bort. Vi støper flaten med fall mot renna."
-        ],
-        [
-          "Sprekker og ødelagte kanter",
-          "Sprekker i betong og mur og kanter som har falt av, slipper inn vann. Når vannet fryser, blir skaden større. Vi fyller sprekkene og bygger opp kantene igjen."
-        ]
-      ],
-      "faq": [
-        [
-          "Tar dere store betongjobber?",
-          "Vi tar mindre, avgrensede jobber som renner, sluk og reparasjoner. Send et bilde på SMS, så sier vi om det er en jobb for oss."
-        ]
-      ],
-      "photos": [
-        [
-          "dreneringsrenne-trapp",
-          "Betongflate med vannrenne foran en kjellerdør",
-          [
-            1600,
-            800
-          ]
-        ]
-      ],
-      "in_nav": true,
-      "in_index": true
-    },
-    {
-      "slug": "sveising",
-      "nav": "Sveising",
-      "form_value": "Sveising",
-      "title": "Sveising og små metallreparasjoner i Oslo",
-      "meta_title": "Sveising i Oslo – små reparasjoner | Olsen Skogmann",
-      "meta_description": "Sveising av løse rekkverk, gelender, gjerdestolper, porter og andre enkle metallkonstruksjoner i Oslo. Vi reparerer på stedet.",
-      "lead": "Har du et løst gelender, en gjerdestolpe som har knekt, eller en port som ikke henger som den skal? Vi tar de små sveisejobbene og reparerer på stedet.",
-      "summary": "Små sveisejobber: rekkverk, gelender, gjerdestolper og porter.",
-      "image": [
-        "sveising-rekkverk",
-        "Olsen sveiser en stolpe til et rekkverk ved en utetrapp",
-        [
-          1280,
-          800
-        ]
-      ],
-      "includes": [
-        "Sveising av stål, støpejern og aluminium",
-        "Reparasjon og forsterkning av rekkverk, gelender og trapper",
-        "Gjerdestolper og porter",
-        "Utskifting av ødelagte deler"
-      ],
-      "for_whom": [
-        [
-          "Villa og rekkehus",
-          "Rekkverk, gelender, porter og gjerder."
-        ],
-        [
-          "Bedrifter",
-          "Små reparasjoner på rekkverk, porter og trapper."
-        ]
-      ],
-      "sections": [
-        [
-          "De små jobbene",
-          "Det kan være vanskelig å finne noen som vil ta de mindre sveisejobbene. Det er de vi tar: en trapp, et balkongrekkverk, en hageport eller andre enkle metallkonstruksjoner."
-        ],
-        [
-          "Trygt og holdbart",
-          "Vi sveiser med mobilt utstyr og reparerer der det står. Det viktigste er at det blir trygt og holder."
-        ]
-      ],
-      "faq": [
-        [
-          "Tar dere store sveisejobber?",
-          "Nei. Vi tar små reparasjoner og enkle sveisejobber som kan gjøres på stedet. Send et bilde på SMS, så sier vi om det er en jobb for oss."
-        ]
-      ],
-      "photos": [
-        [
-          "sveising-rekkverk",
-          "Sveising av en rekkverksstolpe ved en utetrapp",
-          [
-            1280,
-            800
-          ]
-        ]
-      ],
-      "in_nav": true,
-      "in_index": true
-    },
-    {
-      "slug": "riving",
-      "nav": "Riving",
-      "form_value": "Riving",
-      "title": "Riving i Oslo",
-      "meta_title": "Riving i Oslo – terrasse, bod, gjerde og innvendig | Olsen Skogmann",
-      "meta_description": "Riving av gamle terrasser, boder, gjerder, levegger, trapper og innvendige vegger og kjøkken i Oslo og omegn. Gratis befaring. Ring 455 02 162.",
-      "lead": "Skal den gamle terrassen, boden eller gjerdet bort, eller skal det rives innvendig før oppussing? Vi river, rydder og gjør plassen klar til det som skal komme.",
-      "summary": "Riving av terrasser, boder, gjerder, trapper og innvendig før oppussing.",
-      "image": null,
-      "panel": "Terrasse, bod, gjerde og innvendig",
-      "includes": [
-        "Gamle terrasser, plattinger og utvendige trapper",
-        "Boder, levegger, gjerder og plantekasser",
-        "Innvendig riving før oppussing: vegger, kjøkken og gulv",
-        "Opprydding etter riving, så plassen er klar"
-      ],
-      "for_whom": [
-        [
-          "Villa og rekkehus",
-          "Gammel terrasse, bod eller gjerde som skal bort før noe nytt kommer."
-        ],
-        [
-          "Oppussing",
-          "Innvendig riving, så snekker, maler eller rørlegger kan starte rett på."
-        ],
-        [
-          "Bedrifter",
-          "Riving av mindre bygg, skillevegger og innredning."
-        ]
-      ],
-      "sections": [
-        [
-          "Riving og nytt fra samme firma",
-          "Mange river for å bygge nytt. Vi kan rive den gamle terrassen og bygge den nye, så du har én å forholde deg til fra start til slutt."
-        ],
-        [
-          "Trygt og ryddig",
-          "Vi river kontrollert, sikrer området mens vi jobber og rydder etter oss. Du får prisen før vi starter."
-        ]
-      ],
-      "faq": [
-        [
-          "Hva koster riving?",
-          "Det kommer an på hva som skal rives og hvor mye avfall det blir. Du betaler timepris, eller får fast pris etter gratis befaring eller bilde på SMS."
-        ],
-        [
-          "Kan dere bygge nytt etter rivingen?",
-          "Ja. Vi tar også snekkerarbeid som ny terrasse, trapp og plantekasser, så samme firma kan gjøre hele jobben."
-        ],
-        [
-          "Hva med asbest og andre miljøfarlige stoffer?",
-          "Bygg fra før 1985 kan inneholde asbest. Er det mistanke om det, må det kartlegges og fjernes av firma med godkjenning før vi river. Vi sier fra hvis vi ser noe som bør sjekkes."
-        ]
-      ],
-      "photos": [],
-      "in_nav": true,
-      "in_index": true
+      "in_index": false,
+      "main": false
     }
   ],
   "STEPS": [

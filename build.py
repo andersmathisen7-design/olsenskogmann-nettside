@@ -211,10 +211,10 @@ def header(active="", kontakt=True):
     cur = ' aria-current="page"'
     links = "".join(
         f'<a href="{url(s["slug"] + "/")}"{cur if active == s["slug"] else ""}>{e(s["nav"])}</a>'
-        for s in C.SERVICES if s.get("in_nav", True))
+        for s in C.MAIN_SERVICES if s.get("in_nav", True))
     all_links = "".join(
         f'<a href="{url(s["slug"] + "/")}"{cur if active == s["slug"] else ""}>{e(s["nav"])}</a>'
-        for s in C.SERVICES)
+        for s in C.MAIN_SERVICES)
     k = "#kontakt" if kontakt else url() + "#kontakt"
     return f"""<header class="site-header">
   <div class="wrap header-inner">
@@ -280,7 +280,7 @@ def steps():
 def contact(selected="", area=""):
     opts = "".join(
         f'<option{" selected" if selected == s["form_value"] else ""}>{e(s["form_value"])}</option>'
-        for s in C.SERVICES) + '<option>Annet</option>'
+        for s in C.MAIN_SERVICES) + '<option>Annet</option>'
     placeholder = "" if selected else '<option value="" disabled selected>Velg</option>'
     return f"""<section class="contact" id="kontakt">
   <div class="wrap contact-grid">
@@ -316,7 +316,7 @@ def contact(selected="", area=""):
 
 
 def footer():
-    links = "".join(f'<li><a href="{url(s["slug"] + "/")}">{e(s["nav"])}</a></li>' for s in C.SERVICES)
+    links = "".join(f'<li><a href="{url(s["slug"] + "/")}">{e(s["nav"])}</a></li>' for s in C.MAIN_SERVICES)
     links += f'<li><a href="{url("priser/")}">Priser</a></li><li><a href="{url("artikler/")}">Råd og priser</a></li>'
     return f"""</main>
 <footer class="site-footer">
@@ -377,12 +377,13 @@ ICONS = {
 
 
 def service_cards():
-    """Tjenestene som kort med et lite bilde og kort tekst, to per rad (Olsen 23.11.2026)."""
+    """Tjenestene som kort, to per rad: bilde i full kortbredde, navn, kort tekst og «Les mer» (Olsen 23.–24.11.2026).
+    Bare de seks tjenestene, ingen ekstra kort, så rutenettet går opp (2-2-2)."""
     cards = []
-    for s in C.by_season([x for x in C.SERVICES if x.get("in_index", True)]):
+    for s in C.by_season([x for x in C.MAIN_SERVICES if x.get("in_index", True)]):
         if s["image"]:
             name, alt, widths = s["image"]
-            thumb = picture(name, alt, [min(widths)], "(min-width: 1000px) 230px, (min-width: 600px) 22vw, 45vw", "svc-thumb")
+            thumb = picture(name, alt, [min(widths)], "(min-width: 1000px) 480px, 50vw", "svc-thumb")
         else:
             icon = ICONS.get(s["slug"], '<path d="M12 32h40M32 12v40"/>')
             thumb = (f'<span class="svc-thumb svc-icon"><svg viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" '
@@ -390,16 +391,17 @@ def service_cards():
         cards.append(f'<li><a class="svc-card" href="{url(s["slug"] + "/")}">{thumb}<span class="svc-body">'
                      f'<h3>{e(s["nav"])}</h3><span class="svc-sum">{e(s["summary"])}</span>'
                      f'<span class="svc-more">Les mer</span></span></a></li>')
-    cards.append(f'<li><a class="svc-card svc-cta" href="{sms()}" data-goatcounter-click="sms-tjenester"><span class="svc-body">'
-                 f'<h3>Noe annet?</h3><span class="svc-sum">Send et bilde av jobben på SMS, så sier vi om vi kan ta den og hva det koster.</span>'
-                 f'<span class="svc-more">Send SMS til {C.PHONE_DISPLAY}</span></span></a></li>')
     return f'<ul class="svc-grid">{"".join(cards)}</ul>'
 
 
 def page_index():
     # Olsen 23.11.2026: hvit topp med gul tekst, ingen vintersesong, «Lokal i Oslo øst» og «Her jobber vi» er tatt bort.
-    body = f"""<section class="hero hero-home">
-  <div class="wrap hero-grid">
+    # Olsen 23.–24.11.2026: hans bilde i full bredde som bakgrunn som glir over i siden, uten «Vi rydder etter oss».
+    body = f"""<section class="hero hero-home hero-bleed">
+  <figure class="hero-bg">
+    {picture('grunnarbeid-oslo', 'Olsen Skogmann graver grøft og legger pukk og rør ved en enebolig i Oslo', [800, 1280], '100vw', eager=True)}
+  </figure>
+  <div class="wrap">
     <div class="hero-text">
       <p class="hero-tag">{e(C.SEASON['tag'])}</p>
       <h1>{e(C.SEASON['title'])}</h1>
@@ -408,11 +410,8 @@ def page_index():
         <a class="btn btn-dark" href="{tel()}" data-goatcounter-click="ring-hero">Ring {C.PHONE_DISPLAY}</a>
         <a class="btn btn-line" href="#kontakt">Be om pris</a>
       </div>
-      <ul class="hero-points"><li>Gratis befaring</li><li>Pris før vi starter</li><li>Vi rydder etter oss</li></ul>
+      <ul class="hero-points"><li>Gratis befaring</li><li>Pris før vi starter</li></ul>
     </div>
-    <figure class="hero-photo">
-      {picture('olsen-stillas-fasade', 'Olsen på stillaset, i arbeid under takrennen på en fasade', [880, 1600], '(min-width: 900px) 40vw, 90vw', eager=True)}
-    </figure>
   </div>
 </section>
 {trust_band()}
@@ -427,8 +426,8 @@ def page_index():
 {borettslag_band()}
 {steps()}
 {contact()}"""
-    title = f"{C.NAME} – hage, snekker, betong, sveising og riving i Oslo"
-    desc = ("Hagearbeid, hekk og trær, løvrydding, rens av stein, snekker, betong og mur, sveising og riving i Oslo og omegn. "
+    title = f"{C.NAME} – snekker, betong, sveising, riving, hage og fasadevask i Oslo"
+    desc = ("Snekker, betong og mur, sveising, riving, hagearbeid og fasadevask i Oslo og omegn. "
             f"{C.MITTANBUD_RATING} av 5 på Mittanbud. Gratis befaring. Ring {C.PHONE_DISPLAY}.")
     return head(title, desc, "", [business_ld()]) + header() + body + footer()
 
@@ -454,7 +453,7 @@ def page_service(s):
     hero_cls = "hero hero-page" if is_season else "page-hero"
     body = f"""<section class="{hero_cls}">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Brødsmuler"><a href="{url()}">Forsiden</a> / <span>{e(s['nav'])}</span></nav>
+    <nav class="crumbs" aria-label="Brødsmuler"><a href="{url()}">Forsiden</a> / {'' if s.get('main', True) else f'<a href="{url("hagearbeid/")}">Hage</a> / '}<span>{e(s['nav'])}</span></nav>
     <h1>{e(s['title'])}</h1>
     <p class="hero-lead">{e(s['lead'])}</p>
     <div class="hero-cta">
@@ -470,7 +469,7 @@ def page_service(s):
       <h2>Dette er med</h2>
       <ul class="checks">{inc}</ul>
     </div>
-    <div class="detail-text">{who}{secs}</div>
+    <div class="detail-text">{who}{secs}{sub_pages(s)}</div>
   </div>
   {f'<div class="wrap">{photos}</div>' if photos else ''}
 </section>
@@ -479,9 +478,18 @@ def page_service(s):
 {related_articles(s['slug'])}
 {service_areas(s)}
 {steps()}
-{contact(s['form_value'])}"""
+{contact(s['form_value'] if s.get('main', True) else 'Hagearbeid')}"""
     return head(s["meta_title"], s["meta_description"], s["slug"] + "/",
                 [business_ld()] + service_ld(s)) + header(s["slug"]) + body + footer()
+
+
+def sub_pages(s):
+    """Hage lenker til undersidene sine (løvrydding, hekk og trær), som ikke står i menyen lenger (Olsen 24.11.2026)."""
+    if s["slug"] != "hagearbeid":
+        return ""
+    subs = [x for x in C.SERVICES if not x.get("main", True)]
+    links = "".join(f'<li><a href="{url(x["slug"] + "/")}">{e(x["title"])}</a></li>' for x in subs)
+    return f'<div class="prose-block"><h2>Mer om hagearbeid</h2><ul>{links}</ul></div>' if subs else ""
 
 
 def service_areas(s):

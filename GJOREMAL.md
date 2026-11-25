@@ -33,6 +33,11 @@
 ## Endringer fra Olsen (23.11.2026)
 - [ ] **Riving:** teksten på `/riving/` er skrevet ut fra det vanlige for et hage- og byggfirma (terrasse, bod, gjerde, innvendig før oppussing). Be Olsen se over at det stemmer med hva han river, og sende bilder fra rivejobber.
 
+## Endringer fra Olsen (24.11.2026), gjort 25.11.2026
+- [x] Bare seks tjenester (Snekker, Betong & mur, Sveising, Riving, Hage, Fasadevask) i meny, forside, skjema og bunn.
+- [x] Ett bilde per tjeneste, med bildene Olsen valgte; nytt forsidebilde (grunnarbeid) som bakgrunn som toner over.
+- [x] «Vi rydder etter oss» fjernet; tjenestekortene har stort bilde øverst, 2-2-2.
+
 ## Fortsatt åpent
 - [x] **Ny timepris 1.1.2027 skjer av seg selv.** Workflowen bygger siden rett etter midnatt 1. januar, og alle priser, FAQ, strukturerte data og `llms.txt` bytter til 993,75 kr inkl. mva. Sjekk olsenskogmann.no/priser/ 1. januar. Google-profilen og Mittanbud må Olsen endre selv.
 - [ ] **Lenken til Google-profilen:** be Olsen om den (Google Maps → Del → Kopier lenke), og legg den inn i `PROFILES` i `config.py`.

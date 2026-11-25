@@ -52,6 +52,15 @@ Disse gjelder foran eldre instrukser, også i den ukentlige SEO-oppgaven:
 - **Borettslag er ikke fokus.** Siden er tatt bort (videresender til forsiden); lag ikke nytt innhold rettet mot borettslag.
 - **Vurderingene fra kunder** (`REVIEWS` i `innhold.json`) er ekte sitater som Olsen har sendt. Ikke endre dem, og ikke legg til nye uten at Olsen har sendt dem.
 
+## Ønsker fra Olsen 24.11.2026 (gjelder videre)
+
+- **Bare seks tjenester** i menyen, på forsiden, i skjemaet og nederst, i denne rekkefølgen: Snekker, Betong & mur, Sveising,
+  Riving, Hage, Fasadevask (`MAIN_SERVICES` i `config.py`). Fasadevask er siden `/rens-av-stein/`. Løvrydding og Hekk & trær
+  står videre som undersider av Hage (`"main": false`), fordi artiklene og fastprisen peker dit. Stein og hage er tatt bort.
+- **Ett bilde per tjeneste.** Snekker: den nye terrassen; Hage: plantekassen; Fasadevask: skiferterrassen; Riving: Olsen som
+  pigger betong.
+- **Forsiden:** Olsens bilde av grunnarbeid i full bredde som bakgrunn som toner over i hvitt. «Vi rydder etter oss» er tatt bort.
+
 ## Ønsker fra Olsen 23.11.2026 (gjelder videre)
 - **Snømåking og drenering er tatt helt bort.** Ikke legg dem til igjen, verken som side, i skjemaet, i menyen, i bunnen eller i artikler. `/snomaking/` og `/drenering/` videresender til tjenestene på forsiden (`REMOVED_PAGES` i `config.py`).
 - **Riving** er en egen tjeneste (`/riving/`).

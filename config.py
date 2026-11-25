@@ -144,10 +144,14 @@ STEPS = _INNHOLD["STEPS"]
 ABOUT = _INNHOLD["ABOUT"]
 AREAS = _INNHOLD["AREAS"]
 REVIEWS = _INNHOLD["REVIEWS"]
+# Tjenestene som vises i menyen, på forsiden, i skjemaet og nederst (Olsen 23.–24.11.2026: bare seks).
+# Løvrydding og hekk og trær står videre som undersider av Hage («main»: false), fordi artiklene og fastprisen peker dit.
+MAIN_SERVICES = [s for s in SERVICES if s.get("main", True)]
 
 # Sider som er tatt bort, med videresending til forsiden (build.py: page_redirect).
 # Olsen 23.11.2026: snømåking og drenering er tatt bort, og videresender til tjenestene på forsiden.
-REMOVED_PAGES = ["borettslag", "snomaking", "drenering"]
+# Olsen 24.11.2026: «Stein og hage» er tatt bort (Hage dekker den).
+REMOVED_PAGES = ["borettslag", "snomaking", "drenering", "stein-og-hage"]
 
 # Sesong (Anders 23.11.2026: om vinteren er det andre tjenester som skal fram). Månedene folk søker mest etter tjenesten.
 # Forsiden viser tjenestene i sesong først, så de som går hele året, så resten; ellers Olsens rekkefølge i SERVICES.
@@ -157,7 +161,6 @@ SEASONS = {
     "beskjaering-og-trefelling": [11, 12, 1, 2, 3],  # felling og beskjæring av epletrær utenom hekketiden (1.4–1.8)
     "lovrydding": [9, 10, 11],
     "hagearbeid": [4, 5, 6, 7, 8, 9, 10],
-    "stein-og-hage": [4, 5, 6, 7, 8, 9],
     "rens-av-stein": [4, 5, 6, 8, 9],
 }
 
