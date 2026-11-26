@@ -13,10 +13,10 @@
 
 ## Tjenester
 
-- [Snekker](https://olsenskogmann.no/snekker/): Terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold.
-- [Betong & mur](https://olsenskogmann.no/betong-og-mur/): Renner og sluk i betong, og reparasjon av sprekker og kanter.
+- [Snekker](https://olsenskogmann.no/snekker/): Gulv, panel, vegger og dører inne. Terrasse, trapper, gjerde og takrenner ute.
+- [Betong & mur](https://olsenskogmann.no/betong-og-mur/): Støttemur, betongtrapp, kjerneboring, forankring og murpuss.
 - [Sveising](https://olsenskogmann.no/sveising/): Små sveisejobber: rekkverk, gelender, gjerdestolper og porter.
-- [Riving](https://olsenskogmann.no/riving/): Riving av terrasser, boder, gjerder, trapper og innvendig før oppussing.
+- [Riving](https://olsenskogmann.no/riving/): Pigging av betong og fliser, riving av bad, peis, lettvegger og mur.
 - [Hage](https://olsenskogmann.no/hagearbeid/): Hekk, beskjæring, trær, stubber, løvrydding og rens av stein.
 - [Fasadevask](https://olsenskogmann.no/rens-av-stein/): Fasadevask og høytrykkspyling av stein, trapper og murer.
 - [Hekk & trær](https://olsenskogmann.no/beskjaering-og-trefelling/): Hekkeklipping, beskjæring, felling av mindre trær og fjerning av stubber.
