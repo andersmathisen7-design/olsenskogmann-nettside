@@ -52,6 +52,15 @@ Disse gjelder foran eldre instrukser, også i den ukentlige SEO-oppgaven:
 - **Borettslag er ikke fokus.** Siden er tatt bort (videresender til forsiden); lag ikke nytt innhold rettet mot borettslag.
 - **Vurderingene fra kunder** (`REVIEWS` i `innhold.json`) er ekte sitater som Olsen har sendt. Ikke endre dem, og ikke legg til nye uten at Olsen har sendt dem.
 
+## Ønsker fra Olsen 26.11.2026 (gjelder videre)
+
+- **Ingen «der du bor» på de seks tjenestene.** Lenkene til bydelssidene står bare på undersiden Løvrydding (`service_areas` i
+  `build.py`), fordi bydelssidene handler om løvrydding og hagearbeid.
+- **Stripa med vurderinger og gratis befaring står bare på forsiden**, ikke på Hage.
+- **Snekker har to lister:** innvendig og utvendig snekkerarbeid (`include_groups` i `innhold.json`). Listene for Snekker,
+  Riving og Betong & mur er Olsens egne ord; ikke skriv dem om.
+- **Bilder fra Olsen:** Hage (bedet og løvblåseren), Fasadevask (belegningsstein), Sveising (porten) og Betong & mur (armeringen).
+
 ## Ønsker fra Olsen 24.11.2026 (gjelder videre)
 
 - **Bare seks tjenester** i menyen, på forsiden, i skjemaet og nederst, i denne rekkefølgen: Snekker, Betong & mur, Sveising,

@@ -433,7 +433,12 @@ def page_index():
 
 
 def page_service(s):
-    inc = "".join(f"<li>{e(i)}</li>" for i in s["includes"])
+    # Olsen 26.11.2026: snekker har to lister, innvendig og utvendig («include_groups» i innhold.json).
+    if s.get("include_groups"):
+        inc = "".join(f'<h3>{e(t)}</h3><ul class="checks">' + "".join(f"<li>{e(i)}</li>" for i in items) + "</ul>"
+                      for t, items in s["include_groups"])
+    else:
+        inc = '<ul class="checks">' + "".join(f"<li>{e(i)}</li>" for i in s["includes"]) + "</ul>"
     who = ""
     if s["for_whom"]:
         who = '<div class="who"><h2>For hvem</h2><dl>' + "".join(
@@ -449,9 +454,8 @@ def page_service(s):
         faq = '<section class="faq"><div class="wrap narrow"><h2>Spørsmål og svar</h2>' + "".join(
             f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in s["faq"]) + "</div></section>"
 
-    is_season = s["slug"] == C.SEASON["slug"]
-    hero_cls = "hero hero-page" if is_season else "page-hero"
-    body = f"""<section class="{hero_cls}">
+    # Olsen 26.11.2026: stripa med vurderinger og gratis befaring står bare på forsiden, ikke på Hage.
+    body = f"""<section class="page-hero">
   <div class="wrap">
     <nav class="crumbs" aria-label="Brødsmuler"><a href="{url()}">Forsiden</a> / {'' if s.get('main', True) else f'<a href="{url("hagearbeid/")}">Hage</a> / '}<span>{e(s['nav'])}</span></nav>
     <h1>{e(s['title'])}</h1>
@@ -462,12 +466,11 @@ def page_service(s):
     </div>
   </div>
 </section>
-{trust_band() if is_season else ''}
 <section class="service-detail">
   <div class="wrap detail-grid">
     <div class="includes">
       <h2>Dette er med</h2>
-      <ul class="checks">{inc}</ul>
+      {inc}
     </div>
     <div class="detail-text">{who}{secs}{sub_pages(s)}</div>
   </div>
@@ -476,7 +479,7 @@ def page_service(s):
 {packages_section(s['slug'])}
 {faq}
 {related_articles(s['slug'])}
-{service_areas(s)}
+{service_areas(s) if s["slug"] == "lovrydding" else ''}
 {steps()}
 {contact(s['form_value'] if s.get('main', True) else 'Hagearbeid')}"""
     return head(s["meta_title"], s["meta_description"], s["slug"] + "/",
@@ -493,7 +496,8 @@ def sub_pages(s):
 
 
 def service_areas(s):
-    """Lenker fra tjenestesiden til bydelssidene, så Google finner dem og ser hvor vi jobber."""
+    """Lenker til bydelssidene. Olsen 26.11.2026: «der du bor» er tatt bort fra de seks tjenestene, fordi bydelssidene
+    handler om løvrydding og hagearbeid. Den står bare på undersiden Løvrydding, så Google fortsatt finner bydelssidene."""
     links = "".join(f'<li><a href="{url(a["slug"] + "/")}">{e(a["bydel"])}</a></li>' for a in C.AREAS)
     return f"""<section class="service-areas"><div class="wrap narrow">
   <h2>{e(s['nav'])} der du bor</h2>

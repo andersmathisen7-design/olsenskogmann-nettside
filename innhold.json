@@ -51,10 +51,10 @@
       "nav": "Snekker",
       "form_value": "Snekker",
       "title": "Snekker i Oslo",
-      "meta_title": "Snekker i Oslo – terrasse, trapp og plantekasser | Olsen Skogmann",
-      "meta_description": "Snekkeroppdrag i Oslo: terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold. Ingen jobb er for liten. Gratis befaring.",
+      "meta_title": "Snekker i Oslo – gulv, dører, terrasse og trapp | Olsen Skogmann",
+      "meta_description": "Snekker i Oslo: gulv, panel, lettvegger, dører og garderobe inne, og terrasse, trapper, gjerde, levegger og takrenner ute. Ingen jobb er for liten. Gratis befaring.",
       "lead": "Små og store snekkeroppdrag for privatpersoner, borettslag og bedrifter. Ingen jobb er for liten.",
-      "summary": "Terrasser, utvendige trapper, plantekasser, innvendige løsninger og vedlikehold.",
+      "summary": "Gulv, panel, vegger og dører inne. Terrasse, trapper, gjerde og takrenner ute.",
       "image": [
         "ny-terrasse-oslo",
         "Nylagt terrasse i trykkimpregnert tre",
@@ -63,13 +63,7 @@
           1600
         ]
       ],
-      "includes": [
-        "Ny terrasse eller utbedring av gammel",
-        "Utvendige trapper",
-        "Plantekasser og benker",
-        "Innvendige løsninger",
-        "Vedlikehold og reparasjoner"
-      ],
+      "includes": [],
       "for_whom": [],
       "sections": [
         [
@@ -89,17 +83,38 @@
         ]
       ],
       "in_index": true,
-      "in_nav": true
+      "in_nav": true,
+      "include_groups": [
+        [
+          "Innvendig snekkerarbeid",
+          [
+            "Legging av gulv (parkett, laminat og heltre)",
+            "Montering av Smartpanel og listverk",
+            "Oppsett av lettvegger og bærevegger",
+            "Utskifting og montering av dører",
+            "Skreddersydde walk-in closets og montering av PAX-skap"
+          ]
+        ],
+        [
+          "Utvendig snekkerarbeid",
+          [
+            "Bygging av terrasse og platting",
+            "Bygging og reparasjon av trapper",
+            "Oppsett av tregjerde og levegger",
+            "Montering og utskifting av takrenner"
+          ]
+        ]
+      ]
     },
     {
       "slug": "betong-og-mur",
       "nav": "Betong & mur",
       "form_value": "Betong og mur",
-      "title": "Betong og mur i Oslo: renner, sluk og reparasjoner",
-      "meta_title": "Betong og mur i Oslo | Olsen Skogmann",
-      "meta_description": "Renner og sluk i betong der vannet blir stående, og reparasjon av sprekker og ødelagte kanter i betong og mur i Oslo.",
-      "lead": "Vi støper betongflater med vannrenne eller sluk der vannet blir stående, og reparerer sprekker og ødelagte kanter i betong og mur. Enkle, avgrensede jobber.",
-      "summary": "Renner og sluk i betong, og reparasjon av sprekker og kanter.",
+      "title": "Betong og mur i Oslo",
+      "meta_title": "Betong og mur i Oslo – støttemur, betongtrapp og murpuss | Olsen Skogmann",
+      "meta_description": "Støttemur i betong, forskalingsblokk eller naturstein, støping av betongtrapp, kjerneboring, forankring, murpuss og utbedring av murverk i Oslo. Gratis befaring.",
+      "lead": "Vi bygger støttemurer, støper betongtrapper, kjernebor i betong, mur og teglstein, fester og forankrer, og pusser og utbedrer murverk.",
+      "summary": "Støttemur, betongtrapp, kjerneboring, forankring og murpuss.",
       "image": [
         "dreneringsrenne-trapp",
         "Ny betongflate med vannrenne foran en kjellerdør",
@@ -109,10 +124,11 @@
         ]
       ],
       "includes": [
-        "Betongflater med vannrenne",
-        "Sluk og renner der vannet blir stående",
-        "Reparasjon av sprekker i betong og mur",
-        "Reparasjon av ødelagte kanter på trapper og grunnmur"
+        "Bygging av støttemur (i betong, forskalingsblokk eller naturstein)",
+        "Støping og bygging av betongtrapp",
+        "Kjerneboring i betong, mur og teglstein",
+        "Sikker festing og forankring av elementer i betong og mur",
+        "Murpuss, fasadepuss og utbedring av murverk"
       ],
       "for_whom": [
         [
@@ -137,7 +153,7 @@
       "faq": [
         [
           "Tar dere store betongjobber?",
-          "Vi tar mindre, avgrensede jobber som renner, sluk og reparasjoner. Send et bilde på SMS, så sier vi om det er en jobb for oss."
+          "Det kommer an på jobben. Send et bilde på SMS eller ring, så sier vi om det er en jobb for oss."
         ]
       ],
       "photos": [
@@ -147,6 +163,14 @@
           [
             1600,
             800
+          ]
+        ],
+        [
+          "betong-armering-vegg",
+          "Armering bundet og klar for støping av en betongvegg",
+          [
+            800,
+            1500
           ]
         ]
       ],
@@ -210,6 +234,14 @@
             1280,
             800
           ]
+        ],
+        [
+          "sveising-port-stolpe",
+          "Sveiset feste og stolpe i kamstål på en port i stål",
+          [
+            800,
+            1500
+          ]
         ]
       ],
       "in_nav": true,
@@ -220,10 +252,10 @@
       "nav": "Riving",
       "form_value": "Riving",
       "title": "Riving i Oslo",
-      "meta_title": "Riving i Oslo – terrasse, bod, gjerde og innvendig | Olsen Skogmann",
-      "meta_description": "Riving av gamle terrasser, boder, gjerder, levegger, trapper og innvendige vegger og kjøkken i Oslo og omegn. Gratis befaring. Ring 455 02 162.",
-      "lead": "Skal den gamle terrassen, boden eller gjerdet bort, eller skal det rives innvendig før oppussing? Vi river, rydder og gjør plassen klar til det som skal komme.",
-      "summary": "Riving av terrasser, boder, gjerder, trapper og innvendig før oppussing.",
+      "meta_title": "Riving i Oslo – pigging av betong, bad, peis og mur | Olsen Skogmann",
+      "meta_description": "Pigging av betong og fliser, riving av bad før oppussing, peis og ildsted, lettvegger, mur og teglstein i Oslo og omegn. Gratis befaring. Ring 455 02 162.",
+      "lead": "Skal betong eller fliser pigges opp, badet rives før oppussing, eller en peis, lettvegg eller mur bort? Vi river, rydder og gjør plassen klar til det som skal komme.",
+      "summary": "Pigging av betong og fliser, riving av bad, peis, lettvegger og mur.",
       "image": [
         "riving-pigging-betong",
         "Olsen pigger opp betong med en elektrisk meisel",
@@ -231,12 +263,14 @@
           880
         ]
       ],
-      "panel": "Terrasse, bod, gjerde og innvendig",
+      "panel": "Betong, fliser, bad, peis og mur",
       "includes": [
-        "Gamle terrasser, plattinger og utvendige trapper",
-        "Boder, levegger, gjerder og plantekasser",
-        "Innvendig riving før oppussing: vegger, kjøkken og gulv",
-        "Opprydding etter riving, så plassen er klar"
+        "Pigging av betong innvendig og utvendig (f.eks. kjellergulv, garasje, trapper og plattinger)",
+        "Pigging og fjerning av fliser",
+        "Riving og fjerning av peis og ildsted",
+        "Totalriving og klargjøring av bad for oppussing",
+        "Riving av lettvegger og innvendige konstruksjoner",
+        "Riving av mur og teglstein"
       ],
       "for_whom": [
         [
@@ -298,11 +332,10 @@
       "lead": "Vi klipper hekk, beskjærer busker og trær, feller mindre trær, fjerner stubber, rydder løv og spyler stein og skifer rene. Alt hageavfall kjører vi bort.",
       "summary": "Hekk, beskjæring, trær, stubber, løvrydding og rens av stein.",
       "image": [
-        "plantekasse-terrasse-oslo",
-        "Plantekasse i tre på terrasse, plantet med hortensia og lavendel",
+        "hage-bed-stauder-oslo",
+        "Nyplantet bed med stauder i grus langs en teglvegg",
         [
-          1600,
-          800
+          768
         ]
       ],
       "includes": [
@@ -344,11 +377,18 @@
       ],
       "photos": [
         [
-          "plantekasse-terrasse-oslo",
-          "Plantekasse i tre på terrasse, plantet med hortensia og lavendel",
+          "hage-bed-stauder-oslo",
+          "Nyplantet bed med stauder i grus langs en teglvegg",
           [
-            1600,
-            800
+            768
+          ]
+        ],
+        [
+          "lovrydding-lovblaser-oslo",
+          "Olsen blåser løv fra en plen med ryggbåren løvblåser",
+          [
+            800,
+            1280
           ]
         ]
       ],
@@ -402,6 +442,14 @@
           "Skiferterrasse spylt ren med høytrykksspyler",
           [
             1600
+          ]
+        ],
+        [
+          "rens-belegningsstein-oslo",
+          "Innkjørsel i belegningsstein etter rens",
+          [
+            800,
+            940
           ]
         ]
       ],

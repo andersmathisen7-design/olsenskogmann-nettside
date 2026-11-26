@@ -278,6 +278,8 @@ p { margin: 0; text-wrap: pretty; }
 .detail-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
 .includes { border-top: 6px solid var(--hivis); padding-top: 22px; }
 .includes .checks { font-size: 1.15rem; }
+.includes h3 { font-size: 1.35rem; margin-top: 28px; }
+.includes h3 + .checks { margin-top: 12px; }
 .detail-text { display: grid; gap: 40px; }
 .prose-block p { margin-top: 12px; max-width: 36em; }
 .who dl { margin: 16px 0 0; display: grid; gap: 16px; }
