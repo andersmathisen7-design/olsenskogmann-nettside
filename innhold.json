@@ -116,11 +116,11 @@
       "lead": "Vi bygger støttemurer, støper betongtrapper, kjernebor i betong, mur og teglstein, fester og forankrer, og pusser og utbedrer murverk.",
       "summary": "Støttemur, betongtrapp, kjerneboring, forankring og murpuss.",
       "image": [
-        "dreneringsrenne-trapp",
-        "Ny betongflate med vannrenne foran en kjellerdør",
+        "betong-armering-vegg",
+        "Armering bundet og klar for støping av en betongvegg",
         [
-          1600,
-          800
+          800,
+          1500
         ]
       ],
       "includes": [
@@ -158,14 +158,6 @@
       ],
       "photos": [
         [
-          "dreneringsrenne-trapp",
-          "Ny betongflate med vannrenne foran en kjellerdør",
-          [
-            1600,
-            800
-          ]
-        ],
-        [
           "betong-armering-vegg",
           "Armering bundet og klar for støping av en betongvegg",
           [
@@ -187,11 +179,11 @@
       "lead": "Har du et løst gelender, en gjerdestolpe som har knekt, eller en port som ikke henger som den skal? Vi tar de små sveisejobbene og reparerer på stedet.",
       "summary": "Små sveisejobber: rekkverk, gelender, gjerdestolper og porter.",
       "image": [
-        "sveising-rekkverk",
-        "Olsen sveiser en stolpe til et rekkverk ved en utetrapp",
+        "sveising-port-stolpe",
+        "Sveiset feste og stolpe i kamstål på en port i stål",
         [
-          1280,
-          800
+          800,
+          1500
         ]
       ],
       "includes": [
@@ -227,14 +219,6 @@
         ]
       ],
       "photos": [
-        [
-          "sveising-rekkverk",
-          "Olsen sveiser en stolpe til et rekkverk ved en utetrapp",
-          [
-            1280,
-            800
-          ]
-        ],
         [
           "sveising-port-stolpe",
           "Sveiset feste og stolpe i kamstål på en port i stål",
@@ -382,14 +366,6 @@
           [
             768
           ]
-        ],
-        [
-          "lovrydding-lovblaser-oslo",
-          "Olsen blåser løv fra en plen med ryggbåren løvblåser",
-          [
-            800,
-            1280
-          ]
         ]
       ],
       "in_nav": true,
@@ -408,6 +384,7 @@
         "steinrens-terrasse-oslo",
         "Skiferterrasse spylt ren med høytrykksspyler",
         [
+          800,
           1600
         ]
       ],
@@ -441,15 +418,8 @@
           "steinrens-terrasse-oslo",
           "Skiferterrasse spylt ren med høytrykksspyler",
           [
-            1600
-          ]
-        ],
-        [
-          "rens-belegningsstein-oslo",
-          "Innkjørsel i belegningsstein etter rens",
-          [
             800,
-            940
+            1600
           ]
         ]
       ],

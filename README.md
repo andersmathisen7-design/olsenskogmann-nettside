@@ -60,6 +60,9 @@ Disse gjelder foran eldre instrukser, også i den ukentlige SEO-oppgaven:
 - **Snekker har to lister:** innvendig og utvendig snekkerarbeid (`include_groups` i `innhold.json`). Listene for Snekker,
   Riving og Betong & mur er Olsens egne ord; ikke skriv dem om.
 - **Bilder fra Olsen:** Hage (bedet og løvblåseren), Fasadevask (belegningsstein), Sveising (porten) og Betong & mur (armeringen).
+- **Fortsatt bare ett bilde per tjeneste (27.11.2026),** samme på kortet og på undersiden: Snekker: terrassen; Betong & mur:
+  armeringen; Sveising: porten; Riving: pigging av betong; Hage: bedet; Fasadevask: skiferterrassen. Løvblåseren,
+  belegningssteinen, rekkverket og vannrenna ligger i `src/img`, men brukes ikke på de seks tjenestene.
 
 ## Ønsker fra Olsen 24.11.2026 (gjelder videre)
 
